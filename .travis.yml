@@ -1,0 +1,11 @@
+before_script:
+  - "sh scripts/test-server.sh"
+  - sleep 3
+after_script:
+  - "sh scripts/stop-test-server.sh"
+
+script: "scripts/test.sh"
+
+notifications:
+  email: false
+  campfire: "rumspringa:c0a20e6caab984176e5c72f84241b5f419662257@504871"
