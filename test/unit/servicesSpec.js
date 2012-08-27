@@ -13,15 +13,19 @@ describe("devcenterClient", function() {
     });
   };
 
+  var entity1, entity2;
+
   beforeEach(function() {
     module('devcenterTest.services');
 
     inject(function($injector) {
       $httpBackend = $injector.get('$httpBackend');
-      $httpBackend.when('GET', '/someUrl').respond('');
 
       devcenterClient = $injector.get('devcenterClient')(datastoreBackendUrl, graphBackendUrl);
     });
+
+    var entity1 = randomUuid();
+    var entity2 = randomUuid();
   });
 
   afterEach(function() {
@@ -29,11 +33,13 @@ describe("devcenterClient", function() {
     $httpBackend.verifyNoOutstandingRequest();
   });
 
-  it('should fetch authentication token', function() {
-    $httpBackend.expectGET('/someUrl');
+  it('can promote developers', function() {
+    $httpBackend.when('POST', 'developers/' + entity1).respond('');
+    $httpBackend.expectPOST('/developers/' + entity1);
+
     var success = false;
     var failure  = false;
-    devcenterClient.promoteDeveloper(randomUuid()).then(function() {
+    devcenterClient.promoteDeveloper(entity1).then(function() {
       success = true;
     }, function() {
       failure = true;
