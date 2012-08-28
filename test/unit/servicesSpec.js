@@ -134,4 +134,17 @@ describe("devcenterClient", function() {
       url: function() {return devcenterBackendUrl + '/games/' + entity1},
       action: function() {return devcenterClient.deleteGame(entity1)}
   });
+
+  var changeGameRequestParams  = function() {return {name: 'changed name', description: 'changed description', developers: [entity1], screenshots: ['http://example.com/shot3.jpg'], configuration: {background: 'yellow'}}};
+  var changeGameResponseParams = {name: 'changed game', description: 'changed description', uuid: 'some-uuid'};
+  can("change a game's configuration", {
+    verb: 'PUT',
+    url: function() {return devcenterBackendUrl + '/games/' + entity1},
+    response: changeGameResponseParams,
+    action: function() {return devcenterClient.updateGame(entity1, changeGameRequestParams())},
+    expectedRequestBody: changeGameRequestParams,
+    expectations: function(response) {
+      expect(response.result).toEqual(changeGameResponseParams);
+    }
+  });
 });
