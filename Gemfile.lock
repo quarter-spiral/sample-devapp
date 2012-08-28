@@ -1,0 +1,14 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    json (1.7.4)
+    rack (1.4.1)
+    rack-rewrite (1.2.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  json
+  rack
+  rack-rewrite

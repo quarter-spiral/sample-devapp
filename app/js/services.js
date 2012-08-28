@@ -2,8 +2,18 @@
 
 /* Services */
 
-var devcenterBackendService = angular.module('devcenterTest.services', []);
-devcenterBackendService.factory('devcenterClient', ['$http', '$q', function(http, q) {
+var services = angular.module('devcenterTest.services', []);
+
+services.factory('uuidGenerator', function() {
+  return function() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+      return v.toString(16);
+    });
+  }
+});
+
+services.factory('devcenterClient', ['$http', '$q', function(http, q) {
   http.makeRequest = function(options) {
     var method = options.method;
     var url = options.url;
@@ -31,71 +41,70 @@ devcenterBackendService.factory('devcenterClient', ['$http', '$q', function(http
     return deferred.promise;
   };
 
-  var devcenterClient = function(devcenterBackendUrl) {
-    return {
-      promoteDeveloper: function(uuid) {
-        return http.makeRequest({
-          method: 'POST',
-          url: devcenterBackendUrl + '/developers/' + uuid
-        });
-      },
+  var devcenterBackendUrl = window.qs.ENV['QS_DEVCENTER_BACKEND_URL'];
 
-      demoteDeveloper: function(uuid) {
-        return http.makeRequest({
-          method: 'DELETE',
-          url: devcenterBackendUrl + '/developers/' + uuid
-        });
-      },
+  return {
+    promoteDeveloper: function(uuid) {
+      return http.makeRequest({
+        method: 'POST',
+        url: devcenterBackendUrl + '/developers/' + uuid
+      });
+    },
 
-      listGames: function(developerUuid) {
-        return http.makeRequest({
-          method: 'GET',
-          url: devcenterBackendUrl + '/developers/' + developerUuid + '/games',
-          returns: function(data) {
-            return data;
-          }
-        });
-      },
+    demoteDeveloper: function(uuid) {
+      return http.makeRequest({
+        method: 'DELETE',
+        url: devcenterBackendUrl + '/developers/' + uuid
+      });
+    },
 
-      addGame: function(gameDetails) {
-        return http.makeRequest({
-          method: 'POST',
-          url: devcenterBackendUrl + '/games',
-          body: gameDetails,
-          returns: function(data) {
-            return data;
-          }
-        });
-      },
+    listGames: function(developerUuid) {
+      return http.makeRequest({
+        method: 'GET',
+        url: devcenterBackendUrl + '/developers/' + developerUuid + '/games',
+        returns: function(data) {
+          return data;
+        }
+      });
+    },
 
-      deleteGame: function(gameUuid) {
-        return http.makeRequest({
-          method: 'DELETE',
-          url: devcenterBackendUrl + '/games/' + gameUuid,
-        });
-      },
+    addGame: function(gameDetails) {
+      return http.makeRequest({
+        method: 'POST',
+        url: devcenterBackendUrl + '/games',
+        body: gameDetails,
+        returns: function(data) {
+          return data;
+        }
+      });
+    },
 
-      updateGame: function(gameUuid, gameDetails) {
-        return http.makeRequest({
-          method: 'PUT',
-          url: devcenterBackendUrl + '/games/' + gameUuid,
-          body: gameDetails,
-          returns: function(data) {
-            return data;
-          }
-        });
-      },
+    deleteGame: function(gameUuid) {
+      return http.makeRequest({
+        method: 'DELETE',
+        url: devcenterBackendUrl + '/games/' + gameUuid,
+      });
+    },
 
-      getGame: function(gameUuid) {
-        return http.makeRequest({
-          method: 'GET',
-          url: devcenterBackendUrl + '/games/' + gameUuid,
-          returns: function(data) {
-            return data;
-          }
-        });
-      }
-    };
+    updateGame: function(gameUuid, gameDetails) {
+      return http.makeRequest({
+        method: 'PUT',
+        url: devcenterBackendUrl + '/games/' + gameUuid,
+        body: gameDetails,
+        returns: function(data) {
+          return data;
+        }
+      });
+    },
+
+    getGame: function(gameUuid) {
+      return http.makeRequest({
+        method: 'GET',
+        url: devcenterBackendUrl + '/games/' + gameUuid,
+        returns: function(data) {
+          return data;
+        }
+      });
+    }
   };
-  return devcenterClient;
 }]);

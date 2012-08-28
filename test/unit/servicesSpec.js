@@ -1,16 +1,9 @@
 'use strict';
 
 describe("devcenterClient", function() {
-  var $httpBackend, devcenterClient;
+  var $httpBackend, uuidGenerator, devcenterClient;
 
   var devcenterBackendUrl = 'http://devcenter.example.com';
-
-  var randomUuid = function() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-      var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
-      return v.toString(16);
-    });
-  };
 
   var carryOut = function(action) {
     var success, result, failure, error;
@@ -72,9 +65,13 @@ describe("devcenterClient", function() {
   beforeEach(function() {
     module('devcenterTest.services');
 
+    window.qs = window.qs || {};
+    window.qs.ENV = {'QS_DEVCENTER_BACKEND_URL': 'http://devcenter.example.com'};
+
     inject(function($injector) {
       $httpBackend = $injector.get('$httpBackend');
-      devcenterClient = $injector.get('devcenterClient')(devcenterBackendUrl);
+      uuidGenerator = $injector.get('uuidGenerator')
+      devcenterClient = $injector.get('devcenterClient');
     });
 
     this.addMatchers({
@@ -86,8 +83,8 @@ describe("devcenterClient", function() {
       }
     });
 
-    entity1 = randomUuid();
-    entity2 = randomUuid();
+    entity1 = uuidGenerator();
+    entity2 = uuidGenerator();
   });
 
   afterEach(function() {
