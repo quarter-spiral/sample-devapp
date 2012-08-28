@@ -147,4 +147,15 @@ describe("devcenterClient", function() {
       expect(response.result).toEqual(changeGameResponseParams);
     }
   });
+
+  var retrievedGameParams = {name: 'some game', description: 'a good game', uuid: 'some-uuid', developers: ['dev-1', 'dev-2'], screenshots: ['http://example.com/shot1.jpg', 'http://example.com/shot3.jpg'], configuration: {background: 'purple'}};
+  can("retrieve a game's configuration", {
+    verb: 'GET',
+    url: function() {return devcenterBackendUrl + '/games/' + entity1},
+    response: retrievedGameParams,
+    action: function() {return devcenterClient.getGame(entity1)},
+    expectations: function(response) {
+      expect(response.result).toEqual(retrievedGameParams);
+    }
+  });
 });

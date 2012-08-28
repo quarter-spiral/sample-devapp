@@ -84,6 +84,16 @@ devcenterBackendService.factory('devcenterClient', ['$http', '$q', function(http
             return data;
           }
         });
+      },
+
+      getGame: function(gameUuid) {
+        return http.makeRequest({
+          method: 'GET',
+          url: devcenterBackendUrl + '/games/' + gameUuid,
+          returns: function(data) {
+            return data;
+          }
+        });
       }
     };
   };
