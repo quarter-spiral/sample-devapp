@@ -128,4 +128,10 @@ describe("devcenterClient", function() {
       expect(response.result.uuid).toEqual('some-uuid');
     }
   });
+
+  can('delete a game', {
+      verb: 'DELETE',
+      url: function() {return devcenterBackendUrl + '/games/' + entity1},
+      action: function() {return devcenterClient.deleteGame(entity1)}
+  });
 });

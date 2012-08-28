@@ -66,6 +66,13 @@ devcenterBackendService.factory('devcenterClient', ['$http', '$q', function(http
             return data;
           }
         });
+      },
+
+      deleteGame: function(gameUuid) {
+        return http.makeRequest({
+          method: 'DELETE',
+          url: devcenterBackendUrl + '/games/' + gameUuid,
+        });
       }
     };
   };
