@@ -37,13 +37,18 @@ describe("devcenterClient", function() {
     var verb = options.verb;
     var action = options.action;
     var successfulResponse = options.response || '';
+    var expectedRequestBody = options.expectedRequestBody;
     var expectations = options.expectations;
 
     describe(description, function() {
       verb = verb.toUpperCase();
 
       beforeEach(function() {
-        $httpBackend['expect' + verb](url());
+        if (expectedRequestBody) {
+          $httpBackend.expect(verb, url(), expectedRequestBody());
+        } else {
+          $httpBackend.expect(verb, url());
+        }
       });
 
       it('works', function() {
@@ -110,5 +115,17 @@ describe("devcenterClient", function() {
       expectations: function(response) {
         expect(response.result).toEqual(['game1', 'game2']);
       }
+  });
+
+  var addGameParams = function() {return {name: 'some game', description: 'a good game', developers: [entity1, entity2], screenshots: ['http://example.com/shot1.jpg', 'http://example.com/shot2.jpg'], configuration: {background: 'red'}}};
+  can('add a game', {
+    verb: 'POST',
+    url: function() {return devcenterBackendUrl + '/games'},
+    response: {uuid: 'some-uuid'},
+    action: function() {return devcenterClient.addGame(addGameParams())},
+    expectedRequestBody: addGameParams,
+    expectations: function(response) {
+      expect(response.result.uuid).toEqual('some-uuid');
+    }
   });
 });

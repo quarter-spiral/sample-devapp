@@ -7,9 +7,16 @@ devcenterBackendService.factory('devcenterClient', ['$http', '$q', function(http
   http.makeRequest = function(options) {
     var method = options.method;
     var url = options.url;
+    var body = options.body;
+
     var deferred = q.defer();
 
-    http({method: method, url: url}).
+    var requestOptions = {method: method, url: url};
+    if (body) {
+      requestOptions.data = body;
+    }
+
+    http(requestOptions).
       success(function(data, status, headers, config) {
         if (options.returns !== undefined) {
           deferred.resolve(options.returns(data, status, headers, config));
@@ -44,6 +51,17 @@ devcenterBackendService.factory('devcenterClient', ['$http', '$q', function(http
         return http.makeRequest({
           method: 'GET',
           url: devcenterBackendUrl + '/developers/' + developerUuid + '/games',
+          returns: function(data) {
+            return data;
+          }
+        });
+      },
+
+      addGame: function(gameDetails) {
+        return http.makeRequest({
+          method: 'POST',
+          url: devcenterBackendUrl + '/games',
+          body: gameDetails,
           returns: function(data) {
             return data;
           }
