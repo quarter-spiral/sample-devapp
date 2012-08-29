@@ -2,7 +2,7 @@ require 'bundler'
 Bundler.require
 
 unless ENV['RACK_ENV']
-  ENV['QS_DEVCENTER_BACKEND_URL'] = 'http://devcenter-backend.dev'
+  ENV['QS_DEVCENTER_BACKEND_URL'] = 'http://devcenter-backend.dev/v1'
 end
 
 class EnvInjector
@@ -30,6 +30,12 @@ end
 app = Rack::Builder.new {
   use Rack::Rewrite do
     r301 %r{^(.*\/)$}, '$1index.html'
+  end
+
+  if ENV['RACK_ENV'] == 'production'
+    use Rack::Auth::Basic, "Sample Dev App" do |username, password|
+        'redwoodpho' == password
+    end
   end
 
   use EnvInjector
