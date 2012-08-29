@@ -1,4 +1,4 @@
-<div ng-controller="GamesCtrl" ng-init="game = {screenshots: ['http://example.com/shot1.jpg']}">
+<div ng-controller="GamesCtrl" ng-init="game = {screenshots: ['http://example.com/shot1.jpg'], configuration: {type: 'html5'}}">
   <h1>Add a game</h1>
 
   <p>
@@ -9,6 +9,11 @@
   <p>
     Description:
     <textarea ng-model="game.description"></textarea>
+  </p>
+
+  <p>
+    Game Url:
+    <input ng-model="game.configuration.url" type="text"/>
   </p>
 
   <ul>

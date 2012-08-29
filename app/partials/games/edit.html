@@ -11,6 +11,11 @@
     <textarea ng-model="game.description"></textarea>
   </p>
 
+  <p>
+    Game Url:
+    <input ng-model="game.configuration.url" type="text"/>
+  </p>
+
   <ul>
     <li ng-repeat="screenshot in game.screenshots">
       {{screenshot}} <a ng:click="game.screenshots.splice($index, 1)">(delete)</a>
