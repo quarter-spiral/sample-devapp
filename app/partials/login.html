@@ -1,0 +1,10 @@
+<h1>Login</h1>
+
+<div ng-controller="UserCtrl">
+  <p>
+    UUID: <input ng-model="uuid" type="text">
+    <button ng-click="login(uuid)" class="btn btn-success btn-large">Login &raquo;</button>
+  </p>
+
+  <p>Not an account yet? <a ng-click="signup()" class="btn btn-warning">Sign up now &raquo;</a></p>
+</div>

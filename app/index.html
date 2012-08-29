@@ -28,9 +28,23 @@
       <div class="container-fluid">
         <a class="brand" href="#">Devcenter Test</a>
         <div class="nav-collapse collapse">
-          <p class="navbar-text pull-right">
-            Logged in as <a href="#" class="navbar-link">Username</a>
-          </p>
+          <div class="btn-group pull-right" ng-switch on="loggedIn">
+            <div ng-switch-when="true">
+              <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="icon-user"></i> {{currentUser}}
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" ng-controller="UserCtrl">
+                <li>
+                  <a ng-click="logout()" style="font-size:14px;">Log out</a>
+                </li>
+              </ul>
+            </div>
+            <div ng-switch-default>
+              <a class="btn" href="#/login"><i class="icon-user"></i> Log in</a>
+            </div>
+          </div>
+
           <ul class="nav">
             <li ng-repeat="navigation in navigations" ng-class="{'active': activeNavigation() == navigation.href}">
               <a href="{{navigation.href}}">{{navigation.label}}</a>

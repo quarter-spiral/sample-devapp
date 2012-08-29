@@ -13,6 +13,30 @@ services.factory('uuidGenerator', function() {
   }
 });
 
+services.factory('user', ['uuidGenerator', '$rootScope', 'devcenterClient', function(uuidGenerator, rootScope, devcenterClient) {
+  rootScope.currentUser = null;
+  rootScope.loggedIn = false;
+  return {
+    currentUser: function() {return rootScope.currentUser},
+    login: function(uuid) {
+      if (uuid !== undefined) {
+        rootScope.currentUser = uuid;
+      } else {
+        rootScope.currentUser = uuidGenerator();
+      }
+      rootScope.loggedIn = (!!rootScope.currentUser);
+      if (rootScope.loggedIn) {
+        return devcenterClient.promoteDeveloper(rootScope.currentUser);
+      }
+      alert("Could not log you in. Sorry!");
+    },
+    logout: function() {
+      rootScope.currentUser = null;
+      rootScope.loggedIn = false;
+    }
+  };
+}]);
+
 services.factory('devcenterClient', ['$http', '$q', function(http, q) {
   http.makeRequest = function(options) {
     var method = options.method;

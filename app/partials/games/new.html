@@ -1,0 +1,22 @@
+<div ng-controller="GamesCtrl" ng-init="game = {screenshots: ['http://example.com/shot1.jpg']}">
+  <h1>Add a game</h1>
+
+  <p>
+    Name:
+    <input ng-model="game.name" type="text"/>
+  </p>
+
+  <p>
+    Description:
+    <textarea ng-model="game.description"></textarea>
+  </p>
+
+  <ul>
+    <li ng-repeat="screenshot in game.screenshots">
+      {{screenshot}} <a ng:click="game.screenshots.splice($index, 1)">(delete)</a>
+    </li>
+  </ul>
+  <p><input ng-model="newScreenshot" type="text"> <button ng-click="game.screenshots.push(newScreenshot)" class="btn">Add Screenshot</button></p>
+
+  <button ng-click="addGame(game)" class="btn btn-success">Save</button>
+</div>
