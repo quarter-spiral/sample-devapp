@@ -43,7 +43,6 @@ function NavigationCtrl($scope) {
 
   $scope.navigations = [
     {href: '#/', label: 'Home'},
-    {href: '#/enroll', label: 'Enroll'}
   ];
 }
 NavigationCtrl.$inject = ['$scope'];

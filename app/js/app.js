@@ -5,7 +5,6 @@
 angular.module('devcenterTest', ['devcenterTest.filters', 'devcenterTest.services', 'devcenterTest.directives']).
   config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {templateUrl: 'partials/frontpage.html'});
-    $routeProvider.when('/enroll', {templateUrl: 'partials/enroll.html'});
     $routeProvider.when('/login', {templateUrl: 'partials/login.html'});
     $routeProvider.when('/signup', {templateUrl: 'partials/signup.html'});
     $routeProvider.when('/games', {templateUrl: 'partials/games/index.html'});
