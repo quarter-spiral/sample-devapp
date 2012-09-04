@@ -1,30 +1,8 @@
 require 'bundler'
 Bundler.require
 
-unless ENV['RACK_ENV']
+if !ENV['RACK_ENV'] || ENV['RACK_ENV'] == 'development'
   ENV['QS_DEVCENTER_BACKEND_URL'] = 'http://devcenter-backend.dev/v1'
-end
-
-class EnvInjector
-  def initialize(app)
-    @app = app
-
-    envs = Hash[ENV.keys.select {|k| k.start_with?('QS_')}.map {|k| [k,ENV[k]]}]
-    body = <<-EOS
-window.qs = window.qs || {};
-window.qs.ENV = #{JSON.dump(envs)};
-    EOS
-
-    @env_response = [200, {'Content-Type' => 'application/javascript'}, [body]]
-  end
-
-  def call(env)
-    if env['PATH_INFO'] == '/js/dynamic/envs.js'
-      @env_response
-    else
-      @app.call(env)
-    end
-  end
 end
 
 app = Rack::Builder.new {
@@ -38,13 +16,13 @@ app = Rack::Builder.new {
     end
   end
 
-  use EnvInjector
-  use Rack::Static, :urls => ["/"], :root => 'app'
-  use Rack::ShowExceptions
+  root = File.dirname(__FILE__)
+  brochure = Brochure.app(root, {}) do |app|
+    app.template_root.gsub!(/^.*$/, File.expand_path('./app', root))
+    app.asset_root.gsub!(/^.*$/, File.expand_path('./app', root))
+  end
 
-  run lambda {|env|
-    [404, {}, ['Not found']]
-  }
+  run brochure
 }
 
 run app
