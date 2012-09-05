@@ -6,6 +6,7 @@
   <ul>
     <li ng-repeat="game in games">
       <a href="#/games/{{game.uuid}}">{{game.name}}</a>
+      <a href="<%= ENV['QS_CANVAS_APP_HOST'] %>/v1/games/{{game.uuid}}">(play)</a>
       <a ng-click="deleteGame(game.uuid)">(delete)</a>
     </li>
   </ul>

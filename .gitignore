@@ -10,3 +10,4 @@ build.xml
 **/*.out
 **/*.err
 tmp/restart.txt
+.powenv

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" ng-app="devcenterTest">
+<head>
+  <meta charset="utf-8">
+  <title>Upload SWF</title>
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/app.css"/>
+</head>
+<body class="iframe">
+
+  <strong>SWF Upload successful</strong>
+  |
+  <a href="/partials/games/flash/form.html">upload another one</a>
+
+<% require 'uri' %>
+<% params = Hash[request.query_string.split('&').map {|e| e.split('=')}] %>
+
+<script src="/lib/misc/porthole.min.js" async="false" defer="false"></script>
+<script type="text/javascript" async="false" defer="false">
+  window.onload = function() {
+    var windowProxy = new Porthole.WindowProxy('*');
+    windowProxy.post(<%= JSON.dump({url: "#{ENV['QS_S3_HOST']}#{URI.unescape(params['key'])}"}) %>);
+  }
+</script>
+</body>
+</html>

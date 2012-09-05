@@ -12,8 +12,16 @@
   </p>
 
   <p>
+    <input type="radio" ng-model="game.configuration.type" value="html5" ng-click="game.configuration = {type: 'html5'}"> HTML5
+    <input type="radio" ng-model="game.configuration.type" value="flash" ng-click="game.configuration = {type: 'flash'}"> Flash
+  </p>
+
+  <p ng-show="game.configuration.type == 'html5'">
     Game Url:
     <input ng-model="game.configuration.url" type="text"/>
+  </p>
+  <p ng-show="game.configuration.type == 'flash'">
+    <iframe src="/partials/games/flash/form.html?game={{gameUuid}}" class="flash-upload"></iframe>
   </p>
 
   <ul>

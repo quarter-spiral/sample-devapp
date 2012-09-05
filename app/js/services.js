@@ -67,6 +67,13 @@ services.factory('devcenterClient', ['$http', '$q', function(http, q) {
 
   var devcenterBackendUrl = window.qs.ENV['QS_DEVCENTER_BACKEND_URL'];
 
+  var lastUpload = null;
+  var windowProxy = new Porthole.WindowProxy(window.location.href.replace(/\/\/([^\/]*).*$/, '/$1/partials/games/flash/upload_done.html'));
+  windowProxy.addEventListener(function(e) {
+    lastUpload = e.data.url;
+  });
+  Porthole.WindowProxyDispatcher.start();
+
   return {
     promoteDeveloper: function(uuid) {
       return http.makeRequest({
@@ -111,6 +118,9 @@ services.factory('devcenterClient', ['$http', '$q', function(http, q) {
     },
 
     updateGame: function(gameUuid, gameDetails) {
+      if (gameDetails.configuration.type == 'flash') {
+        gameDetails.configuration.url = lastUpload;
+      }
       return http.makeRequest({
         method: 'PUT',
         url: devcenterBackendUrl + '/games/' + gameUuid,
@@ -121,11 +131,16 @@ services.factory('devcenterClient', ['$http', '$q', function(http, q) {
       });
     },
 
-    getGame: function(gameUuid) {
+    getGame: function(gameUuid, options) {
       return http.makeRequest({
         method: 'GET',
         url: devcenterBackendUrl + '/games/' + gameUuid,
         returns: function(data) {
+          if (options && options.mode && options.mode == 'edit') {
+            if (data.configuration.type == 'flash') {
+              lastUpload = data.configuration.url;
+            }
+          }
           return data;
         }
       });
