@@ -110,6 +110,26 @@ services.factory('devcenterClient', ['$http', '$q', function(http, q) {
       });
     },
 
+    addDeveloper: function(gameUuid, developerUuid) {
+      return http.makeRequest({
+        method: 'POST',
+        url: devcenterBackendUrl + '/games/' + gameUuid + '/developers/' + developerUuid,
+        returns: function(data) {
+          return data;
+        }
+      });
+    },
+
+    removeDeveloper: function(gameUuid, developerUuid) {
+      return http.makeRequest({
+        method: 'DELETE',
+        url: devcenterBackendUrl + '/games/' + gameUuid + '/developers/' + developerUuid,
+        returns: function(data) {
+          return data;
+        }
+      });
+    },
+
     deleteGame: function(gameUuid) {
       return http.makeRequest({
         method: 'DELETE',

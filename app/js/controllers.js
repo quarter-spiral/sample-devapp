@@ -104,33 +104,18 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
   }
 
   $scope.addDeveloper = function(gameUuid, developer) {
-    devcenterClient.getGame(gameUuid).then(function (game) {
-      game.developers.push(developer);
-      devcenterClient.updateGame(gameUuid, game).then(function() {
-        $route.reload();
-      }, function() {
-        alert("Could not add the developer. Sorry!");
-      });
+    devcenterClient.addDeveloper(gameUuid, developer).then(function (game) {
+      $route.reload();
     }, function() {
-      alert("Could not add the developer. Sorry!");
+        alert("Could not add the developer. Sorry!");
     });
   }
 
   $scope.removeDeveloper = function(gameUuid, developer) {
-    devcenterClient.getGame(gameUuid).then(function (game) {
-      var index = game.developers.indexOf(developer);
-      if (index > -1) {
-        game.developers.splice(index, 1);
-      } else {
-        alert("" + developer + " is not a developer of this game. Sorry!");
-      }
-      devcenterClient.updateGame(gameUuid, game).then(function() {
-        $route.reload();
-      }, function() {
-        alert("Could not remove the developer. Sorry!");
-      });
+    devcenterClient.removeDeveloper(gameUuid, developer).then(function (game) {
+      $route.reload();
     }, function() {
-      alert("Could not remove the developer. Sorry!");
+        alert("Could not add the developer. Sorry!");
     });
   }
 }

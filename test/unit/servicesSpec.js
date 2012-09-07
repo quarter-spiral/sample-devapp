@@ -126,6 +126,18 @@ describe("devcenterClient", function() {
     }
   });
 
+  can('add a developer', {
+    verb: 'POST',
+    url: function() {return devcenterBackendUrl + '/games/' + entity1 + '/developers/' + entity2},
+    action: function() {return devcenterClient.addDeveloper(entity1, entity2)}
+  });
+
+  can('remove a developer', {
+    verb: 'DELETE',
+    url: function() {return devcenterBackendUrl + '/games/' + entity1 + '/developers/' + entity2},
+    action: function() {return devcenterClient.removeDeveloper(entity1, entity2)}
+  });
+
   can('delete a game', {
       verb: 'DELETE',
       url: function() {return devcenterBackendUrl + '/games/' + entity1},
