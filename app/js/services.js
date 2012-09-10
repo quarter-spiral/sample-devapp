@@ -19,6 +19,9 @@ services.factory('user', ['uuidGenerator', '$rootScope', '$cookies', 'devcenterC
 
   var storeLogin = function(uuid) {
     rootScope.currentUser = uuid;
+    if (uuid) {
+      devcenterClient.promoteDeveloper(rootScope.currentUser);
+    }
     rootScope.loggedIn = !!(rootScope.currentUser);
     return uuid;
   }
@@ -33,16 +36,6 @@ services.factory('user', ['uuidGenerator', '$rootScope', '$cookies', 'devcenterC
         }
       }
       return uuid;
-    },
-    login: function(uuid) {
-      if (uuid === undefined) {
-        uuid = uuidGenerator();
-      }
-      storeLogin(uuid)
-      if (rootScope.loggedIn) {
-        return devcenterClient.promoteDeveloper(rootScope.currentUser);
-      }
-      alert("Could not log you in. Sorry!");
     },
     logout: function() {
       delete cookies['qs_authentication']
