@@ -32,7 +32,7 @@ end
 
 map "/auth/auth_backend/callback" do
   run Proc.new { |env|
-    response = Rack::Response.new('', 301, Location: '/')
+    response = Rack::Response.new('', 301, 'Location' => '/')
     response.set_cookie('qs_authentication', value: JSON.dump(env['omniauth.auth']), path: '/')
 
     response
