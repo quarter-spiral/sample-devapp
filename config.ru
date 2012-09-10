@@ -15,6 +15,8 @@ if !ENV['RACK_ENV'] || ENV['RACK_ENV'] == 'development'
   # ENV['QS_S3_KEY_SECRET'] = '...'
 end
 
+ENV_KEYS_TO_EXPOSE = ['QS_DEVCENTER_BACKEND_URL', 'QS_CANVAS_APP_HOST', 'QS_S3_HOST', 'QS_OAUTH_SITE']
+
 
 if ENV['RACK_ENV'] == 'production'
   use Rack::Auth::Basic, "Sample Dev App" do |username, password|

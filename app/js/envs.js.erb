@@ -1,4 +1,4 @@
-<% envs = Hash[ENV.keys.select {|k| k.start_with?('QS_')}.map {|k| [k,ENV[k]]}] %>
+<% envs = Hash[ENV_KEYS_TO_EXPOSE.map {|k| [k, ENV[k]]}] %>
 
 window.qs = window.qs || {};
 window.qs.ENV = <%= JSON.dump(envs) %>;
