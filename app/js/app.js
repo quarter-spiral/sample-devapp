@@ -2,7 +2,7 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('devcenterTest', ['devcenterTest.filters', 'devcenterTest.services', 'devcenterTest.directives']).
+angular.module('devcenterTest', ['ngCookies', 'devcenterTest.filters', 'devcenterTest.services', 'devcenterTest.directives']).
   config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {templateUrl: 'partials/frontpage.html'});
     $routeProvider.when('/login', {templateUrl: 'partials/login.html'});

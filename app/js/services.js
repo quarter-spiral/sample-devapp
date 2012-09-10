@@ -13,26 +13,42 @@ services.factory('uuidGenerator', function() {
   }
 });
 
-services.factory('user', ['uuidGenerator', '$rootScope', 'devcenterClient', function(uuidGenerator, rootScope, devcenterClient) {
+services.factory('user', ['uuidGenerator', '$rootScope', '$cookies', 'devcenterClient', function(uuidGenerator, rootScope, cookies, devcenterClient) {
   rootScope.currentUser = null;
   rootScope.loggedIn = false;
+
+  var storeLogin = function(uuid) {
+    rootScope.currentUser = uuid;
+    rootScope.loggedIn = !!(rootScope.currentUser);
+    return uuid;
+  }
+
   return {
-    currentUser: function() {return rootScope.currentUser},
-    login: function(uuid) {
-      if (uuid !== undefined) {
-        rootScope.currentUser = uuid;
-      } else {
-        rootScope.currentUser = uuidGenerator();
+    currentUser: function() {
+      var uuid = rootScope.currentUser;
+      if (!uuid) {
+        var cookie = angular.fromJson(cookies['qs_authentication']);
+        if (cookie && cookie.info && cookie.info.uuid) {
+          uuid = storeLogin(cookie.info.uuid);
+        }
       }
-      rootScope.loggedIn = (!!rootScope.currentUser);
+      return uuid;
+    },
+    login: function(uuid) {
+      if (uuid === undefined) {
+        uuid = uuidGenerator();
+      }
+      storeLogin(uuid)
       if (rootScope.loggedIn) {
         return devcenterClient.promoteDeveloper(rootScope.currentUser);
       }
       alert("Could not log you in. Sorry!");
     },
     logout: function() {
-      rootScope.currentUser = null;
-      rootScope.loggedIn = false;
+      delete cookies['qs_authentication']
+      storeLogin(null);
+      var redirectUrl = window.location.protocol + '//' + window.location.host;
+      window.location.href = window.qs.ENV['QS_OAUTH_SITE'] + '/users/sign_out?redirect_uri=' + encodeURI(redirectUrl);
     }
   };
 }]);

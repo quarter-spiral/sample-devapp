@@ -1,12 +1,29 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    addressable (2.2.6)
     brochure (0.5.4)
       hike (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1)
+    faraday (0.7.5)
+      addressable (~> 2.2.6)
+      multipart-post (~> 1.1.3)
+      rack (>= 1.1.0, < 2)
+    hashie (1.2.0)
     hike (1.2.1)
     json (1.7.4)
+    multi_json (1.0.3)
+    multipart-post (1.1.5)
+    oauth2 (0.5.1)
+      faraday (~> 0.7.4)
+      multi_json (~> 1.0.3)
+    omniauth (1.1.1)
+      hashie (~> 1.2)
+      rack
+    omniauth-oauth2 (1.0.0)
+      oauth2 (~> 0.5.0)
+      omniauth (~> 1.0)
     rack (1.4.1)
     rack-rewrite (1.2.1)
     tilt (1.3.3)
@@ -17,5 +34,6 @@ PLATFORMS
 DEPENDENCIES
   brochure
   json
+  omniauth-oauth2
   rack
   rack-rewrite
