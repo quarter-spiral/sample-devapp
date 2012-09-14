@@ -65,7 +65,7 @@ services.factory('devcenterClient', ['$http', '$q', function(http, q) {
     return deferred.promise;
   };
 
-  var devcenterBackendUrl = window.qs.ENV['QS_DEVCENTER_BACKEND_URL'];
+  var devcenterBackendUrl = window.qs.ENV['QS_DEVCENTER_BACKEND_URL'] + '/v1';
 
   var lastUpload = null;
   var windowProxy = new Porthole.WindowProxy(window.location.href.replace(/\/\/([^\/]*).*$/, '/$1/partials/games/flash/upload_done.html'));

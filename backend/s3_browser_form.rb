@@ -16,7 +16,7 @@ class S3BrowserForm
 
   def to_html
 <<-EOS
-    <form action="https://game_uploads.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
+    <form action="https://#{ENV['QS_S3_BUCKET']}.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
       <input type="hidden" name="key" value="#{CGI.escapeHTML(file_name)}">
       <input type="hidden" name="AWSAccessKeyId" value="#{ENV['QS_S3_KEY_ID']}">
       <input type="hidden" name="acl" value="#{acl}">
@@ -51,7 +51,7 @@ EOS
     @policy ||= Base64.encode64(JSON.dump(
       expiration: expires_at.utc.strftime("%Y-%m-%dT%H:%M:%SZ"),
       conditions: [
-        {bucket: "game_uploads"},
+        {bucket: ENV['QS_S3_BUCKET']},
         {"key" => file_name},
         {acl: acl},
         {success_action_redirect: redirect_url},

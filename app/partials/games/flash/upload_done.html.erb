@@ -20,7 +20,7 @@
 <script type="text/javascript" async="false" defer="false">
   window.onload = function() {
     var windowProxy = new Porthole.WindowProxy('*');
-    windowProxy.post(<%= JSON.dump({url: "#{ENV['QS_S3_HOST']}#{URI.unescape(params['key'])}"}) %>);
+    windowProxy.post(<%= JSON.dump({url: "#{ENV['QS_S3_HOST']}#{ENV['QS_S3_BUCKET']}/#{URI.unescape(params['key'])}"}) %>);
   }
 </script>
 </body>

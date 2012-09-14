@@ -2,20 +2,21 @@ require 'bundler'
 Bundler.require
 
 if !ENV['RACK_ENV'] || ENV['RACK_ENV'] == 'development'
-  ENV['QS_DEVCENTER_BACKEND_URL'] = 'http://devcenter-backend.dev/v1'
-  ENV['QS_CANVAS_APP_HOST'] = 'http://canvas-app.dev/'
-  ENV['QS_S3_HOST'] = "http://s3.amazonaws.com/game_uploads/"
-  ENV['QS_OAUTH_SITE'] = 'http://auth-backend.dev/'
-  ENV['QS_OAUTH_CLIENT_ID'] = "f3f2b27f4baed577d2f631e77fd8a068361281ca56edfed07b8cf4392044bd83"
-  ENV['QS_OAUTH_CLIENT_SECRET'] = "b402c89ec06f9f210f4d6a3d88e71675238bb4a38752375a4fad4c0ab646e122"
+  ENV['QS_DEVCENTER_BACKEND_URL'] ||= 'http://devcenter-backend.dev'
+  ENV['QS_CANVAS_APP_URL'] ||= 'http://canvas-app.dev/'
+  ENV['QS_S3_BUCKET'] ||= 'game_uploads_development'
+  ENV['QS_S3_HOST'] ||= "http://s3.amazonaws.com/"
+  ENV['QS_OAUTH_SITE'] ||= 'http://auth-backend.dev/'
+  ENV['QS_OAUTH_CLIENT_ID'] ||= "f3f2b27f4baed577d2f631e77fd8a068361281ca56edfed07b8cf4392044bd83"
+  ENV['QS_OAUTH_CLIENT_SECRET'] ||= "b402c89ec06f9f210f4d6a3d88e71675238bb4a38752375a4fad4c0ab646e122"
 
   # Make sure to set the S3 access key ID and secret manually before
   # starting your server:
-  # ENV['QS_S3_KEY_ID'] = '...'
-  # ENV['QS_S3_KEY_SECRET'] = '...'
+  ENV['QS_S3_KEY_ID'] ||= 'AKIAJP3RW5W6XYL2NKNQ'
+  ENV['QS_S3_KEY_SECRET'] ||= 'idjPkH4cfJ5DqsjFEdYEslfo81HAd7HnuPrzWlbK'
 end
 
-ENV_KEYS_TO_EXPOSE = ['QS_DEVCENTER_BACKEND_URL', 'QS_CANVAS_APP_HOST', 'QS_S3_HOST', 'QS_OAUTH_SITE']
+ENV_KEYS_TO_EXPOSE = ['QS_DEVCENTER_BACKEND_URL', 'QS_CANVAS_APP_URL', 'QS_S3_HOST', 'QS_OAUTH_SITE']
 
 
 if ENV['RACK_ENV'] == 'production'
