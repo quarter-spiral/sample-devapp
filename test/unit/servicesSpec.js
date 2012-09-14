@@ -3,7 +3,7 @@
 describe("devcenterClient", function() {
   var $httpBackend, uuidGenerator, devcenterClient;
 
-  var devcenterBackendUrl = 'http://devcenter.example.com';
+  var devcenterBackendUrl = 'http://devcenter.example.com/v1';
 
   var carryOut = function(action) {
     var success, result, failure, error;
@@ -70,7 +70,7 @@ describe("devcenterClient", function() {
 
     inject(function($injector) {
       $httpBackend = $injector.get('$httpBackend');
-      uuidGenerator = $injector.get('uuidGenerator')
+      uuidGenerator = function() {return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) { var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8); return v.toString(16);});};
       devcenterClient = $injector.get('devcenterClient');
     });
 
