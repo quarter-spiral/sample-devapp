@@ -42,7 +42,7 @@ function NavigationCtrl($scope) {
   }
 
   $scope.navigations = [
-    {href: '#/', label: 'Home'},
+    {href: '#/', label: 'Devcenter'},
   ];
 }
 NavigationCtrl.$inject = ['$scope'];

@@ -26,31 +26,26 @@
   <div class="navbar navbar-inverse navbar-fixed-top" ng-Controller="NavigationCtrl">
     <div class="navbar-inner">
       <div class="container-fluid">
-        <a class="brand" href="#">Devcenter Test</a>
-        <div class="nav-collapse collapse ng-cloak">
-          <div class="btn-group pull-right" ng-switch on="loggedIn">
-            <div ng-switch-when="true">
-              <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="icon-user"></i> {{currentUser}}
+    
+          <ul class="nav pull-right">
+            <li>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="icon-user icon-white"></i> {{currentUser}}
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu" ng-controller="UserCtrl">
                 <li>
-                  <a ng-click="logout()" style="font-size:14px;">Log out</a>
+                  <a ng-click="logout()" style="">Log out</a>
                 </li>
               </ul>
-            </div>
-            <div ng-switch-default>
-              <a class="btn" href="/auth/auth_backend"><i class="icon-user"></i> Log in</a>
-            </div>
-          </div>
+            </li>
+          </ul>
 
           <ul class="nav">
             <li ng-repeat="navigation in navigations" ng-class="{'active': activeNavigation() == navigation.href}">
               <a href="{{navigation.href}}">{{navigation.label}}</a>
             </li>
           </ul>
-        </div><!--/.nav-collapse -->
       </div>
     </div>
   </div>
