@@ -28,7 +28,7 @@
       <div class="container-fluid">
     
           <ul class="nav pull-right">
-            <li>
+            <li ng-show="loggedIn">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class="icon-user"></i> {{currentUser}}
                 <span class="caret"></span>
@@ -38,6 +38,9 @@
                   <a ng-click="logout()" style="">Log out</a>
                 </li>
               </ul>
+            </li>
+            <li ng-hide="loggedIn">
+              <a class="" href="/auth/auth_backend"><i class="icon-user"></i> Log in</a>
             </li>
           </ul>
 
