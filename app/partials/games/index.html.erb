@@ -1,15 +1,29 @@
 <div ng-controller="GamesCtrl" ng-init="getGames()">
-  <h1>Hey {{currentUser}}</h1>
 
-  <h2>Your games</h2>
+  <div class="row">
 
-  <ul>
-    <li ng-repeat="game in games">
-      <a href="#/games/{{game.uuid}}">{{game.name}}</a>
-      <a href="<%= ENV['QS_CANVAS_APP_URL'] %>/v1/games/{{game.uuid}}">(play)</a>
-      <a ng-click="deleteGame(game.uuid)">(delete)</a>
-    </li>
-  </ul>
+    <div class="span12">
 
-  <a href="#/games/new" class="btn">Add a game</a>
+      <div class="hero-unit">
+        
+        <h1>Your games</h1>
+
+        <h2>Manage away!</h2>
+
+      </div>
+
+      <ul>
+        <li ng-repeat="game in games">
+          <a href="#/games/{{game.uuid}}">{{game.name}}</a>
+          <a href="<%= ENV['QS_CANVAS_APP_URL'] %>/v1/games/{{game.uuid}}">(play)</a>
+          <a ng-click="deleteGame(game.uuid)">(delete)</a>
+        </li>
+      </ul>
+
+      <a href="#/games/new" class="btn">Add a game</a>
+
+    </div>
+
+  </div>
+
 </div>
