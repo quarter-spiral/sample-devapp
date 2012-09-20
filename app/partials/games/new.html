@@ -1,27 +1,19 @@
-<div ng-controller="GamesCtrl" ng-init="game = {screenshots: ['http://example.com/shot1.jpg'], configuration: {type: 'html5'}}">
-  <h1>Add a game</h1>
+<div ng-controller="GamesCtrl" ng-init="game = {configuration: {type: 'initial'}}">
+  <form class="form-horizontal">
+    <legend>Add a game</legend>
+    <div class="control-group">
+      <label class="control-label" for="inputName">Name</label>
+      <div class="controls">
+        <input ng-model="game.name" type="text" id="inputName" placeholder="Name">
+      </div>
+    </div>
 
-  <p>
-    Name:
-    <input ng-model="game.name" type="text"/>
-  </p>
-
-  <p>
-    Description:
-    <textarea ng-model="game.description"></textarea>
-  </p>
-
-  <p>
-    Game Url:
-    <input ng-model="game.configuration.url" type="text"/>
-  </p>
-
-  <ul>
-    <li ng-repeat="screenshot in game.screenshots">
-      {{screenshot}} <a ng:click="game.screenshots.splice($index, 1)">(delete)</a>
-    </li>
-  </ul>
-  <p><input ng-model="newScreenshot" type="text"> <button ng-click="game.screenshots.push(newScreenshot)" class="btn">Add Screenshot</button></p>
-
-  <button ng-click="addGame(game)" class="btn btn-success">Save</button>
+    <div class="control-group">
+      <label class="control-label" for="inputDescription">Description</label>
+      <div class="controls">
+        <textarea ng-model="game.description" id="inputDescription" placeholder="Description"></textarea>
+      </div>
+    </div>
+    <button ng-click="addGame(game)" class="btn btn-success">Save</button>
+  </form>
 </div>

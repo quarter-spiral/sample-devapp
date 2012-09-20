@@ -1,45 +1,57 @@
-<div ng-init="game = getGame(gameUuid)">
-  <h1>Edit game {{gameUuid}}</h1>
+<div ng-controller="GamesCtrl" ng-init="game = getGame(gameUuid)">
+  <form class="form-horizontal">
+    <legend>Edit game {{game.name}}</legend>
+    <div class="control-group">
+      <label class="control-label" for="inputName">Name</label>
+      <div class="controls">
+        <input ng-model="game.name" type="text" id="inputName" placeholder="Name">
+      </div>
+    </div>
 
-  <p>
-    Name:
-    <input ng-model="game.name" type="text"/>
-  </p>
+    <div class="control-group">
+      <label class="control-label" for="inputDescription">Description</label>
+      <div class="controls">
+        <textarea ng-model="game.description" id="inputDescription" placeholder="Description"></textarea>
+      </div>
+    </div>
 
-  <p>
-    Description:
-    <textarea ng-model="game.description"></textarea>
-  </p>
+    <div ng-switch on="game.configuration.type" class="control-group">
+      <label label="control-label">Game Source</label>
+      <div ng-switch-when="initial">
+          <div class="controls">
+            <p>Heya friend, you've not yet setup your game source. Go ahead, do that now and get your game up and running on Mission Kontrol in seconds!</p>
+            <button ng-click="game.configuration.type = 'flash'">This is a flash game</button>
+            <button ng-click="game.configuration.type = 'html5'">Nah nah, HTML5 is the new shit!</button>
+          </div>
+      </div>
+      <div ng-switch-when="flash">
+        <div class="controls">
+          <iframe src="/partials/games/flash/form.html?game={{gameUuid}}" class="flash-upload"></iframe>
+          <button class="btn btn-danger" ng-click="game.configuration = {type: 'html5'}">Change to HTML5</button>
+        </div>
+      </div>
+      <div ng-switch-when="html5">
+        <div class="controls">
+          <label for="inputHtml5Url">Game URL</label>
+          <input ng-model="game.configuration.url" type="text" id="inputHtml5Url"/>
+          <br/>
+          <button class="btn btn-danger" ng-click="game.configuration = {type: 'flash'}">Change to Flash</button>
+        </div>
+      </div>
+    </div>
 
-  <p>
-    <input type="radio" ng-model="game.configuration.type" value="html5" ng-click="game.configuration = {type: 'html5'}"> HTML5
-    <input type="radio" ng-model="game.configuration.type" value="flash" ng-click="game.configuration = {type: 'flash'}"> Flash
-  </p>
+    <button ng-click="updateGame(game)" class="btn btn-success">Save</button>
 
-  <p ng-show="game.configuration.type == 'html5'">
-    Game Url:
-    <input ng-model="game.configuration.url" type="text"/>
-  </p>
-  <p ng-show="game.configuration.type == 'flash'">
-    <iframe src="/partials/games/flash/form.html?game={{gameUuid}}" class="flash-upload"></iframe>
-  </p>
-
-  <ul>
-    <li ng-repeat="screenshot in game.screenshots">
-      {{screenshot}} <a ng:click="game.screenshots.splice($index, 1)">(delete)</a>
-    </li>
-  </ul>
-  <p><input ng-model="newScreenshot" type="text"> <button ng-click="game.screenshots.push(newScreenshot)" class="btn">Add Screenshot</button></p>
-
-  <button ng-click="updateGame(game)" class="btn btn-success">Save</button>
-
-  <h3>Developers</h3>
-  <ul>
-    <li ng-repeat="developer in game.developers">{{developer}} <a ng-click="removeDeveloper(gameUuid, developer)">(delete)</a></li>
-  </ul>
-  <p>
-    <input ng-model="newDeveloper" type="text">
+    <h3>Developers</h3>
+    <ul>
+      <li ng-repeat="developer in game.developers">{{developer}} <a ng-click="removeDeveloper(gameUuid, developer)">(delete)</a></li>
+    </ul>
+    <div class="control-group">
+      <label class="control-label" for="inputNewDeveloper">New Developer</label>
+      <div class="controls">
+        <input type="text" ng-model="newDeveloper" id="inputNewDeveloper" placeholder="Developer UUID"/>
+      </div>
+    </div>
     <button ng-click="addDeveloper(gameUuid, newDeveloper)">Add developer</button>
-  </p>
+  </form>
 </div>
-
