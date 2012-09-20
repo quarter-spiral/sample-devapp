@@ -164,6 +164,34 @@ services.factory('devcenterClient', ['$http', '$q', function(http, q) {
           return data;
         }
       });
+    },
+
+    enableVenue: function(game, venue) {
+      var venues = game.venues;
+      venues[venue] = true;
+
+      return http.makeRequest({
+        method: 'PUT',
+        url: devcenterBackendUrl + '/games/' + game.uuid,
+        body: {venues: venues},
+        returns: function(data) {
+          return data;
+        }
+      });
+    },
+
+    disableVenue: function(game, venue) {
+      var venues = game.venues;
+      venues[venue] = false;
+
+      return http.makeRequest({
+        method: 'PUT',
+        url: devcenterBackendUrl + '/games/' + game.uuid,
+        body: {venues: venues},
+        returns: function(data) {
+          return data;
+        }
+      });
     }
   };
 }]);

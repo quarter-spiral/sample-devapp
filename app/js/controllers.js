@@ -118,5 +118,21 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
         alert("Could not add the developer. Sorry!");
     });
   }
+
+  $scope.enableVenue = function(gameUuid, venue) {
+    devcenterClient.enableVenue(gameUuid, venue).then(function(game) {
+      $scope.game = game;
+    }, function() {
+      alert("Could not enable venue '" + venue + "'!");
+    });
+  }
+
+  $scope.disableVenue = function(gameUuid, venue) {
+    devcenterClient.disableVenue(gameUuid, venue).then(function(game) {
+      $scope.game = game;
+    }, function() {
+      alert("Could not disable venue '" + venue + "'!");
+    });
+  }
 }
 GamesCtrl.$inject = ['$scope', '$location', '$route', 'user', 'devcenterClient'];
