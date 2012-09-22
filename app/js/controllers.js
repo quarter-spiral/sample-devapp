@@ -97,7 +97,7 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
 
   $scope.deleteGame = function(gameUuid) {
     devcenterClient.deleteGame(gameUuid).then(function() {
-      $route.reload();
+      $location.path('/games');
     }, function() {
       alert("Could not delete game. Sorry!");
     });

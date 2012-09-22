@@ -1,45 +1,59 @@
 <div ng-controller="GamesCtrl" ng-init="game = getGame(gameUuid)">
-  <form class="form-horizontal">
-    <legend>Edit game {{game.name}}</legend>
-    <div class="control-group">
-      <label class="control-label" for="inputName">Name</label>
-      <div class="controls">
-        <input ng-model="game.name" type="text" id="inputName" placeholder="Name">
+  <div class="row">
+    <div class="span12">
+      <ul class="breadcrumb">
+        <li>
+          <a href="#/games">Dashboard</a> <span class="divider">/</span>
+        </li>
+        <li>
+        <li class="active">{{game.name}}</li>
+      </ul>
+      <div class="hero-unit">
+        <h1>{{game.name}}</h1>
+        <p>{{game.description}}</p>
       </div>
-    </div>
-
-    <div class="control-group">
-      <label class="control-label" for="inputDescription">Description</label>
-      <div class="controls">
-        <textarea ng-model="game.description" id="inputDescription" placeholder="Description"></textarea>
-      </div>
-    </div>
+      <a class="btn btn-danger" ng-click="deleteGame(game.uuid)">Delete Game</a>
+      <form class="form-horizontal">
+        <legend>Details for {{game.name}}</legend>
+        <div class="control-group">
+          <label class="control-label" for="inputName">Name</label>
+          <div class="controls">
+            <input ng-model="game.name" type="text" id="inputName" placeholder="Name">
+          </div>
+        </div>
 
     <div ng-switch on="game.configuration.type" class="control-group">
 
       <label label="control-label">Game Source</label>
       <div ng-switch-when="initial">
           <div class="controls">
-            <p>Heya friend, you've not yet setup your game source. Go ahead, do that now and get your game up and running on Mission Kontrol in seconds!</p>
-            <button ng-click="game.configuration.type = 'flash'">This is a flash game</button>
-            <button ng-click="game.configuration.type = 'html5'">Nah nah, HTML5 is the new shit!</button>
+            <textarea ng-model="game.description" id="inputDescription" placeholder="Description"></textarea>
           </div>
-      </div>
-      <div ng-switch-when="flash">
-        <div class="controls">
-          <iframe src="/partials/games/flash/form.html?game={{gameUuid}}" class="flash-upload"></iframe>
-          <button class="btn btn-danger" ng-click="game.configuration = {type: 'html5'}">Change to HTML5</button>
         </div>
-      </div>
-      <div ng-switch-when="html5">
-        <div class="controls">
-          <label for="inputHtml5Url">Game URL</label>
-          <input ng-model="game.configuration.url" type="text" id="inputHtml5Url"/>
-          <br/>
-          <button class="btn btn-danger" ng-click="game.configuration = {type: 'flash'}">Change to Flash</button>
+
+        <div ng-switch on="game.configuration.type" class="control-group">
+          <div ng-switch-when="initial">
+              <div class="controls">
+                <p>Heya friend, you've not yet setup your game source. Go ahead, do that now and get your game up and running on Mission Kontrol in seconds!</p>
+                <button ng-click="game.configuration.type = 'flash'">This is a flash game</button>
+                <button ng-click="game.configuration.type = 'html5'">Nah nah, HTML5 is the new shit!</button>
+              </div>
+          </div>
+          <div ng-switch-when="flash">
+            <div class="controls">
+              <iframe src="/partials/games/flash/form.html?game={{gameUuid}}" class="flash-upload"></iframe>
+              <button class="btn btn-danger" ng-click="game.configuration = {type: 'html5'}">Change to HTML5</button>
+            </div>
+          </div>
+          <div ng-switch-when="html5">
+            <div class="controls">
+              <label for="inputHtml5Url">Game URL</label>
+              <input ng-model="game.configuration.url" type="text" id="inputHtml5Url"/>
+              <br/>
+              <button class="btn btn-danger" ng-click="game.configuration = {type: 'flash'}">Change to Flash</button>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
 
     <button ng-click="updateGame(game)" class="btn btn-success">Save</button>
 
@@ -47,44 +61,46 @@
 
   </form>
 
-  <form class="form-horizontal">
-    <legend>Venues</legend>
-    <div class="control-group">
-      <label class="control-label" for="inputChangeVenueFacebook">Facebook</label>
-      <div class="controls">
-        <div ng-show="game.venues.facebook">
-          <button class="btn btn-danger" ng-click="disableVenue(game, 'facebook')" id="inputChangeVenueFacebook">Turn off</button>
+      <form class="form-horizontal">
+        <legend>Venues</legend>
+        <div class="control-group">
+          <label class="control-label" for="inputChangeVenueFacebook">Facebook</label>
+          <div class="controls">
+            <div ng-show="game.venues.facebook">
+              <button class="btn btn-danger" ng-click="disableVenue(game, 'facebook')" id="inputChangeVenueFacebook">Turn off</button>
+            </div>
+            <div ng-hide="game.venues.facebook">
+              <button class="btn btn-success" ng-click="enableVenue(game, 'facebook')" id="inputChangeVenueFacebook">Turn on</button>
+            </div>
+          </div>
         </div>
-        <div ng-hide="game.venues.facebook">
-          <button class="btn btn-success" ng-click="enableVenue(game, 'facebook')" id="inputChangeVenueFacebook">Turn on</button>
-        </div>
-      </div>
-    </div>
 
-    <div class="control-group">
-      <label class="control-label" for="inputChangeVenueGalaxySpiral">Galaxy Spiral</label>
-      <div class="controls">
-        <div ng-show="game.venues['galaxy-spiral']">
-          <button class="btn btn-danger" ng-click="disableVenue(game, 'galaxy-spiral')" id="inputChangeVenueGalaxySpiral">Turn off</button>
+        <div class="control-group">
+          <label class="control-label" for="inputChangeVenueGalaxySpiral">Galaxy Spiral</label>
+          <div class="controls">
+            <div ng-show="game.venues['galaxy-spiral']">
+              <button class="btn btn-danger" ng-click="disableVenue(game, 'galaxy-spiral')" id="inputChangeVenueGalaxySpiral">Turn off</button> <a class="btn btn-primary" href="<%= ENV['QS_CANVAS_APP_URL'] %>/v1/games/{{game.uuid}}">play</a>
+            </div>
+            <div ng-hide="game.venues['galaxy-spiral']">
+              <button class="btn btn-success" ng-click="enableVenue(game, 'galaxy-spiral')" id="inputChangeVenueGalaxySpiral">Turn on</button>
+            </div>
+          </div>
         </div>
-        <div ng-hide="game.venues['galaxy-spiral']">
-          <button class="btn btn-success" ng-click="enableVenue(game, 'galaxy-spiral')" id="inputChangeVenueGalaxySpiral">Turn on</button>
-        </div>
-      </div>
-    </div>
-  </form>
+      </form>
 
-  <form class="form-horizontal">
-    <legend>Developers</legend>
-    <ul>
-      <li ng-repeat="developer in game.developers">{{developer}} <a ng-click="removeDeveloper(gameUuid, developer)">(delete)</a></li>
-    </ul>
-    <div class="control-group">
-      <label class="control-label" for="inputNewDeveloper">New Developer</label>
-      <div class="controls">
-        <input type="text" ng-model="newDeveloper" id="inputNewDeveloper" placeholder="Developer UUID"/>
-      </div>
+      <form class="form-horizontal">
+        <legend>Developers</legend>
+        <ul>
+          <li ng-repeat="developer in game.developers">{{developer}} <a ng-click="removeDeveloper(gameUuid, developer)">(delete)</a></li>
+        </ul>
+        <div class="control-group">
+          <label class="control-label" for="inputNewDeveloper">New Developer</label>
+          <div class="controls">
+            <input type="text" ng-model="newDeveloper" id="inputNewDeveloper" placeholder="Developer UUID"/>
+          </div>
+        </div>
+        <button ng-click="addDeveloper(gameUuid, newDeveloper)">Add developer</button>
+      </form>
     </div>
-    <button ng-click="addDeveloper(gameUuid, newDeveloper)">Add developer</button>
-  </form>
+  </div>
 </div>
