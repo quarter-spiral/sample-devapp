@@ -9,6 +9,8 @@ angular.module('devcenterTest', ['ngCookies', 'devcenterTest.filters', 'devcente
     $routeProvider.when('/signup', {templateUrl: 'partials/signup.html'});
     $routeProvider.when('/games', {templateUrl: 'partials/games/index.html'});
     $routeProvider.when('/games/new', {templateUrl: 'partials/games/new.html'});
-    $routeProvider.when('/games/:gameUuid', {templateUrl: 'partials/games/edit.html', controller: 'GamesCtrl'});
+    $routeProvider.when('/games/:gameUuid', {templateUrl: 'partials/games/game.html', controller: 'GamesCtrl'});
+    $routeProvider.when('/games/:gameUuid/venues', {templateUrl: 'partials/games/venues.html', controller: 'GamesCtrl'});
+    $routeProvider.when('/games/:gameUuid/builds', {templateUrl: 'partials/games/builds.html', controller: 'GamesCtrl'});
     $routeProvider.otherwise({redirectTo: '/'});
   }]);
