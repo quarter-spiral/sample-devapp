@@ -12,5 +12,6 @@ angular.module('devcenterTest', ['ngCookies', 'devcenterTest.filters', 'devcente
     $routeProvider.when('/games/:gameUuid', {templateUrl: 'partials/games/game.html', controller: 'GamesCtrl'});
     $routeProvider.when('/games/:gameUuid/venues', {templateUrl: 'partials/games/venues.html', controller: 'GamesCtrl'});
     $routeProvider.when('/games/:gameUuid/builds', {templateUrl: 'partials/games/builds.html', controller: 'GamesCtrl'});
+    $routeProvider.when('/games/:gameUuid/developers', {templateUrl: 'partials/games/developers.html', controller: 'GamesCtrl'});
     $routeProvider.otherwise({redirectTo: '/'});
   }]);

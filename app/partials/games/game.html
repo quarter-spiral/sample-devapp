@@ -22,6 +22,7 @@
         </li>
         <li><a href="#/games/{{game.uuid}}/builds"><i class="icon-chevron-right"></i> Builds</a></li>
         <li><a href="#/games/{{game.uuid}}/venues"><i class="icon-chevron-right"></i> Venues</a><li>
+          <li><a href="#/games/{{game.uuid}}/developers"><i class="icon-chevron-right"></i> Developers</a><li>
         <li class="nav-header">
           Danger Zone:
         </li>
@@ -49,19 +50,6 @@
         <button ng-click="updateGame(game)" class="btn btn-success">Save</button>
       </form>
 
-      <form class="form-horizontal">
-        <legend>Developers</legend>
-        <ul>
-          <li ng-repeat="developer in game.developers">{{developer}} <a ng-click="removeDeveloper(gameUuid, developer)">(delete)</a></li>
-        </ul>
-        <div class="control-group">
-          <label class="control-label" for="inputNewDeveloper">New Developer</label>
-          <div class="controls">
-            <input type="text" ng-model="newDeveloper" id="inputNewDeveloper" placeholder="Developer UUID"/>
-          </div>
-        </div>
-        <button ng-click="addDeveloper(gameUuid, newDeveloper)">Add developer</button>
-      </form>
     </div>
   </div>
 </div>
