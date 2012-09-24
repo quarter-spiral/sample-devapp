@@ -1,0 +1,49 @@
+<div ng-controller="GamesCtrl" ng-init="game = getGame(gameUuid)">
+  <div class="row">
+    <div class="span12">
+      <ul class="breadcrumb">
+        <li>
+          <a href="#/games">Dashboard</a> <span class="divider">/</span>
+        </li>
+        <li>
+          <a href="#/games/{{game.uuid}}">{{game.name}}</a> <span class="divider">/</span>
+        </li>
+        <li>
+        <li class="active">Venues</li>
+      </ul>
+    </div>
+    <div class="span10">
+      <div class="hero-unit">
+        <h1>Venues</h1>
+        <p>Add more venues to {{game.name}} for more audience. Simple.</p>
+      </div>
+    </div>
+    <div class="span2">
+
+    </div>
+
+    <div class="span12">
+      <form class="form-horizontal">
+        <legend>Venues</legend>
+        <div ng-repeat="venue in venues">
+          <div class="control-group">
+            <label class="control-label" for="inputChangeVenue{{venue.id | uppercase}}">{{venue.label}}</label>
+            <div class="controls">
+              <div ng-show="game.venues[venue.id]">
+                <button class="btn btn-danger" ng-click="disableVenue(game, venue.id)" id="inputChangeVenue{{venue.id | uppercase}}">Turn off</button>
+
+                <p>
+                  <a class="btn btn-primary" href="<%= ENV['QS_CANVAS_APP_URL'] %>/v1/games/{{game.uuid}}/{{venue.id}}">play</a>
+                </p>
+
+              </div>
+              <div ng-hide="game.venues[venue.id]">
+                <button class="btn btn-success" ng-click="enableVenue(game, venue.id)" id="inputChangeVenue{{venue.id | uppercase}">Turn on</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

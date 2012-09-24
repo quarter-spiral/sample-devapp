@@ -53,6 +53,12 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
     return;
   }
 
+  $scope.venues = [
+    {label: 'Facebook', id: 'facebook'},
+    {label: 'Galaxy Spiral', id: 'galaxy-spiral'}
+  ];
+
+
   $scope.gameUuid = $route.current.params.gameUuid;
 
   $scope.getGames = function() {
