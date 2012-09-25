@@ -34,17 +34,25 @@ body.iframe {
   margin: 0;
 }
 
-h2 {
-  font-size:1.5em;
-  margin:0px 0px 0.25em 0px;
-}
-
-
 
 h1{
   font-size:1.2em;
   margin:0.5em 0px;
 }
+
+h2 {
+  font-size:1.1em;
+  margin:0px 0px 0.25em 0px;
+  padding:0px;
+}
+
+h3 {
+  font-size:1.2em;
+  margin:0px 0px 0.25em 0px;
+  padding:0px;
+}
+
+
 
 
 
@@ -71,20 +79,22 @@ h1{
   margin-bottom:40px;
   background-color:#EEEEEE;
   .rounded-corners(5px);
-  img {
-    margin:5px 0px;
-  }
-  .tagline {
+  .description {
     color:#999;
-    font-style:italic;
   }
   .box {
     background-color:#F6F6F6;
     padding:10px 80px 10px 20px;
     border-right:1px dashed #AAA;
-    h3, ul, p{
-      margin-left:40px;
+    ul {
+      margin-left:0px;
       list-style:none;
+    }
+    h3 {
+      font-size:1.5em;
+      margin:0px;
+      padding:0px;
+      line-height:1.3em;
     }
   }
   .options {
@@ -119,26 +129,21 @@ h1{
 .networkPreview {
   list-style:none;
   margin:0px;
-  
+  padding:0px;
   li {
-  padding: 10px 2px;
-  margin-bottom:30px;
-  //.rounded-corners(5px);
-  }
-  img {
-    margin:0px 5px;
+    padding: 15px 20px;
+    background-color:#EEE;
+    margin-bottom:20px;
   }
   .title {
     display: block;
     font-weight:bold;
     font-size:1em;
-    margin-left:40px;
   }
-  .tagline {
+  .description {
     display: block;
     color:#999;
-    font-style:italic;
-    margin-left:40px;
+    margin-bottom: 1em
   }
 }
 

@@ -12,38 +12,75 @@
         <li class="active">Venues</li>
       </ul>
     </div>
-    <div class="span10">
+    <div class="span12">
       <div class="hero-unit">
         <h1>Venues</h1>
-        <p>Add more venues to {{game.name}} for more audience. Simple.</p>
+        <p>Add more venues to <strong>{{game.name}}</strong> for more audience. Simple.</p>
       </div>
     </div>
-    <div class="span2">
+  </div>
 
-    </div>
 
-    <div class="span12">
-      <form class="form-horizontal">
-        <legend>Venues</legend>
-        <div ng-repeat="venue in venues">
-          <div class="control-group">
-            <label class="control-label" for="inputChangeVenue{{venue.id | uppercase}}">{{venue.label}}</label>
-            <div class="controls">
-              <div ng-show="game.venues[venue.id]">
-                <button class="btn btn-danger" ng-click="disableVenue(game, venue.id)" id="inputChangeVenue{{venue.id | uppercase}}">Turn off</button>
+  <div class="row">
 
-                <p>
-                  <a class="btn btn-primary" href="<%= ENV['QS_CANVAS_APP_URL'] %>/v1/games/{{game.uuid}}/{{venue.id}}">play</a>
-                </p>
+    <div class="span8">
 
-              </div>
-              <div ng-hide="game.venues[venue.id]">
-                <button class="btn btn-success" ng-click="enableVenue(game, venue.id)" id="inputChangeVenue{{venue.id | uppercase}">Turn on</button>
-              </div>
+      <h2>Your active Venues</h2>
+
+      <!-- Venue item -->
+
+      <div class="row" ng-repeat="venue in venues">
+
+        <div class="span8 venue" ng-show="game.venues[venue.id]">
+          <div class="row">
+            <div class="span6">
+                <div class="box">
+                    <h3>{{venue.label}}</h3>
+                    <p class="description">Description for this venue</p>
+                    <!--
+                      <ul>
+                            <li>Show of details or features</li>
+                            <li>Various tags</li>
+                      </ul>
+                    -->
+                    <div class=" status">
+                        <p>All is dandy on {{venue.label}}</p>
+                        <!--
+                        <p class="warning">Not Configured!</p>
+                        <p class="danger">Temporarily closed!</p>
+                        -->
+                    </div>
+                </div>
+            </div>
+            <div class="span2">
+              <ul class="options">
+                  <li><a class="" href="<%= ENV['QS_CANVAS_APP_URL'] %>/v1/games/{{game.uuid}}/{{venue.id}}"><i class="icon-eye-open"></i> Play</a></li>
+                  <li><a ng-click="disableVenue(game, venue.id)" id="inputChangeVenue{{venue.id | uppercase}}"><i class="icon-remove"></i> Remove Venue</a></li>
+              </ul>
             </div>
           </div>
         </div>
-      </form>
+
+      </div>
+
+      <!--  /venue item -->
+
+
     </div>
+
+    <div class="span4">
+
+      <h2>Increase Your Reach</h2>
+      <ul class="networkPreview">
+        <li ng-repeat="venue in venues" ng-hide="game.venues[venue.id]" class="">
+              <span class="title">{{venue.label}}</span>
+              <p class="description">Description for this venue</p>
+              <a ng-click="enableVenue(game, venue.id)" id="inputChangeVenue{{venue.id | uppercase}" class="btn btn-small"><i class="icon-plus"></i> Add this Venue</a>
+        </li>
+      </ul>
+
+    </div>
+
   </div>
+
 </div>
