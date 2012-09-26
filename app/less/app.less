@@ -76,25 +76,24 @@ h3 {
 
 
 .venue {
-  margin-bottom:40px;
-  background-color:#EEEEEE;
+  margin-bottom:20px;
   .rounded-corners(5px);
+  border:1px solid #CCC;
   .description {
-    color:#999;
+    color:#668284;
   }
   .box {
-    background-color:#F6F6F6;
-    padding:10px 80px 10px 20px;
-    border-right:1px dashed #AAA;
+    padding:30px 80px 20px 40px;
+    border-right:1px dashed #DDD;
     ul {
       margin-left:0px;
       list-style:none;
     }
     h3 {
-      font-size:1.5em;
+      font-size:1.8em;
       margin:0px;
       padding:0px;
-      line-height:1.3em;
+      line-height:1.5em;
     }
   }
   .options {
@@ -108,13 +107,14 @@ h3 {
     }
   }
   .status p {
-    border-top:2px solid rgba(255,255,255,0.5);
-    border-bottom:2px solid rgba(0,0,0,0.2);
+    border-top:1px solid rgba(255,255,255,0.5);
+    border-bottom:1px solid rgba(0,0,0,0.2);
     background-color:#9D3;
-    padding:8px 20px 8px 20px;
+    padding:8px 20px 8px 45px;
     .rounded-corners(2px);
-    font-weight:bold;
-    margin:20px 150px 0px -30px;
+    font-weight:normal;
+    display:inline-block;
+    margin:20px 0px 0px -45px;
     &.warning {
       background-color:#FF0;
     }
@@ -125,25 +125,37 @@ h3 {
 }
 
 
-
-.networkPreview {
-  list-style:none;
-  margin:0px;
+#inactiveVenues {
   padding:0px;
-  li {
-    padding: 15px 20px;
-    background-color:#EEE;
-    margin-bottom:20px;
-  }
-  .title {
-    display: block;
-    font-weight:bold;
-    font-size:1em;
-  }
-  .description {
-    display: block;
-    color:#999;
-    margin-bottom: 1em
+  background: #EEE url("../img/stripes.png") repeat top left;
+  border:1px solid #CCC;
+  .rounded-corners(5px);
+  ul {
+    list-style:none;
+    margin:0px;
+    padding:0px;
+    li {
+      padding:20px;
+      .rounded-corners(5px);
+      border-top:1px solid #FFF;
+      border-bottom:1px solid #EEE;
+      &:last-child {
+        border-bottom:0px;
+      }
+      &:first-child {
+        border-top:0px;
+      }
+    }
+    .title {
+      display: block;
+      font-weight:bold;
+      font-size:1em;
+    }
+    .description {
+      display: block;
+      color:#666;
+      margin-bottom: 1em
+    }
   }
 }
 

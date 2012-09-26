@@ -25,9 +25,19 @@
 
 
 
+    <!--Add Member righthand column-->
+    <div class="span3">
+      <form ng-submit="addUser()" class="well">
+        <label for="inputNewDeveloper">Add a developer</label>
+        <input type="text" ng-model="newDeveloper" id="inputNewDeveloper" placeholder="Developer UUID" class="span2" />
+        <br><br>
+        <button class="btn btn-success" ng-click="addDeveloper(gameUuid, newDeveloper)"><i class="icon-plus icon-white"></i> Add Developer</button>
+      </form>
+    </div>
+
     <!--Members Section-->
-    <div class="span8">
-      <table class="table table-striped members">
+    <div class="span9">
+      <table class="table">
         <thead>
           <tr>
             <th>Name</th>
@@ -46,16 +56,7 @@
       </table>
     </div>
 
-    <!--Add Member righthand column-->
-    <div class="span4">
-      <h2>Add Teammate</h2>
-      <form ng-submit="addUser()" class="well">
-        <label for="inputNewDeveloper">UUID:</label>
-        <input type="text" ng-model="newDeveloper" id="inputNewDeveloper" placeholder="Developer UUID"/>
-        <br><br>
-        <button class="btn btn-success" ng-click="addDeveloper(gameUuid, newDeveloper)">Add developer</button>
-      </form>
-    </div>
+    
 
 
   </div>
