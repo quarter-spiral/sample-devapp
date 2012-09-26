@@ -22,39 +22,44 @@
   <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
 </head>
 <body>
-  <div class="navbar navbar-static-top" ng-Controller="NavigationCtrl">
+  
+  <div class="navbar navbar-fixed-top navbar-inverse" ng-Controller="NavigationCtrl">  
     <div class="navbar-inner">
       <div class="container">
-    
-          <ul class="nav pull-right">
-            <li ng-show="loggedIn">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="icon-user"></i> {{currentUser}}
-                <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu" ng-controller="UserCtrl">
-                <li>
-                  <a ng-click="logout()" style="">Log out</a>
-                </li>
-              </ul>
-            </li>
-            <li ng-hide="loggedIn">
-              <a class="" href="/auth/auth_backend"><i class="icon-user"></i> Log in</a>
-            </li>
-          </ul>
+        <ul class="nav pull-right">
+          <li ng-show="loggedIn">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="icon-user icon-white"></i> {{currentUser}}
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" ng-controller="UserCtrl">
+              <li>
+                <a ng-click="logout()" style="">Log out</a>
+              </li>
+            </ul>
+          </li>
+          <li ng-hide="loggedIn">
+            <a class="" href="/auth/auth_backend"><i class="icon-user"></i> Log in</a>
+          </li>
+        </ul>
 
-          <ul class="nav">
-            <li ng-repeat="navigation in navigations" ng-class="{'active': activeNavigation() == navigation.href}">
-              <a href="{{navigation.href}}">{{navigation.label}}</a>
-            </li>
-          </ul>
+        <ul class="nav">
+          <li ng-repeat="navigation in navigations" ng-class="{'active': activeNavigation() == navigation.href}">
+            <a href="{{navigation.href}}">{{navigation.label}}</a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
 
-  <div class="container">
 
-    <div ng-view></div>
+  <div id="content">
+
+    <div class="container">
+
+      <div ng-view></div>
+
+    </div>
 
   </div>
 

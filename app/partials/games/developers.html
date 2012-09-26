@@ -6,9 +6,6 @@
     <div class="span12">
       <ul class="breadcrumb">
         <li>
-          <a href="#/games">Dashboard</a> <span class="divider">/</span>
-        </li>
-        <li>
           <a href="#/games/{{game.uuid}}">{{game.name}}</a> <span class="divider">/</span>
         </li>
         <li>
@@ -16,24 +13,6 @@
       </ul>
     </div>
 
-    <div class="span12">
-      <div class="hero-unit">
-        <h1>Your Team</h1>
-        <p>Manage who can edit <strong>{{game.name}}</strong>.</p>
-      </div>
-    </div>
-
-
-
-    <!--Add Member righthand column-->
-    <div class="span3">
-      <form ng-submit="addUser()" class="well">
-        <label for="inputNewDeveloper">Add a developer</label>
-        <input type="text" ng-model="newDeveloper" id="inputNewDeveloper" placeholder="Developer UUID" class="span2" />
-        <br><br>
-        <button class="btn btn-success" ng-click="addDeveloper(gameUuid, newDeveloper)"><i class="icon-plus icon-white"></i> Add Developer</button>
-      </form>
-    </div>
 
     <!--Members Section-->
     <div class="span9">
@@ -56,6 +35,17 @@
       </table>
     </div>
 
+
+
+    <!--Add Member righthand column-->
+    <div class="span3">
+      <form ng-submit="addUser()" class="well">
+        <label for="inputNewDeveloper">Add a developer</label>
+        <input type="text" ng-model="newDeveloper" id="inputNewDeveloper" placeholder="Developer UUID" class="span2" />
+        <br><br>
+        <button class="btn btn-success" ng-click="addDeveloper(gameUuid, newDeveloper)"><i class="icon-plus icon-white"></i> Add Developer</button>
+      </form>
+    </div>
     
 
 
