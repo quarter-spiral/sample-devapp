@@ -1,5 +1,8 @@
 <div ng-controller="GamesCtrl" ng-init="game = getGame(gameUuid)">
+
+
   <div class="row">
+
     <div class="span12">
       <ul class="breadcrumb">
         <li>
@@ -12,32 +15,50 @@
         <li class="active">Developers</li>
       </ul>
     </div>
-    <div class="span10">
-      <div class="hero-unit">
-        <h1>Developers</h1>
-        <p>Manage who can edit {{game.name}}.</p>
-      </div>
-    </div>
-    <div class="span2">
-
-    </div>
 
     <div class="span12">
-
-      <form class="form-horizontal">
-        <legend>Developers</legend>
-        <ul>
-          <li ng-repeat="developer in game.developers">{{developer}} <a ng-click="removeDeveloper(gameUuid, developer)">Remove</a></li>
-        </ul>
-        <div class="control-group">
-          <label class="control-label" for="inputNewDeveloper">New Developer</label>
-          <div class="controls">
-            <input type="text" ng-model="newDeveloper" id="inputNewDeveloper" placeholder="Developer UUID"/>
-          </div>
-        </div>
-        <button ng-click="addDeveloper(gameUuid, newDeveloper)">Add developer</button>
-      </form>
-
+      <div class="hero-unit">
+        <h1>Your Team</h1>
+        <p>Manage who can edit <strong>{{game.name}}</strong>.</p>
+      </div>
     </div>
+
+
+
+    <!--Members Section-->
+    <div class="span8">
+      <table class="table table-striped members">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th colspan="2">UUID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="developer in game.developers">
+            <td>Name</td>
+            <td>Email</td>
+            <td>{{developer}}</td>
+            <td><a ng-click="removeDeveloper(gameUuid, developer)" class="pull-right"><i class="icon-remove-sign"></i> Remove</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!--Add Member righthand column-->
+    <div class="span4">
+      <h2>Add Teammate</h2>
+      <form ng-submit="addUser()" class="well">
+        <label for="inputNewDeveloper">UUID:</label>
+        <input type="text" ng-model="newDeveloper" id="inputNewDeveloper" placeholder="Developer UUID"/>
+        <br><br>
+        <button class="btn btn-success" ng-click="addDeveloper(gameUuid, newDeveloper)">Add developer</button>
+      </form>
+    </div>
+
+
   </div>
+
 </div>
+
