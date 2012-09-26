@@ -19,35 +19,28 @@
       </div>
     </div>
 
-    <div class="span12">
-      <form class="form-horizontal">
+    <div class="span6">
 
-        <div ng-switch on="game.configuration.type" class="control-group">
-          <div ng-switch-when="initial">
-              <div class="controls">
-                <p>Heya friend, you've not yet setup your game source. Go ahead, do that now and get your game up and running on Mission Kontrol in seconds!</p>
-                <button ng-click="game.configuration.type = 'flash'">This is a flash game</button>
-                <button ng-click="game.configuration.type = 'html5'">Nah nah, HTML5 is the new shit!</button>
-              </div>
-          </div>
-          <div ng-switch-when="flash">
-            <div class="controls">
-              <iframe src="/partials/games/flash/form.html?game={{gameUuid}}" class="flash-upload"></iframe>
-              <button class="btn btn-danger" ng-click="game.configuration = {type: 'html5'}">Change to HTML5</button>
-            </div>
-          </div>
-          <div ng-switch-when="html5">
-            <div class="controls">
-              <label for="inputHtml5Url">Game URL</label>
-              <input ng-model="game.configuration.url" type="text" id="inputHtml5Url"/>
-              <br/>
-              <button class="btn btn-danger" ng-click="game.configuration = {type: 'flash'}">Change to Flash</button>
-            </div>
-          </div>
-        </div>
+      <h2>Select Game type</h2>
+      <div class="btn-group" data-toggle="buttons-radio">
+        <button type="button" class="btn" data-toggle="button" ng-class="{true:'active btn-primary', false:''}[game.configuration.type == 'flash']" ng-click="game.configuration.type = 'flash'">Flash</button>
+        <button type="button" class="btn" data-toggle="button" ng-class="{true:'active btn-primary', false:''}[game.configuration.type == 'html5']" ng-click="game.configuration.type = 'html5'">HTML5</button> 
+      </div>
+      <br />
 
+      <div ng-hide="game.configuration.type != 'flash'" class="well">
+        <label>Upload the {{game.name}} SWF file</label>
+        <iframe src="/partials/games/flash/form.html?game={{gameUuid}}" class="flash-upload"></iframe>
+      </div>
+
+      <div ng-hide="game.configuration.type != 'html5'" class="well">
+        <label for="inputHtml5Url">Enter the game URL for {{game.name}}</label>
+        <input ng-model="game.configuration.url" type="text" id="inputHtml5Url" placeholder="http://" />
+      </div>
+
+      <div ng-show="game.configuration.type != 'initial'">
         <button ng-click="updateGame(game)" class="btn btn-success">Save</button>
-      </form>
+      </div>
 
 
     </div>
