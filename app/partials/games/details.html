@@ -1,0 +1,44 @@
+<div ng-controller="GamesCtrl" ng-init="game = getGame(gameUuid)">
+  <div class="row">
+    <div class="span12">
+      <ul class="breadcrumb">
+        <li>
+          <a href="#/games/{{game.uuid}}">{{game.name}}</a> <span class="divider">/</span>
+        </li>
+        <li class="active">Details</li>
+      </ul>
+    </div>
+
+    <div class="span12">
+      <form class="form-horizontal">
+        <div class="control-group">
+          <label class="control-label" for="inputName">Name</label>
+          <div class="controls">
+            <input ng-model="game.name" type="text" id="inputName" placeholder="Name">
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="inputDescription">Description</label>
+          <div class="controls">
+            <textarea ng-model="game.description" id="inputDescription" placeholder="Description"></textarea>
+          </div>
+
+
+        </div>
+
+        <div class="control-group">
+          
+          <div class="controls">
+            <button ng-click="updateGame(game)" class="btn btn-success">Update Details</button>
+          </div>
+
+
+        </div>
+
+        
+      </form>
+
+    </div>
+  </div>
+</div>

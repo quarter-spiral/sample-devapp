@@ -11,6 +11,7 @@
         <li class="nav-header">
           Options
         </li>
+        <li><a href="#/games/{{game.uuid}}/details"><i class="icon-chevron-right"></i> Details</a></li>
         <li><a href="#/games/{{game.uuid}}/builds"><i class="icon-chevron-right"></i> Builds</a></li>
         <li><a href="#/games/{{game.uuid}}/venues"><i class="icon-chevron-right"></i> Venues</a><li>
           <li><a href="#/games/{{game.uuid}}/developers"><i class="icon-chevron-right"></i> Developers</a><li>
@@ -21,26 +22,5 @@
       </ul>
     </div>
 
-    <div class="span12">
-      <form class="form-horizontal">
-        <legend>Details for {{game.name}}</legend>
-        <div class="control-group">
-          <label class="control-label" for="inputName">Name</label>
-          <div class="controls">
-            <input ng-model="game.name" type="text" id="inputName" placeholder="Name">
-          </div>
-        </div>
-
-        <div class="control-group">
-          <label class="control-label" for="inputDescription">Description</label>
-          <div class="controls">
-            <textarea ng-model="game.description" id="inputDescription" placeholder="Description"></textarea>
-          </div>
-        </div>
-
-        <button ng-click="updateGame(game)" class="btn btn-success">Save</button>
-      </form>
-
-    </div>
   </div>
 </div>
