@@ -28,7 +28,7 @@ end
 require File.expand_path('../backend/s3_browser_form.rb', __FILE__)
 require File.expand_path('../backend/sso/auth_backend.rb', __FILE__)
 
-use Rack::Session::Cookie
+use Rack::Session::Cookie, key: 'qs_sample_devapp'
 use OmniAuth::Builder do
   provider :auth_backend, ENV['QS_OAUTH_CLIENT_ID'], ENV['QS_OAUTH_CLIENT_SECRET']
 end

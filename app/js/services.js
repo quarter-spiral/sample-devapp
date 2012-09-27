@@ -32,7 +32,7 @@ services.factory('user', ['$rootScope', '$cookies', 'devcenterClient', function(
       delete cookies['qs_authentication']
       storeLogin(null);
       var redirectUrl = window.location.protocol + '//' + window.location.host;
-      window.location.href = window.qs.ENV['QS_OAUTH_SITE'] + '/users/sign_out?redirect_uri=' + encodeURI(redirectUrl);
+      window.location.href = window.qs.ENV['QS_OAUTH_SITE'] + '/signout?redirect_uri=' + encodeURI(redirectUrl);
     }
   };
 }]);
