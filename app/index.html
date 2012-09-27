@@ -43,7 +43,7 @@
           </li>
         </ul>
 
-        <ul class="nav">
+        <ul class="nav" ng-show="loggedIn">
           <li ng-repeat="navigation in navigations" ng-class="{'active': activeNavigation() == navigation.href}">
             <a href="{{navigation.href}}">{{navigation.label}}</a>
           </li>
