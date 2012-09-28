@@ -6,7 +6,7 @@ if !ENV['RACK_ENV'] || ENV['RACK_ENV'] == 'development'
   ENV['QS_CANVAS_APP_URL'] ||= 'http://canvas-app.dev/'
   ENV['QS_S3_BUCKET'] ||= 'game_uploads_development'
   ENV['QS_S3_HOST'] ||= "http://s3.amazonaws.com/"
-  ENV['QS_OAUTH_SITE'] ||= 'http://auth-backend.dev/'
+  ENV['QS_AUTH_BACKEND_URL'] ||= 'http://auth-backend.dev/'
   ENV['QS_OAUTH_CLIENT_ID'] ||= "f3f2b27f4baed577d2f631e77fd8a068361281ca56edfed07b8cf4392044bd83"
   ENV['QS_OAUTH_CLIENT_SECRET'] ||= "b402c89ec06f9f210f4d6a3d88e71675238bb4a38752375a4fad4c0ab646e122"
 
@@ -16,7 +16,7 @@ if !ENV['RACK_ENV'] || ENV['RACK_ENV'] == 'development'
   ENV['QS_S3_KEY_SECRET'] ||= 'idjPkH4cfJ5DqsjFEdYEslfo81HAd7HnuPrzWlbK'
 end
 
-ENV_KEYS_TO_EXPOSE = ['QS_DEVCENTER_BACKEND_URL', 'QS_CANVAS_APP_URL', 'QS_S3_HOST', 'QS_OAUTH_SITE']
+ENV_KEYS_TO_EXPOSE = ['QS_DEVCENTER_BACKEND_URL', 'QS_CANVAS_APP_URL', 'QS_S3_HOST', 'QS_AUTH_BACKEND_URL']
 
 
 if ENV['RACK_ENV'] == 'production'
