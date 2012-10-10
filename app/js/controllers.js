@@ -62,7 +62,7 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
   $scope.gameUuid = $route.current.params.gameUuid;
 
   $scope.getGames = function() {
-    devcenterClient.listGames(user.currentUser()).then(function(games) {
+    devcenterClient.listGames(user.currentUser().uuid).then(function(games) {
       $scope.games = [];
       for (var i = 0; i < games.length; i++) {
         devcenterClient.getGame(games[i]).then(function(game) {
@@ -77,7 +77,7 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
   }
 
   $scope.addGame = function(game) {
-    game.developers = [user.currentUser()];
+    game.developers = [user.currentUser().uuid];
     devcenterClient.addGame(game).then(function() {
       $location.path('/games');
     }, function() {

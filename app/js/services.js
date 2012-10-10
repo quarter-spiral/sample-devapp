@@ -4,75 +4,100 @@
 
 var services = angular.module('devcenterTest.services', []);
 
-services.factory('user', ['$rootScope', '$cookies', 'devcenterClient', function(rootScope, cookies, devcenterClient) {
+var getDevcenterBackendUrl = function() {return window.qs.ENV['QS_DEVCENTER_BACKEND_URL'] + '/v1';}
+
+services.factory('qs_http', ['$q', '$http', function(q, http) {
+  var userService = null;
+  return {
+    setUserService: function(newService) {
+      userService = newService;
+    },
+    makeRequest: function(options) {
+      var method = options.method;
+      var url = options.url;
+      var body = options.body;
+
+      var deferred = q.defer();
+
+      var requestOptions = {method: method, url: url};
+      if (body) {
+        requestOptions.data = body;
+      }
+
+      var headers = {
+        "Authorization": "Bearer " + userService.currentUser().token
+      }
+      requestOptions['headers'] = headers;
+
+      http(requestOptions).
+        success(function(data, status, headers, config) {
+          if (options.returns !== undefined) {
+            deferred.resolve(options.returns(data, status, headers, config));
+          } else {
+            deferred.resolve();
+          }
+        }).
+        error(function(data, status, headers, config) {
+          deferred.reject(data.error);
+       });
+
+      return deferred.promise;
+    }
+  };
+}]);
+
+services.factory('user', ['$rootScope', '$cookies', 'qs_http', function(rootScope, cookies, http) {
   rootScope.currentUser = null;
   rootScope.loggedIn = false;
+  var devcenterBackendUrl = getDevcenterBackendUrl();
 
-  var storeLogin = function(uuid) {
-    rootScope.currentUser = uuid;
-    if (uuid) {
-      devcenterClient.promoteDeveloper(rootScope.currentUser);
+  var storeLogin = function(user) {
+    rootScope.currentUser = user;
+    if (user) {
+      http.makeRequest({
+        method: 'POST',
+        url: devcenterBackendUrl + '/developers/' + rootScope.currentUser.uuid
+      });
     }
     rootScope.loggedIn = !!(rootScope.currentUser);
-    return uuid;
+    return user;
   }
 
-  return {
+  var service = {
     currentUser: function() {
-      var uuid = rootScope.currentUser;
-      if (!uuid) {
+      var user = rootScope.currentUser;
+      if (!user) {
         var cookie = angular.fromJson(cookies['qs_authentication']);
         if (cookie && cookie.info && cookie.info.uuid) {
-          uuid = storeLogin(cookie.info.uuid);
+          user = storeLogin(cookie.info);
         }
       }
-      return uuid;
+      return user;
     },
     logout: function() {
-      delete cookies['qs_authentication']
+      cookies['qs_authentication'] = angular.toJson({not: 'loggedin'})
+      delete cookies['qs_authentication'];
       storeLogin(null);
       var redirectUrl = window.location.protocol + '//' + window.location.host;
       window.location.href = window.qs.ENV['QS_AUTH_BACKEND_URL'] + '/signout?redirect_uri=' + encodeURI(redirectUrl);
     }
   };
+
+  http.setUserService(service);
+
+  return service;
 }]);
 
-services.factory('devcenterClient', ['$http', '$q', function(http, q) {
-  http.makeRequest = function(options) {
-    var method = options.method;
-    var url = options.url;
-    var body = options.body;
-
-    var deferred = q.defer();
-
-    var requestOptions = {method: method, url: url};
-    if (body) {
-      requestOptions.data = body;
-    }
-
-    http(requestOptions).
-      success(function(data, status, headers, config) {
-        if (options.returns !== undefined) {
-          deferred.resolve(options.returns(data, status, headers, config));
-        } else {
-          deferred.resolve();
-        }
-      }).
-      error(function(data, status, headers, config) {
-        deferred.reject(data.error);
-     });
-
-    return deferred.promise;
-  };
-
-  var devcenterBackendUrl = window.qs.ENV['QS_DEVCENTER_BACKEND_URL'] + '/v1';
-
+services.factory('devcenterClient', ['user','qs_http', function(user, http) {
+  var devcenterBackendUrl = getDevcenterBackendUrl();
   var lastUpload = null;
   var windowProxy = new Porthole.WindowProxy(window.location.href.replace(/\/\/([^\/]*).*$/, '/$1/partials/games/flash/upload_done.html'));
   windowProxy.addEventListener(function(e) {
     lastUpload = e.data.url;
   });
   Porthole.WindowProxyDispatcher.start();
+
+  http.setUserService(user);
 
   return {
     promoteDeveloper: function(uuid) {

@@ -1,5 +1,7 @@
 'use strict';
 
+var token = 'some-token';
+
 describe("devcenterClient", function() {
   var $httpBackend, uuidGenerator, devcenterClient;
 
@@ -24,6 +26,11 @@ describe("devcenterClient", function() {
     return {success: success, result: result, failure: failure, error: error};
   };
 
+  var checkForHeaders = function(headers) {
+    return headers["Authorization"] === ("Bearer " + token);
+  };
+
+
   var can = function(description, options) {
     options = options || {};
     var url = options.url;
@@ -38,9 +45,9 @@ describe("devcenterClient", function() {
 
       beforeEach(function() {
         if (expectedRequestBody) {
-          $httpBackend.expect(verb, url(), expectedRequestBody());
+          $httpBackend.expect(verb, url(), expectedRequestBody(), checkForHeaders);
         } else {
-          $httpBackend.expect(verb, url());
+          $httpBackend.expect(verb, url(), undefined, checkForHeaders);
         }
       });
 
@@ -61,9 +68,13 @@ describe("devcenterClient", function() {
   }
 
   var entity1, entity2;
+  var cookiesMock;
 
   beforeEach(function() {
-    module('devcenterTest.services');
+    cookiesMock = {"qs_authentication": '{"info": {"uuid": "some-uuid", "token": "' + token + '"}}'};
+    module('devcenterTest.services', function($provide) {
+      $provide.value('$cookies', cookiesMock);
+    });
 
     window.qs = window.qs || {};
     window.qs.ENV = {'QS_DEVCENTER_BACKEND_URL': 'http://devcenter.example.com'};
@@ -82,6 +93,9 @@ describe("devcenterClient", function() {
         return this.actual.success === false && this.actual.failure === true && this.actual.error == reason;
       }
     });
+
+    $httpBackend.expectPOST(devcenterBackendUrl + '/developers/some-uuid', undefined, checkForHeaders);
+    $httpBackend.when('POST', devcenterBackendUrl + '/developers/some-uuid').respond('');
 
     entity1 = uuidGenerator();
     entity2 = uuidGenerator();

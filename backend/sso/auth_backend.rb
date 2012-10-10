@@ -10,7 +10,8 @@ class AuthBackend < OmniAuth::Strategies::OAuth2
     {
       :name => raw_info['name'],
       :email => raw_info['email'],
-      :uuid => raw_info['uuid']
+      :uuid => raw_info['uuid'],
+      :token => access_token.token
     }
   end
 

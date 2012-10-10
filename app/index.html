@@ -22,14 +22,14 @@
   <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
 </head>
 <body>
-  
-  <div class="navbar navbar-fixed-top navbar-inverse" ng-Controller="NavigationCtrl">  
+
+  <div class="navbar navbar-fixed-top navbar-inverse" ng-Controller="NavigationCtrl">
     <div class="navbar-inner">
       <div class="container">
         <ul class="nav pull-right">
           <li ng-show="loggedIn">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              <i class="icon-user icon-white"></i> {{currentUser}}
+              <i class="icon-user icon-white"></i> {{currentUser.name}}
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" ng-controller="UserCtrl">
@@ -70,7 +70,7 @@
       <div class="row">
 
         <div class="span3">
-    
+
           <ul>
             <li>Mission Kontrol is a <a href="http://quarterspiral.com">Quarter Spiral</a> service.</li>
             <li>&copy; 2012 Quarter Spiral</li>
@@ -78,10 +78,10 @@
 
         </div>
 
-        
+
 
         <div class="span3">
-    
+
           <ul>
             <li>Build with Twitter's <a href="http://twitter.github.com/bootstrap/index.html" target="new">Bootstrap</a></li>
             <li>Using the excellent <a href="http://glyphicons.com" target="new">Glyphicons</a></li>
