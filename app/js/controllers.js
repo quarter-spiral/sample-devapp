@@ -143,3 +143,14 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
   }
 }
 GamesCtrl.$inject = ['$scope', '$location', '$route', 'user', 'devcenterClient'];
+
+function VenuesCtrl($scope) {
+  $scope.showConfig = function(venue, game) {
+    return venue.showConfig;
+  }
+
+  $scope.toggleConfig = function(venue) {
+    venue.showConfig = !venue.showConfig;
+  }
+}
+VenuesCtrl.$inject = ['$scope'];

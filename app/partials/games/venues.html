@@ -1,0 +1,50 @@
+<div ng-controller="GamesCtrl" ng-init="game = getGame(gameUuid)">
+  <div class="row">
+    <div class="span12">
+      <ul class="breadcrumb">
+        <li>
+          <a href="#/games/{{game.uuid}}">{{game.name}}</a> <span class="divider">/</span>
+        </li>
+        <li class="active">Venues</li>
+      </ul>
+    </div>
+
+    <div class="span8">
+
+      <!-- Venue item -->
+
+      <h2>Your active Venues</h2>
+
+      <div class="row" ng-repeat="venue in venues">
+        <div class="span8 venue" ng-show="game.venues[venue.id].enabled">
+          <div class="row" ng-controller="VenuesCtrl">
+            <div ng-include src="'/partials/games/venues/' + venue.id + '.html'">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!--  /venue item -->
+
+
+    </div>
+
+    <div class="span4">
+      <h2>Other available Venues</h2>
+      <div id="inactiveVenues">
+
+        <ul class="networkPreview">
+          <li ng-repeat="venue in venues" ng-hide="game.venues[venue.id].enabled" class="">
+                <span class="title">{{venue.label}}</span>
+                <p class="description">Description for this venue</p>
+                <a ng-click="enableVenue(game, venue.id)" id="inputChangeVenue{{venue.id | uppercase}" class="btn btn-success"><i class="icon-plus icon-white"></i> Add {{venue.label}}</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

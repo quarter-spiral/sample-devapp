@@ -193,7 +193,10 @@ services.factory('devcenterClient', ['user','qs_http', function(user, http) {
 
     enableVenue: function(game, venue) {
       var venues = game.venues;
-      venues[venue] = true;
+      if (!venues[venue]) {
+        venues[venue] = {};
+      }
+      venues[venue].enabled = true;
 
       return http.makeRequest({
         method: 'PUT',
@@ -207,7 +210,10 @@ services.factory('devcenterClient', ['user','qs_http', function(user, http) {
 
     disableVenue: function(game, venue) {
       var venues = game.venues;
-      venues[venue] = false;
+      if (!venues[venue]) {
+        venues[venue] = {};
+      }
+      venues[venue].enabled = false;
 
       return http.makeRequest({
         method: 'PUT',

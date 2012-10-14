@@ -1,0 +1,25 @@
+<div class="span6">
+  <div class="box">
+    <h3>{{venue.label}}</h3>
+    <p class="description">Description for this venue</p>
+    <!--
+      <ul>
+            <li>Show of details or features</li>
+            <li>Various tags</li>
+      </ul>
+    -->
+    <div class=" status">
+        <p>All is dandy on {{venue.label}}</p>
+        <!--
+        <p class="warning">Not Configured!</p>
+        <p class="danger">Temporarily closed!</p>
+        -->
+    </div>
+  </div>
+</div>
+<div class="span2">
+  <ul class="options">
+      <li ng-show="venue.computed.ready"><a class="" href="<%= ENV['QS_CANVAS_APP_URL'] %>/v1/games/{{game.uuid}}/{{venue.id}}"><i class="icon-eye-open"></i> Play</a></li>
+      <li><a ng-click="disableVenue(game, venue.id)" id="inputChangeVenue{{venue.id | uppercase}}"><i class="icon-remove"></i> Disable</a></li>
+  </ul></div>
+</div>
