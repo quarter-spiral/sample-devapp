@@ -28,6 +28,8 @@ GEM
       omniauth (~> 1.0)
     rack (1.4.1)
     rack-rewrite (1.2.1)
+    shotgun (0.9)
+      rack (>= 1.0)
     thin (1.4.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -43,4 +45,5 @@ DEPENDENCIES
   omniauth-oauth2
   rack
   rack-rewrite
+  shotgun
   thin

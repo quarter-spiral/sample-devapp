@@ -6,4 +6,7 @@ gem 'brochure'
 gem 'json'
 gem 'omniauth-oauth2'
 
-gem 'thin'
+platform :ruby do
+  gem 'thin'
+  gem 'shotgun'
+end
