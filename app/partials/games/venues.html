@@ -11,6 +11,10 @@
 
     <div class="span8">
 
+    <div class="alert alert-error" ng-show="game.configuration.type == 'initial'">
+      You have not yet configured a single game build. Please do so <a href="/#/games/{{game.uuid}}/builds">here</a>.
+    </div>
+
       <!-- Venue item -->
 
       <h2>Your active Venues</h2>
