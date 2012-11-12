@@ -87,6 +87,7 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
 
   $scope.getGame = function(gameUuid) {
     devcenterClient.getGame(gameUuid).then(function(game) {
+      game.originalConfiguration = angular.fromJson(angular.toJson(game.configuration))
       $scope.game = game;
     }, function() {
       alert("Could not retrieve game " + gameUuid);
@@ -95,7 +96,6 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
 
   $scope.updateGame = function(game) {
     devcenterClient.updateGame(game.uuid, game).then(function() {
-      //$location.path('/games');
       $route.reload();
     }, function() {
       alert("Could not save the game. Sorry!");
@@ -150,12 +150,27 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
   };
 
   $scope.addScreenshot = function(game) {
-    filepicker.pick(function(fpfile) {
-      console.log(fpfile);
-      game.screenshots.push({url: fpfile.url, filename: fpfile.filename})
-      $scope.$apply();
-    });
+    filepicker.pick(
+      {
+        mimetypes: ['image/*']
+      }, function(fpfile) {
+        game.screenshots.push({url: fpfile.url, filename: fpfile.filename})
+        $scope.$apply();
+      }
+    );
   };
+
+  $scope.addFlashBuild = function(game) {
+    filepicker.pick(
+      {
+        mimetypes: ['application/x-shockwave-flash']
+      }, function(fpfile) {
+        game.configuration.url = fpfile.url
+        $scope.$apply();
+      }
+    );
+  };
+
 }
 GamesCtrl.$inject = ['$scope', '$location', '$route', 'user', 'devcenterClient'];
 

@@ -15,13 +15,14 @@
       <h2>Select Game type</h2>
       <div class="btn-group" data-toggle="buttons-radio">
         <button type="button" class="btn" data-toggle="button" ng-class="{true:'active btn-primary', false:''}[game.configuration.type == 'flash']" ng-click="game.configuration.type = 'flash'">Flash</button>
-        <button type="button" class="btn" data-toggle="button" ng-class="{true:'active btn-primary', false:''}[game.configuration.type == 'html5']" ng-click="game.configuration.type = 'html5'">HTML5</button> 
+        <button type="button" class="btn" data-toggle="button" ng-class="{true:'active btn-primary', false:''}[game.configuration.type == 'html5']" ng-click="game.configuration.type = 'html5'">HTML5</button>
       </div>
       <br />
 
       <div ng-hide="game.configuration.type != 'flash'" class="well">
-        <label>Upload the {{game.name}} SWF file</label>
-        <iframe src="/partials/games/flash/form.html?game={{gameUuid}}" class="flash-upload"></iframe>
+        <div ng-show="game.originalConfiguration.type == 'flash' && game.originalConfiguration.url">Currently saved build: <a href="{{game.originalConfiguration.url}}">{{game.originalConfiguration.url}}</a></div>
+        <div ng-show="game.configuration.url && game.configuration.url != game.originalConfiguration.url">Newly uploaded build: <a href="{{game.configuration.url}}">{{game.configuration.url}}</a></div>
+        <a class="btn btn-info" ng-click="addFlashBuild(game)">Upload a new SWF file</a>
       </div>
 
       <div ng-hide="game.configuration.type != 'html5'" class="well">

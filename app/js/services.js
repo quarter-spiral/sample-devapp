@@ -90,12 +90,6 @@ services.factory('user', ['$rootScope', '$cookies', 'qs_http', function(rootScop
 
 services.factory('devcenterClient', ['user','qs_http', function(user, http) {
   var devcenterBackendUrl = getDevcenterBackendUrl();
-  var lastUpload = null;
-  var windowProxy = new Porthole.WindowProxy(window.location.href.replace(/\/\/([^\/]*).*$/, '/$1/partials/games/flash/upload_done.html'));
-  windowProxy.addEventListener(function(e) {
-    lastUpload = e.data.url;
-  });
-  Porthole.WindowProxyDispatcher.start();
 
   http.setUserService(user);
 
@@ -163,9 +157,8 @@ services.factory('devcenterClient', ['user','qs_http', function(user, http) {
     },
 
     updateGame: function(gameUuid, gameDetails) {
-      if (gameDetails.configuration.type == 'flash' && lastUpload !== null) {
-        gameDetails.configuration.url = lastUpload;
-      }
+      gameDetails = angular.fromJson(angular.toJson(gameDetails))
+      delete gameDetails.originalConfiguration
       return http.makeRequest({
         method: 'PUT',
         url: devcenterBackendUrl + '/games/' + gameUuid,
@@ -181,11 +174,6 @@ services.factory('devcenterClient', ['user','qs_http', function(user, http) {
         method: 'GET',
         url: devcenterBackendUrl + '/games/' + gameUuid,
         returns: function(data) {
-          if (options && options.mode && options.mode == 'edit') {
-            if (data.configuration.type == 'flash') {
-              lastUpload = data.configuration.url;
-            }
-          }
           return data;
         }
       });
