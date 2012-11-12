@@ -141,6 +141,21 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
       alert("Could not disable venue '" + venue + "'!");
     });
   }
+
+  $scope.removeScreenshot = function(game, screenshot) {
+    var index = game.screenshots.indexOf(screenshot);
+    if (index >= 0) {
+      game.screenshots.splice(index, 1);
+    }
+  };
+
+  $scope.addScreenshot = function(game) {
+    filepicker.pick(function(fpfile) {
+      console.log(fpfile);
+      game.screenshots.push({url: fpfile.url, filename: fpfile.filename})
+      $scope.$apply();
+    });
+  };
 }
 GamesCtrl.$inject = ['$scope', '$location', '$route', 'user', 'devcenterClient'];
 
