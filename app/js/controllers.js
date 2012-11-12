@@ -165,7 +165,7 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
       {
         mimetypes: ['application/x-shockwave-flash']
       }, function(fpfile) {
-        game.configuration.url = fpfile.url
+        game.configuration.url = '' + fpfile.url + '?dl=false'
         $scope.$apply();
       }
     );
