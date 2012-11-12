@@ -19,7 +19,7 @@
 </div>
 <div class="span2">
   <ul class="options">
-      <li ng-show="venue.computed.ready"><a class="" href="<%= ENV['QS_CANVAS_APP_URL'] %>/v1/games/{{game.uuid}}/{{venue.id}}"><i class="icon-eye-open"></i> Play</a></li>
+      <li ng-show="game.venues[venue.id].computed.ready"><a class="" href="<%= ENV['QS_CANVAS_APP_URL'] %>/v1/games/{{game.uuid}}/{{venue.id}}"><i class="icon-eye-open"></i> Play</a></li>
       <li><a ng-click="disableVenue(game, venue.id)" id="inputChangeVenue{{venue.id | uppercase}}"><i class="icon-remove"></i> Disable</a></li>
   </ul></div>
 </div>
