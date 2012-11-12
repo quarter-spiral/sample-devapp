@@ -55,7 +55,7 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
 
   $scope.venues = [
     {label: 'Facebook', id: 'facebook'},
-    {label: 'Galaxy Spiral', id: 'galaxy-spiral'}
+    {label: 'Spiral Galaxy', id: 'spiral-galaxy'}
   ];
 
 
