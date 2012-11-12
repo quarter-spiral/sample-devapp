@@ -163,7 +163,7 @@ services.factory('devcenterClient', ['user','qs_http', function(user, http) {
     },
 
     updateGame: function(gameUuid, gameDetails) {
-      if (gameDetails.configuration.type == 'flash') {
+      if (gameDetails.configuration.type == 'flash' && lastUpload !== null) {
         gameDetails.configuration.url = lastUpload;
       }
       return http.makeRequest({
