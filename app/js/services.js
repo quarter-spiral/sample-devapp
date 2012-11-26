@@ -113,11 +113,7 @@ services.factory('devcenterClient', ['user','qs_http', function(user, http) {
         method: 'GET',
         url: devcenterBackendUrl + '/developers/' + developerUuid + '/games',
         returns: function(data) {
-          var games = [];
-          for (var i = 0; i < data.length; i++) {
-            games.push(data[i].target);
-          }
-          return games;
+          return data;
         }
       });
     },
