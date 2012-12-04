@@ -17,7 +17,7 @@
     <div class="span3">
 
       <ul class="nav nav-tabs nav-stacked">
-        <li ng-repeat="game in games">
+        <li ng-repeat="game in games | orderBy:name" >
           <a href="#/games/{{game.uuid}}">{{game.name}}</a>
         </li>
       </ul>
