@@ -61,7 +61,9 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
   ];
 
 
-  $scope.gameUuid = $route.current.params.gameUuid;
+  if ($route.current) {
+    $scope.gameUuid = $route.current.params.gameUuid;
+  }
 
   $scope.getGames = function() {
     devcenterClient.listGames(user.currentUser().uuid).then(function(games) {

@@ -55,9 +55,11 @@
                   <a href="{{navigation.href}}"><i class="icon-home"></i> {{navigation.label}}</a>
                 </li>
                 <li class="divider"></li>
-                <li ng-repeat="game in games | orderBy:name" >
-                  <a href="#/games/{{game.uuid}}">{{game.name}}</a>
-                </li>
+                <div ng-controller="GamesCtrl" ng-init="getGames()">
+                  <li ng-repeat="game in games | orderBy:name" >
+                    <a href="#/games/{{game.uuid}}">{{game.name}}</a>
+                  </li>
+                </div>
                 <li class="divider"></li>
                 <li ng-show="loggedIn"><a href="#/games/new"><i class="icon-plus-sign"></i> Add a new game</a></li>
               </ul>
