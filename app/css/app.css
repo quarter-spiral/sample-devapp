@@ -1,4 +1,5 @@
 .hero-unit.stars{background:#000000 url('../img/stars.jpg') no-repeat right bottom;color:#FFF;-moz-text-shadow:0px 1px 3px #000000;-webkit-text-shadow:0px 1px 3px #000000;text-shadow:0px 1px 3px #000000;-moz-box-shadow:0px 1px 2px rgba(0, 0, 0, 0.8);-webkit-box-shadow:0px 1px 2px rgba(0, 0, 0, 0.8);box-shadow:0px 1px 2px rgba(0, 0, 0, 0.8);text-align:center;}.hero-unit.stars p{color:#FF6;}
+h2{font-size:1.4em;}
 #footer{padding:60px 0px 60px 0px;}#footer ul{list-style:none;margin:0px;padding:0px 10px 0px 0px;}#footer ul li{margin-bottom:0.5em;}
 #footer p{font-size:0.9em;}
 .venue{margin-bottom:20px;border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;border:1px solid #CCC;}.venue .description{color:#668284;}
@@ -11,4 +12,9 @@
 #inactiveVenues ul li:first-child{border-top:0px;}
 #inactiveVenues ul .title{display:block;font-weight:bold;font-size:1em;}
 #inactiveVenues ul .description{display:block;color:#666;margin-bottom:1em;}
-#header .brand{position:relative;top:24px;display:block;overflow:hidden;width:auto !important;height:32px;line-height:32px !important;margin:0px 0px 0px 0px !important;color:#FFF;font-size:18px;font-weight:normal !important;background:none !important;text-shadow:1px 1px 2px rgba(0, 0, 0, 0.5);}
+#header .brand{position:relative;top:24px;display:block;overflow:hidden;width:auto !important;height:32px;line-height:32px !important;margin:0px 0px 0px 0px !important;color:#FFF;font-size:18px;font-weight:normal !important;background:none !important;text-shadow:1px 1px 2px rgba(0, 0, 0, 0.5);}#header .brand:hover{text-decoration:none;}
+#header .brand i{font-size:130%;vertical-align:0px;margin-right:15px;}
+.teaserArt{height:250px;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;background-color:#EEE;text-align:center;line-height:250px;color:#999;}
+.titleDescription p,.titleDescription h3{font-size:1.4em;line-height:1.5em;}
+#rampUp ol{font-size:1.3em;}#rampUp ol li{line-height:1.5em;margin-bottom:0.5em;}
+.row{margin-top:0px !important;}

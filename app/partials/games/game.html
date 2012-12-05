@@ -8,9 +8,13 @@
 
       <div class="masthead-pad">
 
-        <div class="masthead-text">
+        <div class="masthead-text" ng-show="game.configuration.type == 'initial'">
+          <h2>Getting started</h2>
+          <p>in 3 easy steps</p>
+        </div> <!-- /.masthead-text -->
+
+        <div class="masthead-text" ng-hide="game.configuration.type == 'initial'">
           <h2>Overview</h2>
-          <p>What is happening with your game</p>
         </div> <!-- /.masthead-text -->
 
       </div>
@@ -28,16 +32,15 @@
 
       <div class="row">
 
-        <div class="span6 offset3">
+        <div class="span12" ng-show="game.configuration.type == 'initial'">
 
-          <div ng-show="game.configuration.type == 'initial'">
-            <h2>Get up and running in 3 easy steps</h2>
+          <div id="rampUp">
             <ol>
               <li>
-                Upload your game in <strong>Files > <a href="/#/games/{{game.uuid}}/builds">Builds</a></strong>.
+                Upload your game: Files > <a href="/#/games/{{game.uuid}}/builds">Builds</a>
               </li>
               <li>
-                Decide where you want your game to appear in <strong>Settings > <a href="/#/games/{{game.uuid}}/venues">Venues</a></strong>.
+                Decide where you want your game to appear: Settings > <a href="/#/games/{{game.uuid}}/venues">Venues</a>
               </li>
               <li>
                 All done. Ready to play!
@@ -47,31 +50,45 @@
 
         </div>
 
-      </div>
 
-      <div class="row">
+        <div ng-hide="game.configuration.type == 'initial'">
 
-        <div class="span3">
-          <h2>Active Venues</h2>
-          <div ng-repeat="venue in venues" ng-show="game.venues[venue.id].enabled">
-            {{venue.label}}
+          <div class="span8">
+            <h2>About</h2>
+            <div class="row">
+              <div class="span4">
+                <p ng-show="game.screenshots.length > 0" class="teaserArt" style="background-image: url({{game.screenshots[0].url}});">
+                </p>
+                <p ng-hide="game.screenshots.length > 0" class="teaserArt">
+                  You have not added any Screenshots yet
+                </p>
+                <a href="#/games/{{game.uuid}}/screens"><i class="icon-picture"></i> Manage Media</a>
+              </div>
+
+              <div class="span4">
+                <div class="titleDescription">
+                  <h3>{{game.name}}</h3>
+                  <p>{{game.description}}</p>
+                </div>
+                <a href="#/games/{{game.uuid}}/details"><i class="icon-wrench"></i> Edit Title or Description</a>
+              </div>
+            </div>
           </div>
-          <a href="#/games/{{game.uuid}}/venues">Add more</a>
-        </div>
 
-        <div class="span3">
-          <h2>Team </h2>
-          <div>{{game.developers.length}}</div>
-           <a href="#/games/{{game.uuid}}/developers">Manage</a>
-        </div>
-
-        <div class="span3">
-          <h2>About</h2>
-          <div>
-            <h3>{{game.name}}</h3>
-            <p>{{game.description}}</p>
+          <div class="span4">
+            <h2>Current Venues</h2>
+            <ul class="nav nav-tabs nav-stacked">
+              <li ng-repeat="venue in venues" ng-show="game.venues[venue.id].enabled && game.venues[venue.id].computed.ready">
+                <a href="#">{{venue.label}}</a>
+              </li>
+            </ul>
+            <a href="#/games/{{game.uuid}}/venues"><i class="icon-sitemap"></i> Manage Venues</a>
           </div>
-          <a href="#/games/{{game.uuid}}/details">Edit Title &amp; Description</a>
+
+
+
+
+
         </div>
 
       </div>

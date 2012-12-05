@@ -52,12 +52,12 @@
 
               <ul class="dropdown-menu pull-right" ng-Controller="NavigationCtrl">
                 <li ng-repeat="navigation in navigations">
-                  <a href="{{navigation.href}}"><i class="icon-home"></i> {{navigation.label}}</a>
+                  <a href="{{navigation.href}}"><i class="icon-th-list"></i> {{navigation.label}}</a>
                 </li>
                 <li class="divider"></li>
                 <div ng-controller="GamesCtrl" ng-init="getGames()">
                   <li ng-repeat="game in games | orderBy:name" >
-                    <a href="#/games/{{game.uuid}}">{{game.name}}</a>
+                    <a href="#/games/{{game.uuid}}"><i class="icon-dashboard"></i> {{game.name}}</a>
                   </li>
                 </div>
                 <li class="divider"></li>

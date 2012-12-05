@@ -17,6 +17,10 @@
   }
 }
 
+h2 {
+  font-size: 1.4em;
+}
+
 #footer {
   padding:60px 0px 60px 0px;
   ul {
@@ -134,4 +138,54 @@
   font-weight: normal !important;
   background: none !important;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  &:hover {
+    text-decoration:none;
+  }
+  i {
+    font-size: 130%;
+    vertical-align: 0px;
+    margin-right: 15px;
+  }
+}
+
+
+.teaserArt {
+  height:250px;
+  .background-size(cover);
+  background-color:#EEE;
+  text-align: center;
+  line-height:250px;
+  color:#999;
+}
+
+.titleDescription {
+  p, h3 {
+    font-size: 1.4em;
+    line-height: 1.5em;
+  }
+}
+
+#rampUp {
+
+  ol {
+    font-size:1.3em;
+    li {
+      line-height:1.5em;
+      margin-bottom:0.5em;
+    }
+  }
+}
+
+.row {
+  margin-top: 0px !important;
+}
+
+
+
+// Background sizing
+.background-size(@size) {
+  -webkit-background-size: @size;
+     -moz-background-size: @size;
+       -o-background-size: @size;
+          background-size: @size;
 }
