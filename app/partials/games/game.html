@@ -1,26 +1,57 @@
-<div ng-controller="GamesCtrl" ng-init="game = getGame(gameUuid)">
-  <div class="row">
-    <div class="span10">
-      <div class="hero-unit">
-        <h1>{{game.name}}</h1>
-        <p>{{game.description}}</p>
-      </div>
-    </div>
-    <div class="span2">
-      <ul class="nav nav-list">
-        <li class="nav-header">
-          Options
-        </li>
-        <li><a href="#/games/{{game.uuid}}/details"><i class="icon-chevron-right"></i> Details</a></li>
-        <li><a href="#/games/{{game.uuid}}/builds"><i class="icon-chevron-right"></i> Builds</a></li>
-        <li><a href="#/games/{{game.uuid}}/venues"><i class="icon-chevron-right"></i> Venues</a><li>
-          <li><a href="#/games/{{game.uuid}}/developers"><i class="icon-chevron-right"></i> Developers</a><li>
-        <li class="nav-header">
-          Danger Zone:
-        </li>
-        <li><a ng-click="deleteGame(game.uuid)" ><i class="icon-warning-sign"></i> Delete</a></li>
-      </ul>
-    </div>
+<div ng-init="game = getGame(gameUuid)">
 
+  <div ng-include src="'partials/games/header.html'"></div>
+
+  <div id="masthead">
+
+    <div class="container">
+
+      <div class="masthead-pad">
+
+        <div class="masthead-text">
+          <h2>Overview</h2>
+          <p>What is happening with your game</p>
+        </div> <!-- /.masthead-text -->
+
+      </div>
+
+    </div> <!-- /.container -->
+
+  </div> <!-- /#masthead -->
+
+
+
+
+  <div id="content">
+
+    <div class="container">
+
+      <div class="row">
+        <div class="span12">
+
+          <div ng-show="game.configuration.type == 'initial'">
+            <h2>Get up and running in 3 easy steps</h2>
+            <ol>
+              <li>
+                Upload the latest <a href="/#/games/{{game.uuid}}/builds">build</a> of your game.
+              </li>
+              <li>
+                Configure the <a href="/#/games/{{game.uuid}}/venues">venues</a> you want your game to appear on.
+              </li>
+              <li>
+                Done.
+              </li>
+            </ol>
+          </div>
+
+          <div class="hero-unit">
+            <h1>{{game.name}}</h1>
+            <p>{{game.description}}</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
   </div>
 </div>

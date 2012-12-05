@@ -42,7 +42,7 @@ function NavigationCtrl($scope) {
   }
 
   $scope.navigations = [
-    {href: '#/games', label: 'Mission Kontrol'},
+    {href: '#/games', label: 'Overview'},
   ];
 }
 NavigationCtrl.$inject = ['$scope'];
@@ -52,6 +52,8 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
     $location.path('/');
     return;
   }
+
+  $scope.currentUrl = $location.path().substr(44, $location.path().length);
 
   $scope.venues = [
     {label: 'Facebook', id: 'facebook'},

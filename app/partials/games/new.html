@@ -1,37 +1,54 @@
-<div class="row">
+<div ng-init="game = getGame(gameUuid)">
 
-  <div class="span12">
-    <ul class="breadcrumb">
-        <li>
-          <a href="#/games">Dashboard</a> <span class="divider">/</span>
-        </li>
-        <li>
-        <li class="active">Set up a new Game</li>
-      </ul>
+  <div id="masthead">
 
-  </div>
+    <div class="container">
 
-  <div class="span6 offset3">
+      <div class="masthead-pad">
 
-    <div ng-controller="GamesCtrl" ng-init="game = {configuration: {type: 'initial'}}">
-      <form class="form-horizontal">
-        <legend>Add a game</legend>
-        <div class="control-group">
-          <label class="control-label" for="inputName">Name</label>
-          <div class="controls">
-            <input ng-model="game.name" type="text" id="inputName" placeholder="Name">
+        <div class="masthead-text">
+          <h2>Create a new game</h2>
+          <p>This is where you can...</p>
+        </div> <!-- /.masthead-text -->
+
+      </div>
+
+    </div> <!-- /.container -->
+
+  </div> <!-- /#masthead -->
+
+
+
+
+  <div id="content">
+
+    <div class="container">
+
+      <div class="row">
+        <div class="span6 offset3">
+
+          <div ng-init="game = {configuration: {type: 'initial'}}">
+            <form class="form-horizontal">
+              <legend>Add a game</legend>
+              <div class="control-group">
+                <label class="control-label" for="inputName">Name</label>
+                <div class="controls">
+                  <input ng-model="game.name" type="text" id="inputName" placeholder="Name">
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="inputDescription">Description</label>
+                <div class="controls">
+                  <textarea ng-model="game.description" id="inputDescription" placeholder="Description"></textarea>
+                </div>
+              </div>
+              <button ng-click="addGame(game)" class="btn btn-success">Save</button>
+              <a href="#/games" class="btn">Cancel</a>
+            </form>
           </div>
         </div>
-
-        <div class="control-group">
-          <label class="control-label" for="inputDescription">Description</label>
-          <div class="controls">
-            <textarea ng-model="game.description" id="inputDescription" placeholder="Description"></textarea>
-          </div>
-        </div>
-        <button ng-click="addGame(game)" class="btn btn-success">Save</button>
-        <a href="#/games" class="btn">Cancel</a>
-      </form>
+      </div>
     </div>
   </div>
 </div>

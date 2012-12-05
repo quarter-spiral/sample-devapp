@@ -1,55 +1,68 @@
-<div ng-controller="GamesCtrl" ng-init="game = getGame(gameUuid)">
+<div ng-init="game = getGame(gameUuid)">
+
+  <div ng-include src="'partials/games/header.html'"></div>
+
+  <div id="masthead">
+
+    <div class="container">
+
+      <div class="masthead-pad">
+
+        <div class="masthead-text">
+          <h2>Team</h2>
+          <p>Add and remove developers to this game</p>
+        </div> <!-- /.masthead-text -->
+
+      </div>
+
+    </div> <!-- /.container -->
+
+  </div> <!-- /#masthead -->
 
 
-  <div class="row">
 
-    <div class="span12">
-      <ul class="breadcrumb">
-        <li>
-          <a href="#/games/{{game.uuid}}">{{game.name}}</a> <span class="divider">/</span>
-        </li>
-        <li>
-        <li class="active">Developers</li>
-      </ul>
+
+  <div id="content">
+
+    <div class="container">
+
+      <div class="row">
+
+
+        <!--Members Section-->
+        <div class="span9">
+          <table class="table table-bordered table-striped table-highlight">
+            <thead>
+              <tr>
+                <th colspan="2">UUID</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="developer in game.developers">
+                <td>{{developer}}</td>
+                <td><a ng-click="removeDeveloper(gameUuid, developer)" class="pull-right"><i class="icon-remove-sign"></i> Remove</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+
+        <!--Add Member righthand column-->
+        <div class="span3">
+          <form ng-submit="addUser()" class="well">
+            <label for="inputNewDeveloper">Add a developer</label>
+            <input type="text" ng-model="newDeveloper" id="inputNewDeveloper" placeholder="Developer UUID" class="span2" />
+            <br><br>
+            <button class="btn btn-success" ng-click="addDeveloper(gameUuid, newDeveloper)"><i class="icon-plus icon-white"></i> Add Developer</button>
+          </form>
+        </div>
+
+
+
+      </div>
+
     </div>
-
-
-    <!--Members Section-->
-    <div class="span9">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th colspan="2">UUID</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="developer in game.developers">
-            <td>Name</td>
-            <td>Email</td>
-            <td>{{developer}}</td>
-            <td><a ng-click="removeDeveloper(gameUuid, developer)" class="pull-right"><i class="icon-remove-sign"></i> Remove</a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-
-
-    <!--Add Member righthand column-->
-    <div class="span3">
-      <form ng-submit="addUser()" class="well">
-        <label for="inputNewDeveloper">Add a developer</label>
-        <input type="text" ng-model="newDeveloper" id="inputNewDeveloper" placeholder="Developer UUID" class="span2" />
-        <br><br>
-        <button class="btn btn-success" ng-click="addDeveloper(gameUuid, newDeveloper)"><i class="icon-plus icon-white"></i> Add Developer</button>
-      </form>
-    </div>
-    
-
-
   </div>
-
 </div>
 

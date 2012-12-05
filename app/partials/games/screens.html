@@ -1,0 +1,58 @@
+<div ng-init="game = getGame(gameUuid)">
+
+  <div ng-include src="'partials/games/header.html'"></div>
+
+  <div id="masthead">
+
+    <div class="container">
+
+      <div class="masthead-pad">
+
+        <div class="masthead-text">
+          <h2>Details</h2>
+          <p>This is where you can...</p>
+        </div> <!-- /.masthead-text -->
+
+      </div>
+
+    </div> <!-- /.container -->
+
+  </div> <!-- /#masthead -->
+
+
+
+
+  <div id="content">
+
+    <div class="container">
+
+      <div class="row">
+
+
+        <div class="span12">
+          <form class="form-horizontal">
+
+            <div class="control-group">
+              <label class="control-label">Screenshots</label>
+              <div class="controls">
+                <ul>
+                  <li ng-repeat="screenshot in game.screenshots"><img src="{{screenshot.url}}" width="50" height="50"/> - {{screenshot.filename}} <a ng-click="removeScreenshot(game, screenshot)">x</a></li>
+                </ul>
+                <a class="btn btn-success" ng-click="addScreenshot(game)"><i class="icon-white icon-plus"></i> Add Screenshot</a>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="controls">
+                <button ng-click="updateGame(game)" class="btn btn-success">Update Details</button>
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

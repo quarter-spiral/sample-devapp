@@ -3,63 +3,83 @@
 <head>
   <meta charset="utf-8">
   <title>Mission Kontrol</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
   <meta name="description" content="">
   <meta name="author" content="">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/app.css"/>
+
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,800">
+  <link rel="stylesheet" href="css/font-awesome.css">
+
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/bootstrap-responsive.css">
+
+  <link rel="stylesheet" href="./css/ui-lightness/jquery-ui-1.8.21.custom.css">
+
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/pages/dashboard.css">
 
   <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 
-  <!-- Le fav and touch icons -->
-  <link rel="shortcut icon" href="../assets/ico/favicon.ico">
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+
 </head>
 <body>
 
-  <div class="navbar navbar-fixed-top navbar-inverse" ng-Controller="NavigationCtrl">
-    <div class="navbar-inner">
+  <div id="wrapper">
+
+
+    <div id="topbar">
+
       <div class="container">
-        <ul class="nav pull-right">
-          <li ng-show="loggedIn">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              <i class="icon-user icon-white"></i> {{currentUser.name}}
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" ng-controller="UserCtrl">
-              <li>
-                <a ng-click="logout()" style="">Log out</a>
-              </li>
-            </ul>
-          </li>
-          <li ng-hide="loggedIn">
-            <a class="" href="/auth/auth_backend"><i class="icon-user"></i> Log in</a>
-          </li>
-        </ul>
 
-        <ul class="nav" ng-show="loggedIn">
-          <li ng-repeat="navigation in navigations" ng-class="{'active': activeNavigation() == navigation.href}">
-            <a href="{{navigation.href}}">{{navigation.label}}</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+        <a href="javascript:;" id="menu-trigger" class="dropdown-toggle" data-toggle="dropdown" data-target="#">
+          <i class="icon-cog"></i>
+        </a>
+
+        <div id="top-nav">
+
+          <ul>
+            <li class="dropdown" ng-show="loggedIn">
+              <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                Select Game
+                <b class="caret"></b>
+              </a>
+
+              <ul class="dropdown-menu pull-right" ng-Controller="NavigationCtrl">
+                <li ng-repeat="navigation in navigations">
+                  <a href="{{navigation.href}}"><i class="icon-home"></i> {{navigation.label}}</a>
+                </li>
+                <li class="divider"></li>
+                <li ng-repeat="game in games | orderBy:name" >
+                  <a href="#/games/{{game.uuid}}">{{game.name}}</a>
+                </li>
+                <li class="divider"></li>
+                <li ng-show="loggedIn"><a href="#/games/new"><i class="icon-plus-sign"></i> Add a new game</a></li>
+              </ul>
+            </li>
+            <li ng-show="loggedIn"><a href="#/games/new"><i class="icon-plus-sign"></i> Add a new game</a></li>
+          </ul>
+
+          <ul class="pull-right">
+            <li ng-show="loggedIn"><a href="javascript:;"><i class="icon-user"></i> Logged in as {{currentUser.name}}</a></li>
+            <li ng-controller="UserCtrl" ng-show="loggedIn"><a ng-click="logout()" style=""><i class=" icon-signout"></i> Log out</a></li>
+            <li ng-hide="loggedIn"><a href="/auth/auth_backend" style=""><i class=" icon-signin"></i> Log in</a></li>
+          </ul>
+
+        </div> <!-- /#top-nav -->
+
+      </div> <!-- /.container -->
+
+    </div> <!-- /#topbar -->
 
 
-  <div id="content">
+    <div ng-view></div>
 
-    <div class="container">
-
-      <div ng-view></div>
-
-    </div>
 
   </div>
 
@@ -132,7 +152,10 @@
   <script src="js/filepicker.js"></script>
 
   <script src="lib/misc/jquery-1.8.0.js"></script>
-  <script src="lib/misc/bootstrap.min.js"></script>
+  <script src="js/libs/bootstrap.js"></script>
   <script src="lib/misc/porthole.min.js"></script>
+
+  <script src="js/libs/modernizr-2.5.3.min.js"></script>
+
 </body>
 </html>

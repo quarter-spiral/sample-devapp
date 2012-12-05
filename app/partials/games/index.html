@@ -1,31 +1,45 @@
-<div ng-controller="GamesCtrl" ng-init="getGames()">
+<div ng-init="getGames()">
 
-  <div class="row">
+  <div id="masthead">
 
-    <div class="span9">
+    <div class="container">
 
-      <div class="hero-unit">
+      <div class="masthead-pad">
 
-        <h1>Mission Kontrol</h1>
+        <div class="masthead-text">
+          <h2>Welcome to Mission Kontrol</h2>
+          <p>Manage your games.</p>
+        </div> <!-- /.masthead-text -->
 
-        <p>Manage your games.</p>
+      </div>
+
+    </div> <!-- /.container -->
+
+  </div> <!-- /#masthead -->
+
+
+
+
+  <div id="content">
+
+    <div class="container">
+
+      <div class="row">
+
+        <div class="span12">
+
+          <ul class="nav nav-tabs nav-stacked">
+            <li ng-repeat="game in games | orderBy:name" >
+              <a href="#/games/{{game.uuid}}">{{game.name}}</a>
+            </li>
+          </ul>
+
+          <a href="#/games/new" class="btn">Add a new game...</a>
+
+        </div>
 
       </div>
 
     </div>
-
-    <div class="span3">
-
-      <ul class="nav nav-tabs nav-stacked">
-        <li ng-repeat="game in games | orderBy:name" >
-          <a href="#/games/{{game.uuid}}">{{game.name}}</a>
-        </li>
-      </ul>
-
-      <a href="#/games/new" class="btn">Add a new game...</a>
-
-    </div>
-
   </div>
-
 </div>

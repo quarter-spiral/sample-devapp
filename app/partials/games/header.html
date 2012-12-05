@@ -1,0 +1,98 @@
+<div id="header" ng-show="loggedIn">
+
+      <div class="container">
+
+        <a href="./index.html" class="brand">Dashboard Admin</a>
+
+        <a href="javascript:;" class="btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <i class="icon-reorder"></i>
+            </a>
+
+        <div class="nav-collapse">
+          <ul id="main-nav" class="nav pull-right">
+            <li ng-class="{active: currentUrl == ''}">
+              <a href="#/games/{{game.uuid}}">
+                <i class="icon-home"></i>
+                <span>Overview</span>
+              </a>
+            </li>
+
+            <li ng-class="{active: currentUrl == 'insights'}">
+              <a href="#/games/{{game.uuid}}/insights">
+                <i class="icon-bar-chart"></i>
+                <span>Insights</span>
+              </a>
+            </li>
+
+            <li class="dropdown" ng-class="{active: currentUrl == 'builds'||currentUrl == 'screens'}">
+              <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-cloud"></i>
+                <span>Files</span>
+                <b class="caret"></b>
+              </a>
+
+              <ul class="dropdown-menu">
+                <li ng-class="{active: currentUrl == 'builds'}">
+                  <a href="#/games/{{game.uuid}}/builds">
+                    <i class="icon-upload-alt"></i>
+                    <span>Builds</span>
+                  </a>
+                </li>
+                <li ng-class="{active: currentUrl == 'screens'}">
+                  <a href="#/games/{{game.uuid}}/screens">
+                    <i class="icon-picture"></i>
+                    <span>Media</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+
+
+
+
+
+
+            <li class="dropdown" ng-class="{active: currentUrl == 'details'||currentUrl == 'venues'||currentUrl == 'developers'}">
+              <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-cogs"></i>
+                <span>Settings</span>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li ng-class="{active: currentUrl == 'details'}">
+                  <a href="#/games/{{game.uuid}}/details">
+                    <i class="icon-home"></i>
+                    <span>Name &amp; Description</span>
+                  </a>
+                </li>
+                <li ng-class="{active: currentUrl == 'venues'}">
+                  <a href="#/games/{{game.uuid}}/venues">
+                    <i class="icon-sitemap"></i>
+                    <span>Venues</span>
+                  </a>
+                </li>
+                <li ng-class="{active: currentUrl == 'developers'}">
+                  <a href="#/games/{{game.uuid}}/developers">
+                    <i class="icon-group"></i>
+                    <span>Team</span>
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li class="">
+                  <a g-click="deleteGame(game.uuid)">
+                    <i class="icon-trash"></i>
+                    <span>Delete {{game.name}}</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+
+          </ul>
+
+        </div> <!-- /.nav-collapse -->
+
+      </div> <!-- /.container -->
+
+    </div> <!-- /#header -->
