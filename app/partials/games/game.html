@@ -27,27 +27,51 @@
     <div class="container">
 
       <div class="row">
-        <div class="span12">
+
+        <div class="span6 offset3">
 
           <div ng-show="game.configuration.type == 'initial'">
             <h2>Get up and running in 3 easy steps</h2>
             <ol>
               <li>
-                Upload the latest <a href="/#/games/{{game.uuid}}/builds">build</a> of your game.
+                Upload your game in <strong>Files > <a href="/#/games/{{game.uuid}}/builds">Builds</a></strong>.
               </li>
               <li>
-                Configure the <a href="/#/games/{{game.uuid}}/venues">venues</a> you want your game to appear on.
+                Decide where you want your game to appear in <strong>Settings > <a href="/#/games/{{game.uuid}}/venues">Venues</a></strong>.
               </li>
               <li>
-                Done.
+                All done. Ready to play!
               </li>
             </ol>
           </div>
 
-          <div class="hero-unit">
-            <h1>{{game.name}}</h1>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="span3">
+          <h2>Active Venues</h2>
+          <div ng-repeat="venue in venues" ng-show="game.venues[venue.id].enabled">
+            {{venue.label}}
+          </div>
+          <a href="#/games/{{game.uuid}}/venues">Add more</a>
+        </div>
+
+        <div class="span3">
+          <h2>Team </h2>
+          <div>{{game.developers.length}}</div>
+           <a href="#/games/{{game.uuid}}/developers">Manage</a>
+        </div>
+
+        <div class="span3">
+          <h2>About</h2>
+          <div>
+            <h3>{{game.name}}</h3>
             <p>{{game.description}}</p>
           </div>
+          <a href="#/games/{{game.uuid}}/details">Edit Title &amp; Description</a>
         </div>
 
       </div>

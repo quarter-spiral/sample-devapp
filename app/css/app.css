@@ -1,6 +1,5 @@
 .hero-unit.stars{background:#000000 url('../img/stars.jpg') no-repeat right bottom;color:#FFF;-moz-text-shadow:0px 1px 3px #000000;-webkit-text-shadow:0px 1px 3px #000000;text-shadow:0px 1px 3px #000000;-moz-box-shadow:0px 1px 2px rgba(0, 0, 0, 0.8);-webkit-box-shadow:0px 1px 2px rgba(0, 0, 0, 0.8);box-shadow:0px 1px 2px rgba(0, 0, 0, 0.8);text-align:center;}.hero-unit.stars p{color:#FF6;}
-body.iframe{overflow:hidden;background-image:none;background-color:#EEE;padding:0;margin:0;}
-#footer{padding:60px 0px 60px 0px;color:#AAA;border-top:3px solid #000;background-image:linear-gradient(bottom, #000000 0%, rgba(0, 0, 0, 0.4) 100%);background-image:-o-linear-gradient(bottom, #000000 0%, rgba(0, 0, 0, 0.4) 100%);background-image:-moz-linear-gradient(bottom, #000000 0%, rgba(0, 0, 0, 0.4) 100%);background-image:-webkit-linear-gradient(bottom, #000000 0%, rgba(0, 0, 0, 0.4) 100%);background-image:-ms-linear-gradient(bottom, #000000 0%, rgba(0, 0, 0, 0.4) 100%);}#footer ul{list-style:none;margin:0px;padding:0px 10px 0px 0px;border-right:2px solid #333;}#footer ul li{margin-bottom:0.5em;}
+#footer{padding:60px 0px 60px 0px;}#footer ul{list-style:none;margin:0px;padding:0px 10px 0px 0px;}#footer ul li{margin-bottom:0.5em;}
 #footer p{font-size:0.9em;}
 .venue{margin-bottom:20px;border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;border:1px solid #CCC;}.venue .description{color:#668284;}
 .venue .box{padding:30px 80px 20px 40px;border-right:1px dashed #DDD;}.venue .box ul{margin-left:0px;list-style:none;}
@@ -12,3 +11,4 @@ body.iframe{overflow:hidden;background-image:none;background-color:#EEE;padding:
 #inactiveVenues ul li:first-child{border-top:0px;}
 #inactiveVenues ul .title{display:block;font-weight:bold;font-size:1em;}
 #inactiveVenues ul .description{display:block;color:#666;margin-bottom:1em;}
+#header .brand{position:relative;top:24px;display:block;overflow:hidden;width:auto !important;height:32px;line-height:32px !important;margin:0px 0px 0px 0px !important;color:#FFF;font-size:18px;font-weight:normal !important;background:none !important;text-shadow:1px 1px 2px rgba(0, 0, 0, 0.5);}
