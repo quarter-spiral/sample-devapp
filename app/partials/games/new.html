@@ -7,8 +7,8 @@
       <div class="masthead-pad">
 
         <div class="masthead-text">
-          <h2>Create a new game</h2>
-          <p>This is where you can...</p>
+          <h2>Setup a new game</h2>
+          <p>Let's start with the name and a description</p>
         </div> <!-- /.masthead-text -->
 
       </div>
@@ -25,26 +25,28 @@
     <div class="container">
 
       <div class="row">
-        <div class="span6 offset3">
+        <div class="span12">
 
           <div ng-init="game = {configuration: {type: 'initial'}}">
             <form class="form-horizontal">
-              <legend>Add a game</legend>
               <div class="control-group">
                 <label class="control-label" for="inputName">Name</label>
                 <div class="controls">
-                  <input ng-model="game.name" type="text" id="inputName" placeholder="Name">
+                  <input ng-model="game.name" type="text" id="inputName" placeholder="Name" class="span5">
                 </div>
               </div>
 
               <div class="control-group">
                 <label class="control-label" for="inputDescription">Description</label>
                 <div class="controls">
-                  <textarea ng-model="game.description" id="inputDescription" placeholder="Description"></textarea>
+                  <textarea ng-model="game.description" id="inputDescription" placeholder="Description" rows="6" class="span5"></textarea>
                 </div>
               </div>
-              <button ng-click="addGame(game)" class="btn btn-success">Save</button>
-              <a href="#/games" class="btn">Cancel</a>
+              <div class="control-group">
+                <div class="controls">
+                  <button ng-click="addGame(game)" class="btn btn-success">Continue</button>
+                </div>
+              </div>
             </form>
           </div>
         </div>

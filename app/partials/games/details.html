@@ -9,8 +9,8 @@
       <div class="masthead-pad">
 
         <div class="masthead-text">
-          <h2>Details</h2>
-          <p>This is where you can...</p>
+          <h2>Name &amp; Description</h2>
+          <p>The name and description may be what players see first. Make it count.</p>
         </div> <!-- /.masthead-text -->
 
       </div>
@@ -34,20 +34,20 @@
             <div class="control-group">
               <label class="control-label" for="inputName">Name</label>
               <div class="controls">
-                <input ng-model="game.name" type="text" id="inputName" placeholder="Name">
+                <input ng-model="game.name" type="text" id="inputName" placeholder="Name" class="span5">
               </div>
             </div>
 
             <div class="control-group">
               <label class="control-label" for="inputDescription">Description</label>
               <div class="controls">
-                <textarea ng-model="game.description" id="inputDescription" placeholder="Description"></textarea>
+                <textarea ng-model="game.description" id="inputDescription" placeholder="Description" rows="6" class="span5"></textarea>
               </div>
             </div>
 
             <div class="control-group">
               <div class="controls">
-                <button ng-click="updateGame(game)" class="btn btn-success">Update Details</button>
+                <button ng-click="updateGame(game)" class="btn btn-success">Update</button>
               </div>
             </div>
 

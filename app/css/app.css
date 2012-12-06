@@ -19,3 +19,4 @@ table#venuesTable td{width:20%;white-space:nowrap;}
 .titleDescription p{font-size:1.4em;line-height:1.5em;}
 #rampUp ol{font-size:1.3em;}#rampUp ol li{line-height:1.5em;margin-bottom:0.5em;}
 .row{margin-top:0px !important;}
+.steps{font-size:1.2em;}.steps li{margin:0 0 1.5em 0px;}.steps li input{margin-top:0.5em;}
