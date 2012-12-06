@@ -76,7 +76,7 @@
             <h2>Current Venues</h2>
             <ul class="nav nav-tabs nav-stacked">
               <li ng-repeat="venue in venues" ng-show="game.venues[venue.id].enabled && game.venues[venue.id].computed.ready">
-                <a href="#">{{venue.label}}</a>
+                <a href="{{game.uuid|canvasUrl:venue.id}}">{{venue.label}}</a>
               </li>
             </ul>
             <a href="#/games/{{game.uuid}}/venues"><i class="icon-sitemap"></i> Manage Venues</a>

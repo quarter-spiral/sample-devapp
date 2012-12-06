@@ -48,7 +48,6 @@
             </li>
 
 
-
             <li class="dropdown" ng-class="{active: currentUrl == 'details'||currentUrl == 'venues'||currentUrl == 'developers'||currentUrl == 'venues/facebook'}">
               <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="icon-cogs"></i>
@@ -76,7 +75,7 @@
                 </li>
                 <li class="divider"></li>
                 <li class="">
-                  <a g-click="deleteGame(game.uuid)">
+                  <a ng-click="deleteGame(game.uuid)">
                     <i class="icon-trash"></i>
                     <span>Delete {{game.name}}</span>
                   </a>

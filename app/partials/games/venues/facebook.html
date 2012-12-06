@@ -12,7 +12,6 @@
         <h2><a href="#/games/{{game.uuid}}/venues">Venues</a> / Facebook</h2>
         <p>Setup your Facebook application</p>
       </div> <!-- /.masthead-text -->
-
     </div>
 
   </div> <!-- /.container -->
@@ -32,7 +31,7 @@
         <ol class="steps">
 
           <li>Enter this URL into the URL field of your Facebook Application
-            <div><input type="text" value="<%= ENV['QS_CANVAS_APP_URL'] %>/v1/games/{{game.uuid}}/facebook" id="inputAppId" class="span6" readonly="readonly" /></div>
+            <div><input type="text" value="{{game.uuid|canvasUrl:'facebook'}}?" id="inputAppId" class="span6" readonly="readonly" /></div>
 
           </li>
 
