@@ -28,17 +28,19 @@
 
       <div class="row">
         <!--Members Section-->
-        <div class="span9">
+        <div class="span12">
           <table class="table table-striped table-bordered">
             <thead>
               <tr>
-                <th colspan="2">UUID</th>
+                <th>Developer UUID</th>
               </tr>
             </thead>
             <tbody>
               <tr ng-repeat="developer in game.developers">
-                <td>{{developer}}</td>
-                <td><a ng-click="removeDeveloper(gameUuid, developer)" class="pull-right btn btn-mini">Remove</a></td>
+                <td>
+                  {{developer}}
+                  <a ng-click="removeDeveloper(gameUuid, developer)" class="pull-right btn btn-small">Remove</a>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -47,12 +49,15 @@
 
 
         <!--Add Member righthand column-->
-        <div class="span3">
+        <div class="span12">
           <form ng-submit="addUser()">
-            <label for="inputNewDeveloper">Add a developer</label>
-            <input type="text" ng-model="newDeveloper" id="inputNewDeveloper" placeholder="Developer UUID" class="span2" />
-            <br><br>
-            <button class="btn btn-success" ng-click="addDeveloper(gameUuid, newDeveloper)"><i class="icon-plus icon-white"></i> Add Developer</button>
+            <div>
+              <label for="inputNewDeveloper">Add a developer</label>
+              <input type="text" ng-model="newDeveloper" id="inputNewDeveloper" placeholder="Developer UUID" class="span6" />
+            </div>
+            <div>
+              <button class="btn btn-primary" ng-click="addDeveloper(gameUuid, newDeveloper)">Add Developer</button>
+            </div>
           </form>
         </div>
 

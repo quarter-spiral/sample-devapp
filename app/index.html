@@ -43,28 +43,26 @@
 
         <div id="top-nav">
 
-          <ul>
+          <ul ng-Controller="NavigationCtrl">
+            <li ng-repeat="navigation in navigations">
+                <a href="{{navigation.href}}"><i class="icon-th-list"></i> Mission Kontrol</a>
+            </li>
             <li class="dropdown" ng-show="loggedIn">
               <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
                 Select Game
                 <b class="caret"></b>
               </a>
 
-              <ul class="dropdown-menu pull-right" ng-Controller="NavigationCtrl">
-                <li ng-repeat="navigation in navigations">
-                  <a href="{{navigation.href}}"><i class="icon-th-list"></i> {{navigation.label}}</a>
-                </li>
-                <li class="divider"></li>
-                <div ng-controller="GamesCtrl" ng-init="getGames()">
+              <ul ng-controller="GamesCtrl" class="dropdown-menu pull-right" >
+                <div  ng-init="getGames()">
                   <li ng-repeat="game in games | orderBy:name" >
                     <a href="#/games/{{game.uuid}}"><i class="icon-dashboard"></i> {{game.name}}</a>
                   </li>
                 </div>
-                <li class="divider"></li>
+                <li class="divider" ng-show="games.length > 0"></li>
                 <li ng-show="loggedIn"><a href="#/games/new"><i class="icon-plus-sign"></i> Add a new game</a></li>
               </ul>
             </li>
-            <li ng-show="loggedIn"><a href="#/games/new"><i class="icon-plus-sign"></i> Add a new game</a></li>
           </ul>
 
           <ul class="pull-right">

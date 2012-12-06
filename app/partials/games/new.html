@@ -1,54 +1,50 @@
-<div ng-init="game = getGame(gameUuid)">
 
-  <div id="masthead">
+<div id="masthead">
 
-    <div class="container">
+  <div class="container">
 
-      <div class="masthead-pad">
+    <div class="masthead-pad">
 
-        <div class="masthead-text">
-          <h2>Setup a new game</h2>
-          <p>Let's start with the name and a description</p>
-        </div> <!-- /.masthead-text -->
+      <div class="masthead-text">
+        <h2>Setup a new game</h2>
+        <p>Let's start with the name and a description</p>
+      </div> <!-- /.masthead-text -->
 
-      </div>
+    </div>
 
-    </div> <!-- /.container -->
+  </div> <!-- /.container -->
 
-  </div> <!-- /#masthead -->
-
+</div> <!-- /#masthead -->
 
 
+<div id="content">
 
-  <div id="content">
+  <div class="container">
 
-    <div class="container">
+    <div class="row">
+      <div class="span12">
 
-      <div class="row">
-        <div class="span12">
-
-          <div ng-init="game = {configuration: {type: 'initial'}}">
-            <form class="form-horizontal">
-              <div class="control-group">
-                <label class="control-label" for="inputName">Name</label>
-                <div class="controls">
-                  <input ng-model="game.name" type="text" id="inputName" placeholder="Name" class="span5">
-                </div>
+        <div ng-init="game = {configuration: {type: 'initial'}}">
+          <form class="form-horizontal">
+            <div class="control-group">
+              <label class="control-label" for="inputName">Name</label>
+              <div class="controls">
+                <input ng-model="game.name" type="text" id="inputName" placeholder="Name" class="span5">
               </div>
+            </div>
 
-              <div class="control-group">
-                <label class="control-label" for="inputDescription">Description</label>
-                <div class="controls">
-                  <textarea ng-model="game.description" id="inputDescription" placeholder="Description" rows="6" class="span5"></textarea>
-                </div>
+            <div class="control-group">
+              <label class="control-label" for="inputDescription">Description</label>
+              <div class="controls">
+                <textarea ng-model="game.description" id="inputDescription" placeholder="Description" rows="6" class="span5"></textarea>
               </div>
-              <div class="control-group">
-                <div class="controls">
-                  <button ng-click="addGame(game)" class="btn btn-success">Continue</button>
-                </div>
+            </div>
+            <div class="control-group">
+              <div class="controls">
+                <button ng-click="addGame(game)" class="btn btn-success">Continue</button>
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
