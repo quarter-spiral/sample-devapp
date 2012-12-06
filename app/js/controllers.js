@@ -152,6 +152,7 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
     if (index >= 0) {
       game.screenshots.splice(index, 1);
     }
+    $scope.updateGame(game);
   };
 
   $scope.addScreenshot = function(game) {
