@@ -30,21 +30,29 @@
 
 
         <div class="span12">
-          <form class="form-horizontal">
+          <h2>Screenshots</h2>
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>Preview</th>
+                <th>Filename</th>
+              </tr>
+            </thead>
+            <tr ng-repeat="screenshot in game.screenshots">
+              <td>
+                <img src="{{screenshot.url}}" width="50" height="50"/>
+              </td>
+              <td>
+                {{screenshot.filename}}
+                <a ng-click="removeScreenshot(game, screenshot)" class="btn btn-small pull-right">Remove</a>
+              </td>
+            </tr>
+          </table>
+          <form class="form">
 
             <div class="control-group">
-              <label class="control-label">Screenshots</label>
               <div class="controls">
-                <ul>
-                  <li ng-repeat="screenshot in game.screenshots"><img src="{{screenshot.url}}" width="50" height="50"/> - {{screenshot.filename}} <a ng-click="removeScreenshot(game, screenshot)">x</a></li>
-                </ul>
-                <a class="btn btn-success" ng-click="addScreenshot(game)"><i class="icon-white icon-plus"></i> Add Screenshot</a>
-              </div>
-            </div>
-
-            <div class="control-group">
-              <div class="controls">
-                <button ng-click="updateGame(game)" class="btn btn-success">Update Details</button>
+                <a class="btn" ng-click="addScreenshot(game)">Add Screenshot</a>
               </div>
             </div>
 

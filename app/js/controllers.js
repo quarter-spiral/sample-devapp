@@ -161,6 +161,7 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
       }, function(fpfile) {
         game.screenshots.push({url: fpfile.url, filename: fpfile.filename})
         $scope.$apply();
+        $scope.updateGame(game);
       }
     );
   };
