@@ -14,7 +14,8 @@
         </div> <!-- /.masthead-text -->
 
         <div class="masthead-text" ng-hide="game.configuration.type == 'initial'">
-          <h2>Overview</h2>
+          <h2>Dashboard</h2>
+          <p>Everything you need to manage your game</p>
         </div> <!-- /.masthead-text -->
 
       </div>
@@ -53,29 +54,25 @@
 
         <div ng-hide="game.configuration.type == 'initial'">
 
-          <div class="span8">
-            <h2>About</h2>
-            <div class="row">
-              <div class="span4">
-                <p ng-show="game.screenshots.length > 0" class="teaserArt" style="background-image: url({{game.screenshots[0].url}});">
-                </p>
-                <p ng-hide="game.screenshots.length > 0" class="teaserArt">
-                  You have not added any Screenshots yet
-                </p>
-                <a href="#/games/{{game.uuid}}/screens"><i class="icon-picture"></i> Manage Media</a>
-              </div>
 
-              <div class="span4">
-                <div class="titleDescription">
-                  <h3>{{game.name}}</h3>
-                  <p>{{game.description}}</p>
-                </div>
-                <a href="#/games/{{game.uuid}}/details"><i class="icon-wrench"></i> Edit Title or Description</a>
-              </div>
-            </div>
+          <div class="span4">
+            <p ng-show="game.screenshots.length > 0" class="teaserArt" style="background-image: url({{game.screenshots[0].url}});">
+            </p>
+            <p ng-hide="game.screenshots.length > 0" class="teaserArt">
+              You have not added any Screenshots yet
+            </p>
+            <a href="#/games/{{game.uuid}}/screens"><i class="icon-picture"></i> Manage Media</a>
           </div>
 
           <div class="span4">
+            <div class="titleDescription">
+              <h2>{{game.name}}</h2>
+              <p>{{game.description}}</p>
+            </div>
+            <a href="#/games/{{game.uuid}}/details"><i class="icon-wrench"></i> Edit Title or Description</a>
+          </div>
+
+          <div class="span3 offset1">
             <h2>Current Venues</h2>
             <ul class="nav nav-tabs nav-stacked">
               <li ng-repeat="venue in venues" ng-show="game.venues[venue.id].enabled && game.venues[venue.id].computed.ready">

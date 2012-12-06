@@ -56,14 +56,14 @@
 
               <td>
                 <span class="warning" ng-show="!game.venues[venue.id].computed.ready && game.venues[venue.id].enabled"><i class=" icon-warning-sign"></i> Not Configured!</span>
-                <span ng-show="game.venues[venue.id].computed.ready && game.venues[venue.id].enabled"><i class="icon-ok"></i> OK</span>
+                <span ng-show="game.venues[venue.id].computed.ready && game.venues[venue.id].enabled"><i class="icon-ok"></i> Active</span>
               </td>
 
               <td>
                 <a href="#/games/{{game.uuid}}/venues/facebook" ng-show="venue.id == 'facebook'">Configuration</a>
               </td>
               <td>
-                <a href="https://www.facebook.com/apps/application.php?id={{game.venues[venue.id]['app-id']}}" ng-show="game.venues[venue.id].computed.ready && game.venues[venue.id].enabled && ">Open</a>
+                <a href="https://www.facebook.com/apps/application.php?id={{game.venues[venue.id]['app-id']}}" ng-show="game.venues[venue.id].computed.ready && game.venues[venue.id].enabled">Open</a>
               </td>
             </tr>
           </tbody>

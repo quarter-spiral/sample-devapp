@@ -10,7 +10,7 @@
 
         <div class="nav-collapse">
           <ul id="main-nav" class="nav pull-right">
-            <li ng-class="{active: currentUrl == ''}">
+            <li class="nav-icon" ng-class="{active: currentUrl == ''}">
               <a href="#/games/{{game.uuid}}">
                 <i class="icon-home"></i>
                 <span>Overview</span>
@@ -49,11 +49,7 @@
 
 
 
-
-
-
-
-            <li class="dropdown" ng-class="{active: currentUrl == 'details'||currentUrl == 'venues'||currentUrl == 'developers'}">
+            <li class="dropdown" ng-class="{active: currentUrl == 'details'||currentUrl == 'venues'||currentUrl == 'developers'||currentUrl == 'venues/facebook'}">
               <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="icon-cogs"></i>
                 <span>Settings</span>

@@ -54,6 +54,7 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
   }
 
   $scope.currentUrl = $location.path().substr(44, $location.path().length);
+  $scope.QS_CANVAS_APP_URL = '';
 
   $scope.venues = [
     {label: 'Facebook', id: 'facebook'},
@@ -178,13 +179,3 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
 }
 GamesCtrl.$inject = ['$scope', '$location', '$route', 'user', 'devcenterClient'];
 
-function VenuesCtrl($scope) {
-  $scope.showConfig = function(venue, game) {
-    return venue.showConfig;
-  }
-
-  $scope.toggleConfig = function(venue) {
-    venue.showConfig = !venue.showConfig;
-  }
-}
-VenuesCtrl.$inject = ['$scope'];
