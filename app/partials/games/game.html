@@ -79,10 +79,6 @@
           <p class="mini-graph">Grouped Bar Chart by Venue</p>
         </div>
 
-        <div class="span12">
-          <p><a href="#"><i class="icon-bar-chart"></i> More Insights</a>
-        </div>
-
       </div>
 
 
@@ -90,20 +86,20 @@
 
       <div class="row" ng-hide="game.configuration.type == 'initial'">
 
+        <div class="span12">
+          <h3>{{game.name}}</h3>
+        </div>
+
         <div class="span3">
           <p ng-show="game.screenshots.length > 0" class="teaserArt" style="background-image: url({{game.screenshots[0].url}});">
           </p>
           <p ng-hide="game.screenshots.length > 0" class="teaserArt">
-            You have not added any Screenshots yet
+            No Screenshots yet. <a href="#/games/{{game.uuid}}/screens"> Add one now</a>
           </p>
-          <a href="#/games/{{game.uuid}}/screens"><i class="icon-picture"></i> Manage Media</a>
         </div>
 
         <div class="span5">
-          <div class="titleDescription">
-            <h3>{{game.name}}</h3>
-            <p>{{game.description}}</p>
-          </div>
+          <p class="large">{{game.description}}</p>
           <ul class="nav nav-pills">
             <li ng-repeat="venue in venues" ng-show="game.venues[venue.id].enabled && game.venues[venue.id].computed.ready">
               <a href="{{game.uuid|canvasUrl:venue.id}}">{{venue.label}}</a>
