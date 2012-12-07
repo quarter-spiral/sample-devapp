@@ -157,5 +157,519 @@
 
   <script src="js/libs/modernizr-2.5.3.min.js"></script>
 
+  <script src="js/libs/flotr2.min.js"></script>
+
+
+
+
+
+  <script type="text/javascript">
+
+
+  function generic_graph(element, data, parameters) {
+
+    container = document.getElementById(element);
+
+    Flotr.draw(container, data, parameters);
+
+  }
+
+
+
+
+
+  function ltvGraph() {
+
+    // LTV graph insights.html
+
+    var
+      element = "ltv-graph",
+      d1 = [],
+      i,
+      point,
+      parameters;
+
+    // set up fake data
+
+    for (i = 0; i < 30; i++) {
+
+      point = [i, Math.random()*0.1+2-i*0.005];
+
+      d1.push(point);
+
+    };
+
+    // graph paramentes
+
+    parameters = {
+        HtmlText: false,
+        legend:{
+          position:'sw'
+        },
+        mouse: {
+          track: true,
+          relative: true
+        },
+        yaxis: {
+          min: 0,
+          autoscaleMargin: 1,
+          showLabels: true,
+          title: '$US'
+        },
+        xaxis: {
+          showLabels: true,
+          title: 'Time',
+          tickDecimals: 0
+        },
+        grid: {
+          verticalLines: false,
+          horizontalLines: true,
+          outlineWidth: 1,
+          outline: 'sw'
+        }
+      }
+
+
+    // render graph
+
+    generic_graph(element, [{data:d1, label:"LTV"}], parameters);
+
+  }
+
+
+
+
+  function retentionGraph() {
+
+
+    // Retention graph insights.html
+
+    var
+      element = "retention-graph",
+      d1 = [],
+      d2 = [],
+      d3 = [],
+      i,
+      point,
+      parameters;
+
+    // set up fake data
+
+    for (i = 0; i < 30; i++) {
+
+      point = [i, Math.random()*2+12];
+      d1.push(point);
+      point = [i, Math.random()*0.5+5+i*0.04];
+      d2.push(point);
+      point = [i, Math.random()*0.2+3];
+      d3.push(point);
+
+    };
+
+    // graph paramentes
+
+    parameters = {
+        HtmlText: false,
+        legend:{
+          position:'sw'
+        },
+        mouse: {
+          track: true,
+          relative: true
+        },
+        yaxis: {
+          min: 0,
+          autoscaleMargin: 1,
+          showLabels: true,
+          title: 'Percentage'
+        },
+        xaxis: {
+          showLabels: true,
+          title: 'Time',
+          tickDecimals: 0
+        },
+        grid: {
+          verticalLines: false,
+          horizontalLines: true,
+          outlineWidth: 1,
+          outline: 'sw'
+        }
+      }
+
+
+    // render graph
+
+    generic_graph(element,[{data:d1,label:"Day 2 Retention"},{data:d2,label:"Week 2 Retention"},{data:d3,label:"Month 2 Retention"}], parameters);
+
+  }
+
+
+
+
+  function engagementGraph() {
+
+
+    // Engagment graph insights.html
+
+    var
+      element = "dau-graph",
+      d1 = [],
+      d2 = [],
+      d3 = [],
+      d4 = [],
+      i,
+      point,
+      parameters;
+
+    // set up fake data
+
+    for (i = 0; i < 30; i++) {
+
+      point = [i, Math.random()*1000+6000+i*200];
+      d1.push(point);
+      point = [i, Math.random()*2000+20000+i*500];
+      d2.push(point);
+      point = [i, Math.random()*3000+30000+i*1000];
+      d3.push(point);
+      point = [i, Math.random()*500+3000-i*50];
+      d4.push(point);
+
+    };
+
+    // graph paramentes
+
+    parameters = {
+        HtmlText: false,
+        legend:{
+          position:'sw'
+        },
+        mouse: {
+          track: true,
+          relative: true
+        },
+        yaxis: {
+          min: 0,
+          autoscaleMargin: 1,
+          showLabels: true,
+          title: 'Players'
+        },
+        xaxis: {
+          showLabels: true,
+          title: 'Time',
+          tickDecimals: 0
+        },
+        grid: {
+          verticalLines: false,
+          horizontalLines: true,
+          outlineWidth: 1,
+          outline: 'sw'
+        }
+      }
+
+
+    // render graph
+
+    generic_graph(element,[{data:d1,label:"DAU"},{data:d2,label:"WAU"},{data:d3,label:"MAU"},{data:d4,label:"Deactivations"}], parameters);
+
+  }
+
+
+
+
+  function spendGraph() {
+
+    // Spend graph insights.html
+
+    var
+      element = "spend-graph",
+      d1 = [],
+      d2 = [],
+      i,
+      point,
+      parameters;
+
+    // set up fake data
+
+    for (i = 0; i < 30; i++) {
+
+      point = [i, Math.random()*0.02+0.02];
+      d1.push(point);
+      point = [i, Math.random()*0.05+i*0.01];
+      d2.push(point);
+    };
+
+    // graph paramentes
+
+    parameters = {
+        HtmlText: false,
+        legend:{
+          position:'sw'
+        },
+        mouse: {
+          track: true,
+          relative: true
+        },
+        yaxis: {
+          min: 0,
+          autoscaleMargin: 1,
+          showLabels: true,
+          title: '$US',
+          tickDecimals: 3
+        },
+        y2axis: {
+          min: 0,
+          autoscaleMargin: 1,
+          showLabels: true,
+          title: 'Percentage',
+          tickDecimals: 2
+        },
+        xaxis: {
+          showLabels: true,
+          title: 'Time',
+          tickDecimals: 0
+        },
+        grid: {
+          verticalLines: false,
+          horizontalLines: true,
+          outlineWidth: 1,
+          outline: 'swe'
+
+        }
+      }
+
+
+    // render graph
+
+    generic_graph(element,[{data:d1,label:"ARPU"},{data:d2,label:"Payer Percentage",yaxis:2}], parameters);
+
+  }
+
+
+
+
+
+
+  function comparisonGraphs() {
+
+    // Mini grpahs in insights.html
+
+    var
+      d1 = [],
+      xticks = [],
+      i,
+      point,
+      parameters;
+
+    // set up fake data
+
+    for (i = 0; i < 11; i=i+0.5) {
+      point = [i, 25-((i-5)*(i-5))];
+      d1.push(point);
+    };
+
+
+    for (i = 1; i < 11; i++) {
+
+      // graph paramentes
+
+      xticks = [
+        [Math.random()*7+2, "Your Game"]
+        ];
+
+      parameters = {
+          HtmlText: false,
+          legend:{
+            position:'sw'
+          },
+          mouse: {
+            track: true,
+            relative: true
+          },
+          yaxis: {
+            min: 0,
+            max: 27,
+            autoscaleMargin: 1,
+            showLabels: false,
+            title: '',
+            tickDecimals: 3
+          },
+          xaxis: {
+            showLabels: true,
+            title: false,
+            ticks: xticks,
+            color: '#000000',
+            outline: 2
+          },
+          grid: {
+            verticalLines: true,
+            horizontalLines: false,
+            outlineWidth: 1,
+            outline: 'sw'
+
+          }
+        }
+
+
+      // render graphs
+
+      generic_graph("comparison-graph"+i,[{data:d1}], parameters);
+
+    };
+
+
+
+  }
+
+
+
+
+
+
+
+  function funnelGraph() {
+
+    // Funnel graph insights.html
+
+    var
+      element = "funnel-graph",
+      newTotal = [],
+      playerLoss = [],
+      xticks = [],
+      parameters;
+
+    // set up fake data
+
+    newTotal = [[0,100],[1,80],[2,40],[3,10]];
+    playerLoss = [[0,0],[1,20],[2,40],[3,30]];
+
+    xticks = [
+    [0, "first load start"],
+    [1, "first load complete"],
+    [2, "1 minute gameplay"],
+    [3, "5 minute gameplay"]
+    ];
+
+    // graph paramentes
+
+    parameters = {
+        HtmlText: false,
+        legend:{
+          position:'sw'
+        },
+        bars : {
+          show : true,
+          stacked: true,
+          horizontal : false,
+          shadowSize : 4,
+          barWidth : 0.8,
+          lineWidth: 0
+        },
+        mouse: {
+          track: true,
+          relative: true
+        },
+        yaxis: {
+          min: 0,
+          autoscaleMargin: 1,
+          showLabels: true,
+          title: 'Percentage',
+          tickDecimals:0
+        },
+        xaxis: {
+          min : 0,
+          showLabels: true,
+          ticks: xticks,
+          title: 'Last recorded event'
+        },
+        grid: {
+          verticalLines: false,
+          horizontalLines: true,
+          outlineWidth: 1,
+          outline: 'sw'
+        }
+      }
+
+
+    // render graph
+
+    generic_graph(element,[{data:newTotal,label:"Retention"}, {data:playerLoss,label:"Player loss"}], parameters);
+
+  }
+
+
+
+
+  function playerLossGraph() {
+
+    // player Loss graph insights.html
+
+    var
+      element = "loss-graph",
+      playerLoss = [],
+      yticks = [],
+      parameters;
+
+    // set up fake data
+
+    playerLoss = [[10,0],[23,1],[25,2],[60,3]];
+
+    yticks = [
+    [0, "Event 1"],
+    [1, "Event 2"],
+    [2, "Event 3"],
+    [3, "Event 4"]
+    ];
+
+    // graph paramentes
+
+    parameters = {
+        HtmlText: false,
+        legend:{
+          position:'sw'
+        },
+        bars : {
+          show : true,
+          stacked: true,
+          horizontal : true,
+          shadowSize : 4,
+          barWidth : 0.8,
+          lineWidth: 0
+        },
+        mouse: {
+          track: true,
+          relative: true
+        },
+        yaxis: {
+          min: 0,
+          autoscaleMargin: 1,
+          showLabels: true,
+          ticks: yticks,
+          title: 'Events'
+        },
+        xaxis: {
+          min : 0,
+          showLabels: true,
+          title: 'Percentage'
+        },
+        grid: {
+          verticalLines: true,
+          horizontalLines: false,
+          outlineWidth: 1,
+          outline: 'sw'
+        }
+      }
+
+
+    // render graph
+
+    generic_graph(element,[{data:playerLoss,label:"Player Loss"}], parameters);
+
+  }
+
+
+
+</script>
+
+
 </body>
 </html>

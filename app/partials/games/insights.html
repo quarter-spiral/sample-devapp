@@ -1,4 +1,4 @@
-<div ng-init="game = getGame(gameUuid)">
+<div ng-init="game = getGame(gameUuid); initFakeGaphs()">
 
   <div ng-include src="'partials/games/header.html'"></div>
 
@@ -97,18 +97,17 @@
             <input type="text" placeholder="Start Date" class="span2"> <input type="text" placeholder="End Date" class="span2">
           </form>
 
-          <p class="graph"></p>
-          <p>Legend goes here</p>
+          <p class="graph" id="ltv-graph"></p>
         </div>
 
         <div class="span2">
           <h3>Other Games</h3>
-          <p class="mini-graph"></p>
+          <p class="mini-graph" id="comparison-graph1"></p>
         </div>
 
         <div class="span2">
           <h3>Other RPGs</h3>
-          <p class="mini-graph"></p>
+          <p class="mini-graph" id="comparison-graph2"></p>
         </div>
 
       </div>
@@ -160,18 +159,17 @@
             <input type="text" placeholder="Start Date" class="span2"> <input type="text" placeholder="End Date" class="span2">
           </form>
 
-          <p class="graph"></p>
-          <p>Legend goes here</p>
+          <p class="graph" id="funnel-graph"></p>
         </div>
 
         <div class="span2">
           <h3>Other Games</h3>
-          <p class="mini-graph"></p>
+          <p class="mini-graph" id="comparison-graph3"></p>
         </div>
 
         <div class="span2">
           <h3>Other RPGs</h3>
-          <p class="mini-graph"></p>
+          <p class="mini-graph" id="comparison-graph4"></p>
         </div>
 
       </div>
@@ -218,18 +216,17 @@
             <input type="text" placeholder="Start Date" class="span2"> <input type="text" placeholder="End Date" class="span2">
           </form>
 
-          <p class="graph"></p>
-          <p>Legend goes here</p>
+          <p class="graph" id="retention-graph"></p>
         </div>
 
         <div class="span2">
           <h3>Other Games</h3>
-          <p class="mini-graph"></p>
+          <p class="mini-graph" id="comparison-graph5"></p>
         </div>
 
         <div class="span2">
           <h3>Other RPGs</h3>
-          <p class="mini-graph"></p>
+          <p class="mini-graph" id="comparison-graph6"></p>
         </div>
 
       </div>
@@ -267,7 +264,7 @@
           <p>This requires custom events to work but can provide critical insights to guide your efforts.</p>
         </div>
 
-        <div class="span7">
+        <div class="span9">
 
           <form class="form-inline">
             <select class="span2">
@@ -277,18 +274,7 @@
             <input type="text" placeholder="Start Date" class="span2"> <input type="text" placeholder="End Date" class="span2">
           </form>
 
-          <p class="graph"></p>
-          <p>Legend goes here</p>
-        </div>
-
-        <div class="span2">
-          <h3>Other Games</h3>
-          <p class="mini-graph"></p>
-        </div>
-
-        <div class="span2">
-          <h3>Other RPGs</h3>
-          <p class="mini-graph"></p>
+          <div class="graph" id="loss-graph"></div>
         </div>
 
       </div>
@@ -313,19 +299,19 @@
           <table class="table stat-table">
             <tbody>
               <tr>
-                <td class="value">25,000</td>
+                <td class="value">1,000</td>
                 <td class="full">Daily Active Users (DAU)</td>
               </tr>
               <tr>
-                <td class="value">40,000</td>
+                <td class="value">3,000</td>
                 <td class="full">Weekly Active Users (WAU)</td>
               </tr>
               <tr>
-                <td class="value">140,000</td>
+                <td class="value">6,000</td>
                 <td class="full">Monthly Active Users (MAU)</td>
               </tr>
               <tr>
-                <td class="value">7,000</td>
+                <td class="value">500</td>
                 <td class="full">Daily Deactivations</td>
               </tr>
             </tbody>
@@ -343,18 +329,17 @@
             <input type="text" placeholder="Start Date" class="span2"> <input type="text" placeholder="End Date" class="span2">
           </form>
 
-          <p class="graph"></p>
-          <p>Legend goes here</p>
+          <p class="graph" id="dau-graph"></p>
         </div>
 
         <div class="span2">
           <h3>Other Games</h3>
-          <p class="mini-graph"></p>
+          <p class="mini-graph" id="comparison-graph7"></p>
         </div>
 
         <div class="span2">
           <h3>Other RPGs</h3>
-          <p class="mini-graph"></p>
+          <p class="mini-graph" id="comparison-graph8"></p>
         </div>
 
       </div>
@@ -390,7 +375,6 @@
               </tr>
             </tbody>
           </table>
-          <p>If a player has not opened the game in 7 days it is considered a deactivation.</p>
         </div>
 
         <div class="span7">
@@ -403,18 +387,17 @@
             <input type="text" placeholder="Start Date" class="span2"> <input type="text" placeholder="End Date" class="span2">
           </form>
 
-          <p class="graph"></p>
-          <p>Legend goes here</p>
+          <p class="graph" id="spend-graph"></p>
         </div>
 
         <div class="span2">
           <h3>Other Games</h3>
-          <p class="mini-graph"></p>
+          <p class="mini-graph" id="comparison-graph9"></p>
         </div>
 
         <div class="span2">
           <h3>Other RPGs</h3>
-          <p class="mini-graph"></p>
+          <p class="mini-graph" id="comparison-graph10"></p>
         </div>
 
       </div>

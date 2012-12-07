@@ -66,6 +66,16 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
     $scope.gameUuid = $route.current.params.gameUuid;
   }
 
+  $scope.initFakeGaphs = function() {
+    ltvGraph();
+    retentionGraph();
+    engagementGraph();
+    spendGraph();
+    funnelGraph();
+    playerLossGraph();
+    comparisonGraphs();
+  }
+
   $scope.getGames = function() {
     devcenterClient.listGames(user.currentUser().uuid).then(function(games) {
       $scope.games = [];
