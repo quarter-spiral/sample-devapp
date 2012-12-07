@@ -31,9 +31,9 @@
 
     <div class="container">
 
-      <div class="row">
+      <div class="row" ng-show="game.configuration.type == 'initial'">
 
-        <div class="span12" ng-show="game.configuration.type == 'initial'">
+        <div class="span12" >
 
           <div id="rampUp">
             <ol>
@@ -51,44 +51,93 @@
 
         </div>
 
-
-        <div ng-hide="game.configuration.type == 'initial'">
-
-
-          <div class="span4">
-            <p ng-show="game.screenshots.length > 0" class="teaserArt" style="background-image: url({{game.screenshots[0].url}});">
-            </p>
-            <p ng-hide="game.screenshots.length > 0" class="teaserArt">
-              You have not added any Screenshots yet
-            </p>
-            <a href="#/games/{{game.uuid}}/screens"><i class="icon-picture"></i> Manage Media</a>
-          </div>
-
-          <div class="span4">
-            <div class="titleDescription">
-              <h2>{{game.name}}</h2>
-              <p>{{game.description}}</p>
-            </div>
-            <a href="#/games/{{game.uuid}}/details"><i class="icon-wrench"></i> Edit Title or Description</a>
-          </div>
-
-          <div class="span3 offset1">
-            <h2>Current Venues</h2>
-            <ul class="nav nav-tabs nav-stacked">
-              <li ng-repeat="venue in venues" ng-show="game.venues[venue.id].enabled && game.venues[venue.id].computed.ready">
-                <a href="{{game.uuid|canvasUrl:venue.id}}">{{venue.label}}</a>
-              </li>
-            </ul>
-            <a href="#/games/{{game.uuid}}/venues"><i class="icon-sitemap"></i> Manage Venues</a>
-          </div>
+      </div>
 
 
 
+      <div class="row" ng-hide="game.configuration.type == 'initial'">
 
 
+
+        <div class="span3">
+          <h3>Revenue</h3>
+          <p class="mini-graph">30 Day Bar Chart</p>
+        </div>
+
+        <div class="span3">
+          <h3>DAU</h3>
+          <p class="mini-graph">30 Day Bar Chart </p>
+        </div>
+
+        <div class="span3">
+          <h3>Revenue Sources</h3>
+          <p class="mini-graph">Pie Chart by Revenue Type</p>
+        </div>
+
+        <div class="span3">
+          <h3>Players / Revenue</h3>
+          <p class="mini-graph">Grouped Bar Chart by Venue</p>
+        </div>
+
+        <div class="span12">
+          <p><a href="#"><i class="icon-bar-chart"></i> More Insights</a>
         </div>
 
       </div>
+
+
+
+
+      <div class="row" ng-hide="game.configuration.type == 'initial'">
+
+        <div class="span3">
+          <p ng-show="game.screenshots.length > 0" class="teaserArt" style="background-image: url({{game.screenshots[0].url}});">
+          </p>
+          <p ng-hide="game.screenshots.length > 0" class="teaserArt">
+            You have not added any Screenshots yet
+          </p>
+          <a href="#/games/{{game.uuid}}/screens"><i class="icon-picture"></i> Manage Media</a>
+        </div>
+
+        <div class="span5">
+          <div class="titleDescription">
+            <h3>{{game.name}}</h3>
+            <p>{{game.description}}</p>
+          </div>
+          <ul class="nav nav-pills">
+            <li ng-repeat="venue in venues" ng-show="game.venues[venue.id].enabled && game.venues[venue.id].computed.ready">
+              <a href="{{game.uuid|canvasUrl:venue.id}}">{{venue.label}}</a>
+            </li>
+          </ul>
+          <a href="#/games/{{game.uuid}}/details"><i class="icon-wrench"></i> Edit Title or Description</a><br />
+          <a href="#/games/{{game.uuid}}/venues"><i class="icon-sitemap"></i> Manage Venues</a>
+        </div>
+
+        <div class="span3 offset1">
+           <table class="table stat-table">
+            <tbody>
+              <tr>
+                <td class="value">$2.12</td>
+                <td class="full">Current Balance</td>
+              </tr>
+              <tr>
+                <td class="value">$23,021</td>
+                <td class="full">Lifetime Revenue</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            Next pay out scheduled for 1/1/2013<br />
+            Previous payout was $324 on 12/1/2012
+          </p>
+        </div>
+
+
+
+
+
+      </div>
+
 
     </div>
   </div>
