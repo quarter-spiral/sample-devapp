@@ -55,7 +55,7 @@
 
               <ul ng-controller="GamesCtrl" class="dropdown-menu pull-right" >
                 <div  ng-init="getGames()">
-                  <li ng-repeat="game in games | orderBy:name" >
+                  <li ng-repeat="game in games | orderBy:'name'" >
                     <a href="#/games/{{game.uuid}}"><i class="icon-dashboard"></i> {{game.name}}</a>
                   </li>
                 </div>
