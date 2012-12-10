@@ -157,5 +157,245 @@
 
   <script src="js/libs/modernizr-2.5.3.min.js"></script>
 
+  <script src="js/libs/flotr2.min.js"></script>
+
+  <script type="text/javascript">
+
+  function basic_bars(element, data, horizontal, stacked, xlabels, ylabels, xticks, yticks, xgrid, ygrid) {
+
+    container = document.getElementById(element);
+
+                
+    // Draw the graph
+    Flotr.draw(
+      container,
+      data,
+      {
+        bars : {
+          show : true,
+          stacked: stacked,
+          horizontal : horizontal,
+          shadowSize : 0,
+          barWidth : 0.8,
+          lineWidth: 0
+        },
+        mouse : {
+          track : false,
+          relative : true
+        },
+        yaxis : {
+          min : 0,
+          autoscaleMargin : 1,
+          showLabels: ylabels,
+          ticks: yticks
+        },
+        xaxis : {
+          min : 0,
+          showLabels: xlabels,
+          ticks: xticks
+        },
+        grid: {
+          verticalLines: xgrid,
+          horizontalLines: ygrid
+        }
+      }
+    );
+  }
+
+  function basic_lines(element, data, xlabels, ylabels, xticks, yticks, xgrid, ygrid) {
+
+    container = document.getElementById(element);
+
+                
+    // Draw the graph
+    Flotr.draw(
+      container,
+      data,
+      {
+        mouse : {
+          track : true,
+          relative : true
+        },
+        yaxis : {
+          min : 0,
+          autoscaleMargin : 1,
+          showLabels: ylabels,
+          ticks: yticks
+        },
+        xaxis : {
+          showLabels: xlabels,
+          ticks: xticks
+        },
+        grid: {
+          verticalLines: xgrid,
+          horizontalLines: ygrid
+        }
+      }
+    );
+  }
+
+
+  
+  $(window).load(function() {
+
+
+     var
+      d1 = [],                                  // First data series
+      d2 = [],
+      d3 = [],
+      d4 = [],    
+      point,                                    // Data point variable declaration
+      i;
+
+
+
+
+
+    // LTV graph insights.html
+
+    d1 = [];
+
+    for (i = 0; i < 30; i++) {
+
+      point = [i, Math.random()*0.1+2-i*0.005];
+
+      d1.push(point);
+          
+    };
+
+    basic_lines("ltv-graph",[{data:d1, label:"LTV"}], false, true, true, false, false, false, true);
+
+
+
+
+
+
+
+
+    // Retention graph insights.html
+
+    d1 = [];
+    d2 = [];
+    d3 = [];
+
+    for (i = 0; i < 30; i++) {
+
+      point = [i, Math.random()*2+12];
+      d1.push(point);
+      point = [i, Math.random()*0.5+5+i*0.04];
+      d2.push(point);
+      point = [i, Math.random()*0.2+3];
+      d3.push(point);
+          
+    };
+
+    basic_lines("retention-graph",[{data:d1,label:"Day 2"},{data:d2,label:"Week 2"},{data:d3,label:"Month 2"}], false, false, true, false, false, false, true);
+    
+
+
+
+
+
+
+
+    // Engagment graph insights.html
+
+    d1 = [];
+    d2 = [];
+    d3 = [];
+    d4 = [];
+
+    for (i = 0; i < 30; i++) {
+
+      point = [i, Math.random()*1000+6000+i*200];
+      d1.push(point);
+      point = [i, Math.random()*2000+20000+i*500];
+      d2.push(point);
+      point = [i, Math.random()*3000+30000+i*1000];
+      d3.push(point);
+      point = [i, Math.random()*500+3000-i*50];
+      d4.push(point);
+          
+    };
+
+    basic_lines("dau-graph",[{data:d1,label:"DAU"},{data:d2,label:"WAU"},{data:d3,label:"MAU"},{data:d4,label:"Inactives"}], true, true, true, false, false, true, true);
+
+
+
+
+
+
+
+
+
+    // Funnel graph insights.html
+
+    var newTotal = [[0,100],[1,80],[2,40],[3,10]];
+    var playerLoss = [[0,0],[1,20],[2,40],[3,30]];
+
+    xticks = [
+    [0, "first load start"],
+    [1, "first load complete"],
+    [2, "1 minute gameplay"],
+    [3, "5 minute gameplay"]
+    ];
+
+    basic_bars("funnel-graph",[{data:newTotal,label:"Retention"}, {data:playerLoss,label:"Player loss"}], false, true, true, true, xticks, false, false, true);
+
+
+
+
+
+
+    // player Loss graph insights.html
+
+    var loss = [[10,0],[23,1],[25,2],[60,3]];
+
+    yticks = [
+    [0, "Event 1"],
+    [1, "Event 2"],
+    [2, "Event 3"],
+    [3, "Event 4"]
+    ];
+
+    basic_bars("loss-graph",[{data:loss,label:"Player Loss"}], true, true, true, true, false, yticks, false, true);
+
+
+
+
+
+    // Spend graph insights.html
+
+    d1 = [];
+    d2 = [];
+
+    for (i = 0; i < 30; i++) {
+
+      point = [i, Math.random()*0.02+0.02];
+      d1.push(point);
+      point = [i, Math.random()*0.05+i*0.01];
+      d2.push(point);
+    };
+
+    basic_lines("spend-graph",[{data:d1,label:"ARPU"},{data:d2,label:"Payer Percentage",yaxis:2}], false, true, true, false, false, true, true);
+
+
+
+
+
+    
+
+
+
+
+
+
+  });
+
+
+
+</script>
+
+
 </body>
 </html>
