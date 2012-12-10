@@ -171,6 +171,9 @@
       container,
       data,
       {
+        legend:{
+          position:'sw'
+        },
         bars : {
           show : true,
           stacked: stacked,
@@ -202,7 +205,7 @@
     );
   }
 
-  function basic_lines(element, data, xlabels, ylabels, xticks, yticks, xgrid, ygrid) {
+  function basic_lines(element, data, xlabels, ylabels, xticks, yticks, xgrid, ygrid, xtitle, ytitle, y2title) {
 
     container = document.getElementById(element);
 
@@ -212,6 +215,10 @@
       container,
       data,
       {
+        HtmlText: false,
+        legend:{
+          position:'sw'
+        },
         mouse : {
           track : true,
           relative : true
@@ -220,11 +227,20 @@
           min : 0,
           autoscaleMargin : 1,
           showLabels: ylabels,
-          ticks: yticks
+          ticks: yticks,
+          title: ytitle
+        },
+        y2axis : {
+          min : 0,
+          autoscaleMargin : 1,
+          showLabels: true,
+          ticks: yticks,
+          title: y2title
         },
         xaxis : {
           showLabels: xlabels,
-          ticks: xticks
+          ticks: xticks,
+          title: xtitle
         },
         grid: {
           verticalLines: xgrid,
@@ -263,8 +279,7 @@
           
     };
 
-    basic_lines("ltv-graph",[{data:d1, label:"LTV"}], false, true, true, false, false, false, true);
-
+    basic_lines("ltv-graph",[{data:d1, label:"LTV"}], false, true, true, false, false, true, false, 'LTV in $US',false);
 
 
 
@@ -289,7 +304,7 @@
           
     };
 
-    basic_lines("retention-graph",[{data:d1,label:"Day 2"},{data:d2,label:"Week 2"},{data:d3,label:"Month 2"}], false, false, true, false, false, false, true);
+    basic_lines("retention-graph",[{data:d1,label:"Day 2"},{data:d2,label:"Week 2"},{data:d3,label:"Month 2"}], false, true, true, false, false, true, false, 'Percentage Retained', false);
     
 
 
@@ -318,7 +333,7 @@
           
     };
 
-    basic_lines("dau-graph",[{data:d1,label:"DAU"},{data:d2,label:"WAU"},{data:d3,label:"MAU"},{data:d4,label:"Inactives"}], true, true, true, false, false, true, true);
+    basic_lines("dau-graph",[{data:d1,label:"DAU"},{data:d2,label:"WAU"},{data:d3,label:"MAU"},{data:d4,label:"Inactives"}], true, true, true, false, false, true, false, '# of Players', false);
 
 
 
@@ -377,7 +392,7 @@
       d2.push(point);
     };
 
-    basic_lines("spend-graph",[{data:d1,label:"ARPU"},{data:d2,label:"Payer Percentage",yaxis:2}], false, true, true, false, false, true, true);
+    basic_lines("spend-graph",[{data:d1,label:"ARPU"},{data:d2,label:"Payer Percentage",yaxis:2}], false, true, true, false, false, true, false, 'Revenue per Player in $US', 'Percentage of paying Players');
 
 
 
