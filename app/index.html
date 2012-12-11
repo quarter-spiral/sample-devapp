@@ -218,11 +218,14 @@
         },
         xaxis: {
           showLabels: true,
-          title: 'Time'
+          title: 'Time',
+          tickDecimals: 0
         },
         grid: {
           verticalLines: false,
-          horizontalLines: true
+          horizontalLines: true,
+          outlineWidth: 1,
+          outline: 'sw'
         }
       }
 
@@ -282,18 +285,21 @@
         },
         xaxis: {
           showLabels: true,
-          title: 'Time'
+          title: 'Time',
+          tickDecimals: 0
         },
         grid: {
           verticalLines: false,
-          horizontalLines: true
+          horizontalLines: true,
+          outlineWidth: 1,
+          outline: 'sw'
         }
       }
 
 
     // render graph
 
-    generic_graph(element,[{data:d1,label:"Day 2"},{data:d2,label:"Week 2"},{data:d3,label:"Month 2"}], parameters);
+    generic_graph(element,[{data:d1,label:"Day 2 Retention"},{data:d2,label:"Week 2 Retention"},{data:d3,label:"Month 2 Retention"}], parameters);
 
   }
 
@@ -349,18 +355,21 @@
         },
         xaxis: {
           showLabels: true,
-          title: 'Time'
+          title: 'Time',
+          tickDecimals: 0
         },
         grid: {
           verticalLines: false,
-          horizontalLines: true
+          horizontalLines: true,
+          outlineWidth: 1,
+          outline: 'sw'
         }
       }
 
 
     // render graph
 
-    generic_graph(element,[{data:d1,label:"DAU"},{data:d2,label:"WAU"},{data:d3,label:"MAU"},{data:d4,label:"Inactives"}], parameters);
+    generic_graph(element,[{data:d1,label:"DAU"},{data:d2,label:"WAU"},{data:d3,label:"MAU"},{data:d4,label:"Deactivations"}], parameters);
 
   }
 
@@ -404,21 +413,27 @@
           min: 0,
           autoscaleMargin: 1,
           showLabels: true,
-          title: '$US'
+          title: '$US',
+          tickDecimals: 3
         },
         y2axis: {
           min: 0,
           autoscaleMargin: 1,
           showLabels: true,
-          title: 'Percentage'
+          title: 'Percentage',
+          tickDecimals: 2
         },
         xaxis: {
           showLabels: true,
-          title: 'Time'
+          title: 'Time',
+          tickDecimals: 0
         },
         grid: {
           verticalLines: false,
-          horizontalLines: true
+          horizontalLines: true,
+          outlineWidth: 1,
+          outline: 'swe'
+
         }
       }
 
@@ -482,16 +497,20 @@
           min: 0,
           autoscaleMargin: 1,
           showLabels: true,
-          title: '$US'
+          title: 'Percentage',
+          tickDecimals:0
         },
         xaxis: {
           min : 0,
           showLabels: true,
-          ticks: xticks
+          ticks: xticks,
+          title: 'Last recorded event'
         },
         grid: {
           verticalLines: false,
-          horizontalLines: true
+          horizontalLines: true,
+          outlineWidth: 1,
+          outline: 'sw'
         }
       }
 
@@ -559,7 +578,9 @@
         },
         grid: {
           verticalLines: true,
-          horizontalLines: false
+          horizontalLines: false,
+          outlineWidth: 1,
+          outline: 'sw'
         }
       }
 
