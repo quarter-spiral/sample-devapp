@@ -73,6 +73,7 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
     spendGraph();
     funnelGraph();
     playerLossGraph();
+    comparisonGraphs();
   }
 
   $scope.getGames = function() {

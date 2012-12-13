@@ -449,6 +449,81 @@
 
 
 
+  function comparisonGraphs() {
+
+    // Mini grpahs in insights.html
+
+    var 
+      d1 = [],
+      xticks = [],
+      i,
+      point,
+      parameters;
+
+    // set up fake data
+
+    for (i = 0; i < 11; i=i+0.5) {
+      point = [i, 25-((i-5)*(i-5))];
+      d1.push(point);
+    };
+
+
+    for (i = 1; i < 13; i++) {
+
+      // graph paramentes
+
+      xticks = [
+        [Math.random()*7+2, "Your Game"]
+        ];
+
+      parameters = {
+          HtmlText: false,
+          legend:{
+            position:'sw'
+          },
+          mouse: {
+            track: true,
+            relative: true
+          },
+          yaxis: {
+            min: 0,
+            max: 27,
+            autoscaleMargin: 1,
+            showLabels: false,
+            title: '',
+            tickDecimals: 3
+          },
+          xaxis: {
+            showLabels: true,
+            title: false,
+            ticks: xticks,
+            color: '#000000',
+            outline: 2
+          },
+          grid: {
+            verticalLines: true,
+            horizontalLines: false,
+            outlineWidth: 1,
+            outline: 'sw'
+
+          }
+        }
+
+
+      // render graphs
+
+      generic_graph("comparison-graph"+i,[{data:d1}], parameters);
+
+    };
+
+
+
+  }
+
+
+
+
+
 
 
   function funnelGraph() {
@@ -485,7 +560,7 @@
           show : true,
           stacked: true,
           horizontal : false,
-          shadowSize : 0,
+          shadowSize : 4,
           barWidth : 0.8,
           lineWidth: 0
         },
@@ -556,7 +631,7 @@
           show : true,
           stacked: true,
           horizontal : true,
-          shadowSize : 0,
+          shadowSize : 4,
           barWidth : 0.8,
           lineWidth: 0
         },
