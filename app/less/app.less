@@ -100,6 +100,22 @@ table {
       white-space: nowrap;
     }
   }
+  &.stat-table {
+    span {
+      font-size: 70%;
+      vertical-align: bottom;
+      &.plus {
+        color:#66DD00;
+      }
+      &.minus {
+        color:red;
+      }
+    }
+  }
+}
+
+.tip {
+  color:#999;
 }
 
 .teaserArt {
@@ -132,7 +148,7 @@ p.large {
 
 .coming-soon {
   &, .full {
-  color:#AAA !important;
+  //color:#AAA !important;
   }
 }
 
@@ -152,6 +168,7 @@ p.large {
     }
   }
 }
+
 
 .graph-placeholder {
   width:100%;

@@ -57,27 +57,51 @@
 
       <div class="row coming-soon" ng-hide="game.configuration.type == 'initial'">
 
+
+        <div class="span4">
+          <table class="table stat-table">
+            <tbody>
+              <tr>
+                <td class="value">$320.12 <span class="plus">+4%</span></td>
+                <td class="full">Revenue Today</td>
+              </tr>
+              <tr>
+                <td class="value">32,211 <span class="minus">-2%</span></td>
+                <td class="full">DAU Today</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="tip">
+            $234.76 Revenue &amp; 34,311 DAU 7 days ago<br />
+            Resets at 12am EST (7h 32m ago)
+          </p>
+        </div>
+
+        <div class="span4">
+          <table class="table stat-table">
+            <tbody>
+              <tr>
+                <td class="value">$4312.12</td>
+                <td class="full">Current Balance</td>
+              </tr>
+              <tr>
+                <td class="value">$233,021.24</td>
+                <td class="full">Lifetime Revenue</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="tip">
+            Next pay out will be on 1/1/2013<br />
+            Previous pay out was $324
+          </p>
+        </div>
+
+        <div class="span2 offset2">
+          <p class="tip">
+            For historic data and additional metrics consult the <a href="#/games/{{game.uuid}}/insights">insights section</a>.
+          </p>
+        </div>
         
-
-        <div class="span3">
-          <h3>30 Day Revenue</h3>
-          <p class="mini-graph" id="revenue-graph"></p>
-        </div>
-
-        <div class="span3">
-          <h3>30 Day DAU</h3>
-          <p class="mini-graph" id="dau-graph"></p>
-        </div>
-
-        <div class="span3">
-          <h3>Revenue Sources</h3>
-          <p class="mini-graph-placeholder">Pie Chart by Revenue Type</p>
-        </div>
-
-        <div class="span3">
-          <h3>Players vs. Revenue</h3>
-          <p class="mini-graph" id="player-revenue-graph"></p>
-        </div>
 
       </div>
 
@@ -87,10 +111,11 @@
       <div class="row" ng-hide="game.configuration.type == 'initial'">
 
         <div class="span12">
+          <hr />
           <h3>{{game.name}}</h3>
         </div>
 
-        <div class="span3">
+        <div class="span4">
           <p ng-show="game.screenshots.length > 0" class="teaserArt" style="background-image: url({{game.screenshots[0].url}});">
           </p>
           <p ng-hide="game.screenshots.length > 0" class="teaserArt">
@@ -109,24 +134,13 @@
           <a href="#/games/{{game.uuid}}/venues"><i class="icon-sitemap"></i> Manage Venues</a>
         </div>
 
-        <div class="span3 offset1 coming-soon">
-           <table class="table stat-table">
-            <tbody>
-              <tr>
-                <td class="value">$2.12</td>
-                <td class="full">Current Balance</td>
-              </tr>
-              <tr>
-                <td class="value">$23,021</td>
-                <td class="full">Lifetime Revenue</td>
-              </tr>
-            </tbody>
-          </table>
-          <p>
-            Next pay out scheduled for 1/1/2013<br />
-            Previous payout was $324 on 12/1/2012
+        <div class="span2 offset1">
+          <p class="tip">
+            To can change these and other settings from the settings menu above.
           </p>
         </div>
+
+        
 
 
         
