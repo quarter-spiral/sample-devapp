@@ -93,8 +93,8 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
 
   $scope.addGame = function(game) {
     game.developers = [user.currentUser().uuid];
-    devcenterClient.addGame(game).then(function() {
-      $location.path('/games');
+    devcenterClient.addGame(game).then(function(savedGame) {
+      $location.path('/games/' + savedGame.uuid);
     }, function() {
       alert("Could not save that game. Sorry!");
     });
