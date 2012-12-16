@@ -111,7 +111,7 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
 
   $scope.updateGame = function(game) {
     devcenterClient.updateGame(game.uuid, game).then(function() {
-      $route.reload();
+      $location.path('/games/' + game.uuid + '/venues')
     }, function() {
       alert("Could not save the game. Sorry!");
     });
