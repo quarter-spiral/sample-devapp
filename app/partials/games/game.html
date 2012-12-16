@@ -3,17 +3,15 @@
   <div ng-include src="'partials/games/header.html'"></div>
 
   <div id="masthead">
-
     <div class="container">
 
       <div class="masthead-pad">
-
-        <div class="masthead-text" ng-show="game.configuration.type == 'initial'">
+        <div class="masthead-text" ng-hide="game|gameReady">
           <h2>Getting started</h2>
           <p>in 3 easy steps</p>
         </div> <!-- /.masthead-text -->
 
-        <div class="masthead-text" ng-hide="game.configuration.type == 'initial'">
+        <div class="masthead-text" ng-show="game|gameReady">
           <h2>Dashboard</h2>
           <p>Everything you need to manage your game</p>
         </div> <!-- /.masthead-text -->
@@ -31,7 +29,7 @@
 
     <div class="container">
 
-      <div class="row" ng-show="game.configuration.type == 'initial'">
+      <div class="row" ng-hide="game|gameReady">
 
         <div class="span12" >
 
@@ -55,7 +53,7 @@
 
 
 
-      <div class="row coming-soon" ng-hide="game.configuration.type == 'initial'">
+      <div class="row coming-soon" ng-show="game|gameReady">
 
 
         <div class="span4">
@@ -107,7 +105,7 @@
 
 
 
-      <div class="row" ng-hide="game.configuration.type == 'initial'">
+      <div class="row" ng-show="game|gameReady">
         <div class="span12">
           <hr />
           <h3>{{game.name}}</h3>
