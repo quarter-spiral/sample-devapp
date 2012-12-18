@@ -1,0 +1,67 @@
+<div id="masthead">
+
+  <div class="container">
+
+    <div class="masthead-pad">
+
+      <div class="masthead-text">
+        <h2>FAQs</h2>
+        <p>Find the answers or get in touch so we can help you out.</p>
+      </div> <!-- /.masthead-text -->
+
+    </div>
+
+  </div> <!-- /.container -->
+
+</div> <!-- /#masthead -->
+
+
+
+
+<div id="content">
+
+  <div class="container">
+
+
+    <div class="row">
+
+      <div class="span8">
+
+        <form class="faq-search">
+          <input type="text" placeholder="Search FAQs" ng-model="faqFilter" />
+        </form>
+
+        <ul class="faqList">
+
+          <li ng-repeat="faq in faqs | filter:faqFilter">
+            <h4>
+              <a ng-click="faq.showAnswer = true;" ng-hide="faq.showAnswer"><i class="icon-caret-right"></i>{{faq.question}}</a>
+              <a ng-click="faq.showAnswer = false;" ng-show="faq.showAnswer"><i class="icon-caret-down"></i>{{faq.question}}</a>
+            </h4>
+            <p ng-show="faq.showAnswer">{{faq.answer}}</p>
+          </li>
+
+        </ul>
+
+      </div> <!-- /.span8 -->
+
+
+      <div class="span4">
+
+
+        <a href="mailto:support@quarterspiral.com" class="btn btn-large btn-primary btn-block btn-big-block">support@quarterspiral.com</a>
+
+
+        <div class="tip">
+          <p>We need your questions to make the FAQs as useful as they can be. Help us make this better and get in touch!</p>
+        </div> <!-- /.well -->
+
+
+      </div> <!-- /.span4 -->
+
+    </div> <!-- /.row -->
+
+
+  </div> <!-- /.container -->
+
+</div> <!-- /#content -->

@@ -3,9 +3,14 @@
 /* Directives */
 
 
-angular.module('devcenterTest.directives', []).
-  directive('appVersion', ['version', function(version) {
-    return function(scope, elm, attrs) {
-      elm.text(version);
-    };
-  }]);
+angular.module('devcenterTest.directives', []).directive('markdown', function() {
+    var converter = new Showdown.converter();
+    return {
+        restrict: 'E',
+        link: function(scope, element, attrs) {
+            var markDown = element.text();
+            var htmlText = converter.makeHtml(markDown);
+            element.html(htmlText);
+        }
+    }
+  });

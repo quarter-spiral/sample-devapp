@@ -1,0 +1,86 @@
+<markdown class="documentation">
+
+
+### Usage
+
+All our services are available to you through our API. This way you can bend the Quarter Spiral universe to your liking and unlock the power that hides behind the facade of our SDK. Do not fear! It's no problem to just get started by using the SDK and slowly switch over to a custom API integration when you outgrow the SDK. This way you can create for example your own social friendbar implementation rather then just using ours.
+
+### General
+
+**Important:** While all services are described in great detail please make sure to read this page first. It will save you some headaches later!
+
+Our API is available over HTTPS and speaks JSON only. We made sure that you can reach it even in cross-domain scenarios by employing the right [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) headers.
+
+The documenation of each services comes with a detailed outline of all available endpoints, it's URLs and possible request options as well as a description of the response. We also try to include as many examples as possible to save you from suprises. If you feel that the documentation is unclear or lacking something please tell us via [email](mailto:support@quarterspiral.com) or on [Twitter](https://twitter.com/quarterspiral).
+
+Yeah cURL is cool but playing around with APIs can get a pain. Internally we use an OS X tool called [RESTed](https://itunes.apple.com/us/app/rested-simple-http-requests/id421879749?mt=12) whenever we tinker around with our raw API but we also heard wonders about other helpers like [Postman](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en) for Chrome.
+
+All endpoint descriptions include a list of parameters whenever parameters can be send. Some of these are documented to be send as the HTTP body. As it can be difficult to make that happen for request methods other than POST or PUT we also support normal query strings as an alternative. So e.g. if you have to issue a get request with a JSON encoded body like this:
+
+```javascript
+{
+  "name": "Peter",
+  "code": 123
+}
+```
+
+You can instead just add this as a query part to the URL like this: ``?name=Peter&code=123``.
+
+### Errors
+
+The documentation describes cases in which a successful response returns some other HTTP status code than ``200`` or ``201``. In error cases an error message is returned in the response body encoded as JSON like this:
+
+```javascript
+{
+  "error": "Authentication failed!"
+}
+```
+
+### Authentification
+
+We use OAuth as the only authentication mechanism for our whole platform. That means you need to pass an OAuth token to all endpoints that require authorization.
+
+#### Endpoint Authorization
+
+All endpoints that do not explicitly state that they are publicly available require authorization.
+
+#### Authorize HTTP requests
+
+Right now we only support to do that through the HTTP ``Authorization`` header. E.g. if your token is ``1234567890`` you should pass a HTTP header like this: ``Authorization: Bearer 1234567890``.
+
+#### Obtain an OAuth token
+
+##### From within a game
+
+In most cases you will use our API from within one of your games. We have some good news for you: All the hard work of getting that precious little token is already be done by us if you use our SDK. The ``setup`` method of the SDK passes an object to the handler you provide, that object comes with a Quarter Spiral OAuth token issued to the player playing your game. Just access it like this (example of an HTML5 game using our SDK):
+
+```javascript
+QS.setup().then(function (qs) {
+  console.log("Your OAuth token:", qs.data.tokens.qs)
+})
+```
+
+##### With a username and password
+
+The other way to get an OAuth token requires you to be in posession of the username and password of a Quarter Spiral user. Provide them as HTTP basic auth credentials with a POST to ``https://auth-backend.herokuapp.com/api/v1/token``. The response comes as JSON and looks like this:
+
+```javascript
+{
+  "token": "7bu1ys9gthv206z06as587skknze8yv"
+}
+```
+
+To get the token make sure to supply the basic auth credentials even if the endpoint does not seem to require them. Also keep in mind that this is the only endpoint in our whole system that works over HTTP basic auth and takes usernames or passwords! All other endpoints rely purely on OAuth tokens.
+
+### Authorization
+
+**Important**: The biggest caveat of our platform right now is the absence of any authorization mechanism. Everyone is allowed to carryout any operation on any entity in the system. We will change that as soon as possible but ask you to bear that in mind while operating on our platform right now.
+
+### URLs
+
+Each service comes with a base URL that is described in it's documentation. That URL is folled by a version part (see below) and the endpoint's own URL.
+
+### Versioning
+
+The current version of our API is ``v1``. **All URLs must be prefixedwith ``/v1``!**
+</markdown>

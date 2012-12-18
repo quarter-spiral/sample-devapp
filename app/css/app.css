@@ -14,10 +14,18 @@ table.stat-table span.minus{color:red;}
 .teaserArt{height:250px;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;background-color:#EEE;text-align:center;line-height:250px;color:#999;-moz-box-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);-webkit-box-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);box-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);}
 p.large{font-size:1.2em;line-height:1.5em;}
 #rampUp ol{font-size:1.3em;}#rampUp ol li{line-height:1.5em;margin-bottom:0.5em;}
-.coming-soon,.coming-soon .full{color:#AAA !important;}
 .row{margin-top:0px !important;}
 .steps{font-size:1.2em;}.steps li{margin:0 0 1.5em 0px;}.steps li input{margin-top:0.5em;}
 .graph-placeholder{width:100%;height:350px;background-color:#EEE;-moz-box-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);-webkit-box-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);box-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);}
 .graph{height:350px;}
 .mini-graph-placeholder{width:100%;height:120px;line-height:120px;text-align:center;background-color:#EEE;-moz-box-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);-webkit-box-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);box-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);}
 .mini-graph{height:120px;}
+.documentation{display:block;padding-left:20px;padding-top:10px;}.documentation h2,.documentation h3,.documentation h4,.documentation h5{margin:1.5em 0px 1em;}.documentation h2:first-child,.documentation h3:first-child,.documentation h4:first-child,.documentation h5:first-child{margin-top:0px;}
+.documentation h2{margin-left:-20px;}
+.documentation h3{border-bottom:1px solid #DDD;margin-left:-20px;}
+.documentation h4{font-size:1.3em;margin-left:-20px;}
+.documentation h5{font-size:1em;color:#666;text-transform:uppercase;}
+.box{padding:20px;-moz-box-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);-webkit-box-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);box-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;background-color:#FDFDFD;}
+.faqList{list-style:none;margin:0px;padding:0px;}.faqList li{margin-bottom:1.5em;}.faqList li p{margin-left:25px;}
+.faqList li h4 a{text-decoration:none;}.faqList li h4 a i{vertical-align:0px;}
+.faq-search{margin-bottom:2em;padding-bottom:1em;border-bottom:1px solid #EEE;}.faq-search input{width:96%;display:block;padding:15px 15px 10px 15px !important;font-size:1.6em !important;}
