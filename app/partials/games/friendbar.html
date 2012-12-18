@@ -1,0 +1,56 @@
+<div ng-init="game = getGame(gameUuid)">
+  <div ng-include src="'partials/games/header.html'"></div>
+  <div id="masthead">
+    <div class="container">
+      <div class="masthead-pad">
+        <div class="masthead-text">
+          <h2>Friendbar</h2>
+          <p>Customize your friendbar</p>
+        </div> <!-- /.masthead-text -->
+      </div>
+    </div> <!-- /.container -->
+  </div> <!-- /#masthead -->
+
+  <div id="content">
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <form class="form-horizontal">
+            <div class="control-group">
+              <label class="control-label" for="inputTopValueLabel">Top Value Label</label>
+              <div class="controls">
+                <input ng-model="game.configuration.friendbarTopValueLabel" type="text" id="inputTopValueLabel" class="span5"/>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="inputTopValueKey">Top Value Key</label>
+              <div class="controls">
+                <input ng-model="game.configuration.friendbarTopValueKey" type="text" id="inputTopValueKey" class="span5"/>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="inputBottomValueLabel">Bottom Value Label</label>
+              <div class="controls">
+                <input ng-model="game.configuration.friendbarBottomValueLabel" id="inputBottomValueLabel" type="text" class="span5"/>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="inputBottomValueKey">Bottom Value Key</label>
+              <div class="controls">
+                <input ng-model="game.configuration.friendbarBottomValueKey" id="inputBottomValueKey" type="text" class="span5"/>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="controls">
+                <button ng-click="updateGame(game)" class="btn btn-success">Update</button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

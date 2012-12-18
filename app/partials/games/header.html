@@ -61,6 +61,12 @@
                     <span>Name &amp; Description</span>
                   </a>
                 </li>
+                <li ng-class="{active: currentUrl == 'friendbar'}">
+                  <a href="#/games/{{game.uuid}}/friendbar">
+                    <i class="icon-heart"></i>
+                    <span>Friendbar</span>
+                  </a>
+                </li>
                 <li ng-class="{active: currentUrl == 'venues'}">
                   <a href="#/games/{{game.uuid}}/venues">
                     <i class="icon-sitemap"></i>
