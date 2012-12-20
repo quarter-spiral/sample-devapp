@@ -16,6 +16,24 @@ end
 ENV_KEYS_TO_EXPOSE = ['QS_DEVCENTER_BACKEND_URL', 'QS_CANVAS_APP_URL', 'QS_AUTH_BACKEND_URL', 'QS_FILEPICKER_API_KEY']
 
 
+require 'newrelic_rpm'
+require 'new_relic/agent/instrumentation/rack'
+require 'ping-middleware'
+
+class NewRelicMiddleware
+  def initialize(app)
+    @app = app
+  end
+
+  def call(env)
+    @app.call(env)
+  end
+  include NewRelic::Agent::Instrumentation::Rack
+end
+
+use NewRelicMiddleware
+use Ping::Middleware
+
 if ENV['RACK_ENV'] == 'production'
   use Rack::Auth::Basic, "Sample Dev App" do |username, password|
       'redwoodpho' == password

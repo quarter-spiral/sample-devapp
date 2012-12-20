@@ -11,3 +11,4 @@ build.xml
 **/*.err
 tmp/restart.txt
 .powenv
+log/*.log
