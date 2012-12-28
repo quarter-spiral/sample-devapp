@@ -30,7 +30,7 @@
 
         </div>
 
-        <div class="span2">
+        <div class="span3">
           <ul class="nav nav-list">
             <li ng-repeat="section in sections" ng-class="{active: currentSection == section.id, 'nav-header': section.type == 'header'}">
               <a href="#/documentation/{{section.id}}" ng-hide="section.type == 'header'"><i class="icon-bookmark"></i> {{section.label}}</a>
@@ -39,7 +39,7 @@
           </ul>
         </div>
 
-        <div class="span10">
+        <div class="span9">
 
           <div class="box">
             <h2 ng-repeat="section in sections" ng-hide="currentSection != section.id">

@@ -1,0 +1,102 @@
+<markdown>
+
+This guide assumes that you have already [set up a game](/#/documentation/setup).
+
+To play our game on Facebook we need to configure two different things: An application on Facebook itself and our Facebook venue in Mission Kontrol. Let's do this one step at a time.
+
+First we will setup Facebook. Make sure that you are logged in with your account there. If you need help creating one Facebook is providing very helpful [advice](https://www.facebook.com/help/188157731232424/).
+
+Head over to the developer section of facebook now at: [http://developers.facebook.com](http://developers.facebook.com). If this is the first time developing on Facebook you need to register as a developer first. Click the "Register now" button in the top right.
+
+![Register as Facebook developer button](/img/documentation/facebook_1.jpg)
+
+Now read through Facebook's platform and privacy policies and hit "Continue" when you decide to accept them.
+
+![Facebook policies](/img/documentation/facebook_2.jpg)
+
+To proceed as a developer on Facebook you must provide your phone number. In order to do that enter your number then hit "Continue".
+
+![Enter phone number form](/img/documentation/facebook_3.jpg)
+
+Facebook will send you a text with a confirmation code to your phone. Once you have received that message enter the code you got in the field and hit "Confirm".
+
+![Confirm phone numnber form](/img/documentation/facebook_4.jpg)
+
+Now you got to set the privacy level of your phone number on your normal facebook profile. Please do that carefully. Once you are done click "Continue".
+
+![Phone number privacy form](/img/documentation/facebook_5.jpg)
+
+As a last step to become a Facebook platform developer you can supply some information about yourself and decide if you want to get the developer newsletter from Facebook. Feel free to fill out that screen or just skip it. It does not affect your developer experience on the platform in any way.
+
+![Additional information form](/img/documentation/facebook_6.jpg)
+
+Now the registration is complete, just hit "Done".
+
+![Additional information form](/img/documentation/facebook_7.jpg)
+
+You will find yourself at the Facebook developer dashboard. As a next step we need to setup our game as an application on Facebook. There is a button labeled with "Create New App" in the top right of the screen. Go ahead and click it.
+
+![Create new app button](/img/documentation/facebook_8.jpg)
+
+In the form that opens up just enter a name for your game and click "Continue". Leave the rest of the form as it is.
+
+![Add an application form](/img/documentation/facebook_9.jpg)
+
+After confirming the CAPTCHA in the next screen and hittin "Continue" after it we are done!
+
+![New application CAPTCHA](/img/documentation/facebook_10.jpg)
+
+Cool! Facebook presents you a new page with some information about your game now. Two of them are especially important to us: The "App ID" and "App Secret" fields right in the header of the page. We need those two values in Mission Kontrol to enable our game there.
+
+![App ID and App Secret](/img/documentation/facebook_11.jpg)
+
+We're showing only the first 5 characters of both fields in the screenshot. Those two values are to your application on Facebook like what keys are to your house. They grant whoever is posession of them access to the app and it's settings. In order to enable your game on Facebook in Mission Kontrol we need those keys to power our social features like the automatic friend bar etc. So we ask you to trust us there and are honored if you do. We promise to be the most pleasant guests you ever had in your house!
+
+**Be sure to consider carefully who are you giving your Facebook application's credentials to.**
+
+To proceed we need to copy the app ID and secret over to Mission Kontrol. So first copy the application ID from the Facebook page, open Mission Kontrol in a new tab and navigate back to the "Venues" screen and click the "Configuration" link next to the Facebook venue.
+
+![Facebook configuration link](/img/documentation/facebook_12.jpg)
+
+Now paste in the app ID from facebook in box 2, go back to Facebook, copy the app secret and then paste it into box 3.
+
+Once that is done now copy the URL that is displayed in box 1. Make sure to copy the whole thing including the ``?`` at the end. When done, click on "Upgrade Facebook Settings".
+
+![Facebook configuration form](/img/documentation/facebook_13.jpg)
+
+As a last step of configuration we now need to tell Facebook where it can find our app and that we are currently still in a private phase where we will choose anyone who can access the app. To achieve that go back to your Facebook tab and first set "Sandbox Mode" to "Enabled". Then click on the "App on Facebook" section.
+
+![Facebook app configuration link](/img/documentation/facebook_14.jpg)
+
+In the form that opened up paste in the URL you have copied from Mission Kontrol into the "Canvas URL" field. The same URL goes into the "Secure Canvas URL" field **but** you need to change the leading ``http`` into a ``https``. After that click on "Save Changes".
+
+![Facebook app configuration form](/img/documentation/facebook_15.jpg)
+
+You are only one step away from playing your app on Facebook! Head back to Mission Kontrol, activate the Facebook venue and click on the "Open" link that appears right after the activation.
+
+![Facebook activation](/img/documentation/facebook_16.jpg)
+
+As for any app on Facebook you will have to choose the privacy settings of the app and proceed by clicking the "Go to App" button. This will only happen the first time you play the game.
+
+![Facebook app privacy settings](/img/documentation/fac ebook_17.jpg)
+
+Cool, you can play your game now.
+
+![Facebook game](/img/documentation/facebook_18.jpg)
+
+To make it a little more interesting go to the Facebook developer page again and click the "Developer Roles" link in the navigation on the left.
+
+![Facebook developer roles link](/img/documentation/facebook_19.jpg)
+
+On the following page you can add friends or your co-workers to become developers of the game, too. While still in Facebook's sandbox mode this allows them to access the app.
+
+![Facebook developer roles page](/img/documentation/facebook_20.jpg)
+
+Now if your friend plays the game as well you will see him in the friend bar right below your game. If you don't see him immediately give our system a little while and refresh the page.
+
+![Friend bar](/img/documentation/facebook_21.jpg)
+
+This concludes our tutorial. You are familiar now with the basics of Facebook app administration and our Mission Kontrol system. You have learned how to set builds there, configure and enable venues and how all that comes together in a game that you can play on Facebook.
+
+A lot of [further documentation](https://developers.facebook.com/docs/appsonfacebook/tutorial/) on application administration is provided by Facebook itself. If you want to dive deeper into the Quarter Spiral universe have a look at our [QS 101](/#/documentation/integration) guide that explains how to store data and even show information in the friend bar alongside with your friend's profile pictures. That way we will easily build a social leader board for your game.
+</markdown>

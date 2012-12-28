@@ -50,21 +50,24 @@ FAQsCtrl.$inject = ['$scope', '$location','$route'];
 
 
 function DocumentationCtrl($scope, $location,$route) {
-
   if ($route.current) {
     $scope.currentSection = $route.current.params.currentSection;
     $scope.templateURL = 'partials/documentation/'+$scope.currentSection+'.html';
   }
 
   $scope.sections = [
-    {label: 'Guides', id: '', type: 'header'},
-    {label: 'Getting Started', id: 'overview'},
+    {label: 'Overview', id: 'overview'},
+    {label: 'Tutorial', id: '', type: 'header'},
+    {label: 'Set up a game', id: 'setup'},
+    {label: 'Publish to Facebook', id: 'facebook'},
+    {label: 'Display player data', id: 'integration'},
+    {label: 'Store and retrieve data', id: 'integration2'},
     {label: 'SDK', id: '', type: 'header'},
-    {label: 'SDK Overview', id: 'sdkIntro'},
+    {label: 'SDK overview', id: 'sdkIntro'},
     {label: 'Flash SDK', id: 'sdkFlash'},
     {label: 'HTML SDK', id: 'sdkHtml'},
     {label: 'APIs', id: '', type: 'header'},
-    {label: 'API Overview', id: 'apis'},
+    {label: 'API overview', id: 'apis'},
     {label: 'Player API', id: 'playerCenter'},
     {label: 'Developer API', id: 'devCenter'}
   ];
@@ -117,7 +120,9 @@ NavigationCtrl.$inject = ['$scope'];
 
 function GamesCtrl($scope, $location, $route, user, devcenterClient) {
   if (!user.currentUser()) {
-    $location.path('/');
+    if (!$location.path().match(/^\/documentation\//) && !$location.path().match(/^\/faqs/)) {
+      $location.path('/');
+    }
     return;
   }
 
