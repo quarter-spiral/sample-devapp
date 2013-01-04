@@ -4,8 +4,8 @@
     <div class="container">
       <div class="masthead-pad">
         <div class="masthead-text">
-          <h2>Friendbar</h2>
-          <p>Customize your friendbar</p>
+          <h2>Friends Bar</h2>
+          <p>Display custom values as badges on each player in the friends bar</p>
         </div> <!-- /.masthead-text -->
       </div>
     </div> <!-- /.container -->
@@ -14,54 +14,72 @@
   <div id="content">
     <div class="container">
       <div class="row">
+        <div class="span4">
+          
+          <p class="tip">You can use the badges to display a player's Level, XP, Score, etc... And since players can sort their friends by them, it can be an instant high score feature!</p>
+
+        </div>
+
+        <div class="span4">
+
+          <p class="tip">Consult the <a href="#/documentation/overview">Integration Docs</a> to learn how to store (and retrieve) custom values from your game that can be used here.</p>
+        </div>
+
         <div class="span12">
           <form class="form-horizontal">
             <div class="control-group">
-              <label class="control-label" for="inputTopValueLabel">Top Value Label</label>
+              <legend>Top Badge</legend>
+              <label class="control-label" for="inputTopValueLabel">Label</label>
               <div class="controls">
-                <input ng-model="game.configuration.friendbarTopValueLabel" type="text" id="inputTopValueLabel" class="span5"/>
+                <input ng-model="game.configuration.friendbarTopValueLabel" type="text" id="inputTopValueLabel" class="span3"/>
+                
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label" for="inputTopValueKey">Top Value Key</label>
+              <label class="control-label" for="inputTopValueKey">Key</label>
               <div class="controls">
-                <input ng-model="game.configuration.friendbarTopValueKey" type="text" id="inputTopValueKey" class="span5"/>
+                <input ng-model="game.configuration.friendbarTopValueKey" type="text" id="inputTopValueKey" class="span3"/>
+                <span class="help-block">As set by your game through the API</span>
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label" for="inputTopValueDefault">Top Value Default</label>
+              <label class="control-label" for="inputTopValueDefault">Default Value</label>
               <div class="controls">
-                <input ng-model="game.configuration.friendbarTopValueDefault" type="text" id="inputTopValueDefault" class="span5"/>
+                <input ng-model="game.configuration.friendbarTopValueDefault" type="text" id="inputTopValueDefault" class="span2"/>
+                <span class="help-block">Displayed when no value has been stored for a player yet</span>
+              </div>
+            </div>
+            <legend>Bottom Badge</legend>
+            <div class="control-group">
+              <label class="control-label" for="inputBottomValueLabel">Label</label>
+              <div class="controls">
+                <input ng-model="game.configuration.friendbarBottomValueLabel" id="inputBottomValueLabel" type="text" class="span3"/>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="inputBottomValueKey">Key</label>
+              <div class="controls">
+                <input ng-model="game.configuration.friendbarBottomValueKey" id="inputBottomValueKey" type="text" class="span3"/>
+                <span class="help-block">As set by your game through the API</span>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="inputBottomValueDefault">Default Value</label>
+              <div class="controls">
+                <input ng-model="game.configuration.friendbarBottomValueDefault" type="text" id="inputBottomValueDefault" class="span2"/>
+                <span class="help-block">Displayed when no value has been stored for a player yet</span>
               </div>
             </div>
 
             <div class="control-group">
-              <label class="control-label" for="inputBottomValueLabel">Bottom Value Label</label>
               <div class="controls">
-                <input ng-model="game.configuration.friendbarBottomValueLabel" id="inputBottomValueLabel" type="text" class="span5"/>
-              </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label" for="inputBottomValueKey">Bottom Value Key</label>
-              <div class="controls">
-                <input ng-model="game.configuration.friendbarBottomValueKey" id="inputBottomValueKey" type="text" class="span5"/>
-              </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label" for="inputBottomValueDefault">Bottom Value Default</label>
-              <div class="controls">
-                <input ng-model="game.configuration.friendbarBottomValueDefault" type="text" id="inputBottomValueDefault" class="span5"/>
-              </div>
-            </div>
-
-            <div class="control-group">
-              <div class="controls">
-                <button ng-click="updateGame(game)" class="btn btn-success">Update</button>
+                <button ng-click="updateGame(game)" class="btn btn-success">Update Badges</button>
               </div>
             </div>
 
           </form>
         </div>
+        
       </div>
     </div>
   </div>
