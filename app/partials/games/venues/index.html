@@ -61,6 +61,7 @@
 
               <td>
                 <a href="#/games/{{game.uuid}}/venues/facebook" ng-show="venue.id == 'facebook'">Configuration</a>
+                <a href="#/games/{{game.uuid}}/venues/embedded" ng-show="venue.id == 'embedded'">Details</a>
               </td>
               <td>
                 <a href="{{game.uuid|canvasUrl:venue.id}}" ng-show="game.venues[venue.id].computed.ready && game.venues[venue.id].enabled">Open</a>
