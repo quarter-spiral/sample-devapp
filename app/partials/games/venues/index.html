@@ -49,8 +49,8 @@
 
               <td>
                 <span class="btn-group" data-toggle="buttons-radio">
-                  <a ng-click="enableVenue(game, venue.id)" id="inputChangeVenue{{venue.id | uppercase}" type="button" class="btn btn-small" ng-class="{active: game.venues[venue.id].enabled}">Active</a>
-                  <a ng-click="disableVenue(game, venue.id)" id="inputChangeVenue{{venue.id | uppercase}}" type="button" class="btn btn-small" ng-class="{active: !game.venues[venue.id].enabled}">Disabled</a>
+                  <a ng-click="enableVenue(game, venue.id)" id="inputChangeVenue{{venue.id | uppercase}" type="button" class="btn btn-small" ng-class="{'btn-primary active': game.venues[venue.id].enabled}">Active</a>
+                  <a ng-click="disableVenue(game, venue.id)" id="inputChangeVenue{{venue.id | uppercase}}" type="button" class="btn btn-small" ng-class="{'btn-warning active': !game.venues[venue.id].enabled}">Disabled</a>
                 </span>
               </td>
 
