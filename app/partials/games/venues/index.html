@@ -35,7 +35,7 @@
       <div class="span12">
 
         <!--Members Section-->
-        <table class="table" id="venuesTable">
+        <table class="table table-striped" id="venuesTable">
           <thead>
             <tr>
               <th>Venue</th>
@@ -45,7 +45,7 @@
           </thead>
           <tbody>
             <tr ng-repeat="venue in venues">
-              <td>{{venue.label}}</td>
+              <td><h4>{{venue.label}}</h4></td>
 
               <td>
                 <span class="btn-group" data-toggle="buttons-radio">
@@ -59,11 +59,24 @@
               </td>
 
               <td>
-                <a href="#/games/{{game.uuid}}/venues/facebook" ng-show="venue.id == 'facebook'">Configuration</a>
-                <a href="#/games/{{game.uuid}}/venues/embedded" ng-show="venue.id == 'embedded'">Details</a>
+                <ul>
+                  <li ng-show="game.venues[venue.id].computed.ready && game.venues[venue.id].enabled">
+                    <a href="{{game.uuid|canvasUrl:venue.id}}" >Open Venue</a>
+                  </li>
+                  <li ng-show="venue.id == 'facebook'">
+                    <a href="#/games/{{game.uuid}}/venues/facebook" >Configure</a>
+                  </li>
+                  <li ng-show="venue.id == 'embedded'">
+                    <a href="#/games/{{game.uuid}}/venues/embedded" >Details</a>
+                  </li>
+                  <li ng-show="game.venues[venue.id].enabled">
+                    <label><input type="checkbox" /> Do not list publicly</label>
+                  </li>
+                </ul>
+                
               </td>
               <td>
-                <a href="{{game.uuid|canvasUrl:venue.id}}" ng-show="game.venues[venue.id].computed.ready && game.venues[venue.id].enabled">Open</a>
+                
               </td>
             </tr>
           </tbody>
