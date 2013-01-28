@@ -34,6 +34,12 @@ end
 use NewRelicMiddleware
 use Ping::Middleware
 
+if ENV['RACK_ENV'] == 'production'
+  use Rack::Auth::Basic, "Sample Dev App" do |username, password|
+      'redwoodpho' == password
+  end
+end
+
 require File.expand_path('../backend/sso/auth_backend.rb', __FILE__)
 
 use Rack::Session::Cookie, key: 'qs_sample_devapp'
