@@ -1,9 +1,21 @@
 'use strict';
 
+function redirectToBetaWall($location, user) {
+  if (!user.currentUser()) {
+    $location.path('/beta');
+    return true;
+  }
+  return false;
+}
+
 /* Controllers */
 
 
 function FrontpageCtrl($scope, $location, user) {
+  if (redirectToBetaWall($location, user)) {
+    return;
+  }
+
   if (user.currentUser()) {
     $location.path('/games');
   }
@@ -13,7 +25,10 @@ FrontpageCtrl.$inject = ['$scope', '$location', 'user'];
 
 
 
-function FAQsCtrl($scope, $location,$route) {
+function FAQsCtrl($scope, $location,$route, user) {
+  if (redirectToBetaWall($location, user)) {
+    return;
+  }
 
   $scope.faqFilter = "";
 
@@ -45,11 +60,15 @@ function FAQsCtrl($scope, $location,$route) {
     }
   ];
 }
-FAQsCtrl.$inject = ['$scope', '$location','$route'];
+FAQsCtrl.$inject = ['$scope', '$location','$route', 'user'];
 
 
 
-function DocumentationCtrl($scope, $location,$route) {
+function DocumentationCtrl($scope, $location,$route, user) {
+  if (redirectToBetaWall($location, user)) {
+    return;
+  }
+
   if ($route.current) {
     $scope.currentSection = $route.current.params.currentSection;
     $scope.templateURL = 'partials/documentation/'+$scope.currentSection+'.html';
@@ -79,7 +98,7 @@ function DocumentationCtrl($scope, $location,$route) {
   */
 
 }
-DocumentationCtrl.$inject = ['$scope', '$location','$route'];
+DocumentationCtrl.$inject = ['$scope', '$location','$route', 'user'];
 
 
 function UserCtrl($scope, $location, user) {
@@ -107,7 +126,11 @@ function UserCtrl($scope, $location, user) {
 }
 UserCtrl.$inject = ['$scope', '$location', 'user'];
 
-function NavigationCtrl($scope) {
+function NavigationCtrl($scope, $location, user) {
+  if (redirectToBetaWall($location, user)) {
+    return;
+  }
+
   $scope.activeNavigation = function() {
     return window.location.hash;
   }
@@ -116,9 +139,13 @@ function NavigationCtrl($scope) {
     {href: '#/games', label: 'Overview'},
   ];
 }
-NavigationCtrl.$inject = ['$scope'];
+NavigationCtrl.$inject = ['$scope', '$location', 'user'];
 
 function GamesCtrl($scope, $location, $route, user, devcenterClient) {
+  if (redirectToBetaWall($location, user)) {
+    return;
+  }
+
   if (!user.currentUser()) {
     if (!$location.path().match(/^\/documentation\//) && !$location.path().match(/^\/faqs/)) {
       $location.path('/');
