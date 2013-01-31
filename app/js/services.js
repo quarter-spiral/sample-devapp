@@ -88,10 +88,29 @@ services.factory('user', ['$rootScope', '$cookies', 'qs_http', function(rootScop
   return service;
 }]);
 
-services.factory('devcenterClient', ['user','qs_http', function(user, http) {
+var games = {};
+var gamesRequestPromise = null;
+
+services.factory('devcenterClient', ['$q', 'user','qs_http', function($q, user, http) {
   var devcenterBackendUrl = getDevcenterBackendUrl();
 
   http.setUserService(user);
+
+  var getGames = function() {
+    if (gamesRequestPromise) {
+      return gamesRequestPromise;
+    }
+
+    gamesRequestPromise = http.makeRequest({
+      method: 'GET',
+      url: devcenterBackendUrl + '/developers/' + user.currentUser().uuid + '/games',
+      returns: function(data) {
+        games = data;
+        return data;
+      }
+    });
+    return gamesRequestPromise;
+  }
 
   return {
     promoteDeveloper: function(uuid) {
@@ -108,15 +127,7 @@ services.factory('devcenterClient', ['user','qs_http', function(user, http) {
       });
     },
 
-    listGames: function(developerUuid) {
-      return http.makeRequest({
-        method: 'GET',
-        url: devcenterBackendUrl + '/developers/' + developerUuid + '/games',
-        returns: function(data) {
-          return data;
-        }
-      });
-    },
+    getGames: getGames,
 
     addGame: function(gameDetails) {
       return http.makeRequest({
@@ -124,6 +135,7 @@ services.factory('devcenterClient', ['user','qs_http', function(user, http) {
         url: devcenterBackendUrl + '/games',
         body: gameDetails,
         returns: function(data) {
+          games[data.uuid] = data;
           return data;
         }
       });
@@ -134,6 +146,7 @@ services.factory('devcenterClient', ['user','qs_http', function(user, http) {
         method: 'POST',
         url: devcenterBackendUrl + '/games/' + gameUuid + '/developers/' + developerUuid,
         returns: function(data) {
+          games[data.uuid] = data;
           return data;
         }
       });
@@ -144,6 +157,7 @@ services.factory('devcenterClient', ['user','qs_http', function(user, http) {
         method: 'DELETE',
         url: devcenterBackendUrl + '/games/' + gameUuid + '/developers/' + developerUuid,
         returns: function(data) {
+          games[data.uuid] = data;
           return data;
         }
       });
@@ -153,11 +167,14 @@ services.factory('devcenterClient', ['user','qs_http', function(user, http) {
       return http.makeRequest({
         method: 'DELETE',
         url: devcenterBackendUrl + '/games/' + gameUuid,
+        returns: function() {
+          delete games[gameUuid];
+        }
       });
     },
 
     updateGame: function(gameUuid, gameDetails) {
-      gameDetails = angular.fromJson(angular.toJson(gameDetails))
+      gameDetails = angular.fromJson(angular.toJson(gameDetails));
       delete gameDetails.originalConfiguration
       return http.makeRequest({
         method: 'PUT',
@@ -170,13 +187,13 @@ services.factory('devcenterClient', ['user','qs_http', function(user, http) {
     },
 
     getGame: function(gameUuid, options) {
-      return http.makeRequest({
-        method: 'GET',
-        url: devcenterBackendUrl + '/games/' + gameUuid,
-        returns: function(data) {
-          return data;
-        }
+      var deferred = $q.defer();
+
+      getGames().then(function() {
+        deferred.resolve(games[gameUuid]);
       });
+
+      return deferred.promise;
     },
 
     enableVenue: function(game, venue) {

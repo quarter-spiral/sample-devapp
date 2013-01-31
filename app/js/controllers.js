@@ -178,15 +178,8 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
   }
 
   $scope.getGames = function() {
-    devcenterClient.listGames(user.currentUser().uuid).then(function(games) {
-      $scope.games = [];
-      for (var i = 0; i < games.length; i++) {
-        devcenterClient.getGame(games[i]).then(function(game) {
-          $scope.games.push(game);
-        }, function() {
-          alert("Error retrieving game " + games[i]);
-        });
-      }
+    devcenterClient.getGames(user.currentUser().uuid).then(function(games) {
+      $scope.games = games;
     }, function() {
       alert("An error happened retrieving the games");
     });
@@ -228,7 +221,7 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
 
   $scope.addDeveloper = function(gameUuid, developer) {
     devcenterClient.addDeveloper(gameUuid, developer).then(function (game) {
-      $route.reload();
+      $scope.game = game;
     }, function() {
         alert("Could not add the developer. Sorry!");
     });
@@ -236,7 +229,7 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
 
   $scope.removeDeveloper = function(gameUuid, developer) {
     devcenterClient.removeDeveloper(gameUuid, developer).then(function (game) {
-      $route.reload();
+      $scope.game = game;
     }, function() {
         alert("Could not add the developer. Sorry!");
     });
