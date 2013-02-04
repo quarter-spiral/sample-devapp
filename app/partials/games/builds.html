@@ -38,7 +38,7 @@
           <br />
 
           <div ng-hide="game.configuration.type != 'flash'" class="well">
-            <div ng-show="game.originalConfiguration.type == 'flash' && game.originalConfiguration.url">Currently saved build: <a href="{{game.originalConfiguration.url}}">{{game.originalConfiguration.url}}</a></div>
+            <div ng-show="game.originalConfiguration.type == 'flash' && game.originalConfiguration.url">Currently saved <span ng-dblclick="powerDevMode=!powerDevMode">build</span>: <a ng-hide="powerDevMode" href="{{game.originalConfiguration.url}}">{{game.originalConfiguration.url}}</a><input type="text" ng-model="game.configuration.url" ng-show="powerDevMode"/></div>
             <div ng-show="game.configuration.url && game.configuration.url != game.originalConfiguration.url">Newly uploaded build: <a href="{{game.configuration.url}}">{{game.configuration.url}}</a></div>
             <a class="btn btn-info" ng-click="addFlashBuild(game)">Upload a new SWF file</a>
           </div>
