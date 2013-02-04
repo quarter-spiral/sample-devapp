@@ -69,7 +69,7 @@
                   <li ng-show="venue.id == 'embedded'">
                     <a href="#/games/{{game.uuid}}/venues/embedded" >Details</a>
                   </li>
-                  <li ng-show="game.venues[venue.id].enabled">
+                  <li ng-show="game.venues[venue.id].enabled && false">
                     <label><input type="checkbox" /> Do not list publicly</label>
                   </li>
                 </ul>
