@@ -39,6 +39,14 @@
                 <textarea ng-model="game.description" id="inputDescription" placeholder="Description" rows="6" class="span5"></textarea>
               </div>
             </div>
+
+            <div class="control-group">
+              <label class="control-label" for="inputCategory">Category</label>
+              <div class="controls">
+                <input ng-model="game.category" type="text" id="inputCategory" placeholder="Category" class="span5">
+              </div>
+            </div>
+
             <div class="control-group">
               <div class="controls">
                 <button ng-click="addGame(game)" class="btn btn-success">Continue</button>
