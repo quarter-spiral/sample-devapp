@@ -46,7 +46,14 @@
             </div>
 
             <div class="control-group">
-              <label class="control-label" for="inputCategory">Category</label>
+              <label class="control-label" for="inputCategory">Top Categories</label>
+              <div class="controls">
+                <span ng-repeat="category in categories|orderBy:'count':true|limitTo:15|orderBy:'name'"><a href="#" ng-click="game.category = category.name;$event.preventDefault()" class="badge" ng-class="{'badge-inverse': game.category != category.name, 'badge-info': game.category == category.name}">{{category.name}}</a> </span>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="inputCategory">Your Category</label>
               <div class="controls">
                 <input ng-model="game.category" type="text" id="inputCategory" placeholder="Category" class="span5">
               </div>

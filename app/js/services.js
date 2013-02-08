@@ -96,6 +96,9 @@ services.factory('devcenterClient', ['$q', 'user','qs_http', function($q, user, 
 
   http.setUserService(user);
 
+  var publicGames = [];
+  var categories = [];
+
   var getGames = function() {
     if (gamesRequestPromise) {
       return gamesRequestPromise;
@@ -112,7 +115,36 @@ services.factory('devcenterClient', ['$q', 'user','qs_http', function($q, user, 
     return gamesRequestPromise;
   }
 
+  var listPublicGames = function() {
+    return http.makeRequest({
+      method: 'GET',
+      url: devcenterBackendUrl + '/public/games',
+      returns: function(data) {
+        publicGames.splice(0, publicGames.length)
+        var temporaryCategories = {}
+        for (var i = 0; i < data.games.length; i++) {
+          var game = data.games[i];
+          publicGames.push(game);
+          temporaryCategories[game.category] = temporaryCategories[game.category] || 0
+          temporaryCategories[game.category]++;
+        }
+
+        categories.splice(0, categories.length)
+        for (var category in temporaryCategories) {
+          if (temporaryCategories.hasOwnProperty(category)) {
+            categories.push({name: category, count: temporaryCategories[category]})
+          }
+        }
+        return publicGames;
+      }
+    });
+  };
+  listPublicGames();
+
   return {
+    publicGames: publicGames,
+    categories: categories,
+
     promoteDeveloper: function(uuid) {
       return http.makeRequest({
         method: 'POST',

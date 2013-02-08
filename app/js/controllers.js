@@ -282,6 +282,7 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
     );
   };
 
+  $scope.categories = devcenterClient.categories;
 }
 GamesCtrl.$inject = ['$scope', '$location', '$route', 'user', 'devcenterClient'];
 
