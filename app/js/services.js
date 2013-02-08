@@ -91,7 +91,7 @@ services.factory('user', ['$rootScope', '$cookies', 'qs_http', function(rootScop
 var games = {};
 var gamesRequestPromise = null;
 
-services.factory('devcenterClient', ['$q', 'user','qs_http', function($q, user, http) {
+services.factory('devcenterClient', ['$q', '$http', 'user','qs_http', function($q, $http, user, http) {
   var devcenterBackendUrl = getDevcenterBackendUrl();
 
   http.setUserService(user);
@@ -116,27 +116,23 @@ services.factory('devcenterClient', ['$q', 'user','qs_http', function($q, user, 
   }
 
   var listPublicGames = function() {
-    return http.makeRequest({
-      method: 'GET',
-      url: devcenterBackendUrl + '/public/games',
-      returns: function(data) {
-        publicGames.splice(0, publicGames.length)
-        var temporaryCategories = {}
-        for (var i = 0; i < data.games.length; i++) {
-          var game = data.games[i];
-          publicGames.push(game);
-          temporaryCategories[game.category] = temporaryCategories[game.category] || 0
-          temporaryCategories[game.category]++;
-        }
-
-        categories.splice(0, categories.length)
-        for (var category in temporaryCategories) {
-          if (temporaryCategories.hasOwnProperty(category)) {
-            categories.push({name: category, count: temporaryCategories[category]})
-          }
-        }
-        return publicGames;
+    $http({method: 'GET', url: devcenterBackendUrl + '/public/games'}).success(function(data, status, headers, config) {
+      publicGames.splice(0, publicGames.length)
+      var temporaryCategories = {}
+      for (var i = 0; i < data.games.length; i++) {
+        var game = data.games[i];
+        publicGames.push(game);
+        temporaryCategories[game.category] = temporaryCategories[game.category] || 0
+        temporaryCategories[game.category]++;
       }
+
+      categories.splice(0, categories.length)
+      for (var category in temporaryCategories) {
+        if (temporaryCategories.hasOwnProperty(category)) {
+          categories.push({name: category, count: temporaryCategories[category]})
+        }
+      }
+      return publicGames;
     });
   };
   listPublicGames();
