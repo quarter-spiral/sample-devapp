@@ -1,0 +1,35 @@
+<div id="content">
+
+  <div class="container">
+    <div class="row">
+
+      <div class="span12">
+        <div ng-hide="currentUser">
+          <a class="btn btn-info" href="/auth/auth_backend?redirect_path=%23%2Flocal-mode">Log in</a>
+        </div>
+        <div ng-show="currentUser">
+          <p ng-controller="GamesCtrl" ng-init="getGames()">
+            <select ng-model="selectedLocalModeGame">
+              <option ng-repeat="game in games|orderBy:'name'" value="{{game.uuid}}">{{game.name}}</option>
+            </select>
+            <button class="btn btn-success" ng-click="selectLocalModeGame(selectedLocalModeGame)">Select</button>
+          </p>
+          <div ng-hide="localModeIsSaving">
+            <h2>Selected game: <span ng-show="selectedGame">{{selectedGame.name}}</span><span ng-hide="selectedGame">None</span></h2>
+            <p ng-show="selectedGame">
+              Local Mode: <span class="label label-success" ng-hide="inLocalMode()">disabled</span><span class="label label-important" ng-show="inLocalMode()">enabled</span>
+
+              <button ng-show="inLocalMode()" class="btn btn-info" ng-click="turnOffLocalMode()">Turn off Local Mode</button>
+              <button ng-hide="inLocalMode()" class="btn btn-danger" ng-click="turnOnLocalMode()">Turn on Local Mode</button>
+            </p>
+          </div>
+          <div ng-show="localModeIsSaving">
+            <h3>One second please while we are updating your game…</h3>
+          </div>
+        </div>
+    </div>
+
+  </div>
+
+</div>
+

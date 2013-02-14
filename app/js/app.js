@@ -8,6 +8,7 @@ angular.module('devcenterTest', ['ngCookies', 'devcenterTest.filters', 'devcente
     $routeProvider.when('/beta', {templateUrl: 'partials/beta.html'});
     $routeProvider.when('/games', {templateUrl: 'partials/games/index.html', controller: 'GamesCtrl'});
     //$routeProvider.when('/faqs', {templateUrl: 'partials/faqs.html', controller: 'FAQsCtrl'});
+    $routeProvider.when('/local-mode', {templateUrl: 'partials/local-mode/index.html', controller: 'LocalModeCtrl'});
     $routeProvider.when('/documentation/:currentSection', {templateUrl: 'partials/documentation/index.html', controller: 'DocumentationCtrl'});
     $routeProvider.when('/games/new', {templateUrl: 'partials/games/new.html', controller: 'GamesCtrl'});
     $routeProvider.when('/games/:gameUuid', {templateUrl: 'partials/games/game.html', controller: 'GamesCtrl'});
@@ -23,7 +24,7 @@ angular.module('devcenterTest', ['ngCookies', 'devcenterTest.filters', 'devcente
     $routeProvider.otherwise({redirectTo: '/'});
 }]).run(function ($rootScope, $location, $timeout, user) {
     $rootScope.$on('$locationChangeStart', function(e, next, current) {
-        if (!(next.match(/#\/beta$/) || user.currentUser())) {
+        if (!(next.match(/#\/beta$/) || current.match(/#\/local-mode$/) || user.currentUser())) {
             e.preventDefault()
             $timeout(function() {
                 $location.path('/beta')

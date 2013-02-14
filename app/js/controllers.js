@@ -1,7 +1,7 @@
 'use strict';
 
 function redirectToBetaWall($location, user) {
-  if (!user.currentUser()) {
+  if (!($location.path().match(/\/local-mode$/) || user.currentUser())) {
     $location.path('/beta');
     return true;
   }
@@ -100,6 +100,67 @@ function DocumentationCtrl($scope, $location,$route, user) {
 }
 DocumentationCtrl.$inject = ['$scope', '$location','$route', 'user'];
 
+function LocalModeCtrl($rootScope, $scope, $location,$route, $timeout, user, devcenterClient) {
+  $rootScope.hideFooter = true;
+  $rootScope.hideHeader = true;
+
+  var localModeUrl = "http://localhost:12566/local-content";
+
+  if (user.currentUser()) {
+    var windowProxy = new Porthole.WindowProxy('*');
+    var signalReadyToLocalModeApp = function() {
+      windowProxy.post({type: 'mkReady'});
+      $timeout(signalReadyToLocalModeApp, 500);
+    }
+    signalReadyToLocalModeApp()
+  }
+
+  $scope.selectLocalModeGame = function(gameUuid) {
+    devcenterClient.getGame(gameUuid).then(function(game) {
+      $scope.selectedGame = game;
+    });
+  }
+
+  $scope.inLocalMode = function() {
+    return $scope.selectedGame && $scope.selectedGame['developer_configuration'] && $scope.selectedGame['developer_configuration']['unLocalModeUrl'];
+  }
+
+  $scope.turnOnLocalMode = function() {
+    if (!$scope.selectedGame['developer_configuration']) {
+      $scope.selectedGame['developer_configuration'] = {}
+    }
+
+    $scope.selectedGame['developer_configuration']['unLocalModeUrl'] = $scope.selectedGame.configuration.url;
+    $scope.selectedGame.configuration.url = localModeUrl;
+
+    $scope.localModeIsSaving = true;
+    devcenterClient.updateGame($scope.selectedGame.uuid, $scope.selectedGame).then(function() {
+      $scope.localModeIsSaving = false;
+    }, function() {
+      alert("Could not save the game. Sorry! Please restart the Local Mode app.");
+      $scope.localModeIsSaving = false;
+    });
+  }
+
+  $scope.turnOffLocalMode = function() {
+    if (!$scope.selectedGame['developer_configuration']) {
+      $scope.selectedGame['developer_configuration'] = {}
+    }
+
+    $scope.selectedGame.configuration.url = $scope.selectedGame['developer_configuration']['unLocalModeUrl'];
+    delete $scope.selectedGame['developer_configuration']['unLocalModeUrl']
+
+    $scope.localModeIsSaving = true;
+    devcenterClient.updateGame($scope.selectedGame.uuid, $scope.selectedGame).then(function() {
+      $scope.localModeIsSaving = false;
+    }, function() {
+      alert("Could not save the game. Sorry! Please restart the Local Mode app.");
+      $scope.localModeIsSaving = false;
+    });
+  }
+}
+LocalModeCtrl.$inject = ['$rootScope', '$scope', '$location','$route', '$timeout', 'user', 'devcenterClient'];
+
 
 function UserCtrl($scope, $location, user) {
   $scope.login = function(uuid) {
@@ -147,7 +208,7 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
   }
 
   if (!user.currentUser()) {
-    if (!$location.path().match(/^\/documentation\//) && !$location.path().match(/^\/faqs/)) {
+    if (!$location.path().match(/^\/documentation\//) && !$location.path().match(/^\/faqs/) && !$location.path().match(/^\/local-mode/)) {
       $location.path('/');
     }
     return;

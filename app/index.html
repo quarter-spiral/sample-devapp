@@ -33,7 +33,7 @@
   <div id="wrapper">
 
 
-    <div id="topbar">
+    <div id="topbar" ng-hide="hideHeader">
 
       <div class="container">
 
@@ -66,7 +66,7 @@
             <li ng-show="loggedIn">
                 <a href="#/documentation/overview"><i class="icon-book"></i> Integration Docs</a>
             </li>
-            <!-- 
+            <!--
             <li ng-show="loggedIn">
                 <a href="#/faqs"><i class="icon-question-sign"></i> FAQs</a>
             </li>
@@ -91,7 +91,7 @@
 
   </div>
 
-  <div id="footer">
+  <div id="footer" ng-hide="hideFooter">
 
     <div class="container">
 
