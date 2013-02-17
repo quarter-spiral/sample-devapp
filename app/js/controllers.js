@@ -122,16 +122,22 @@ function LocalModeCtrl($rootScope, $scope, $location,$route, $timeout, user, dev
   }
 
   $scope.inLocalMode = function() {
-    return $scope.selectedGame && $scope.selectedGame['developer_configuration'] && $scope.selectedGame['developer_configuration']['unLocalModeUrl'];
+    return $scope.selectedGame && $scope.selectedGame['developer_configuration'] && $scope.selectedGame['developer_configuration']['local_mode'] && $scope.selectedGame['developer_configuration']['local_mode'][user.currentUser().uuid];
   }
 
   $scope.turnOnLocalMode = function() {
     if (!$scope.selectedGame['developer_configuration']) {
-      $scope.selectedGame['developer_configuration'] = {}
+      $scope.selectedGame['developer_configuration'] = {};
     }
 
-    $scope.selectedGame['developer_configuration']['unLocalModeUrl'] = $scope.selectedGame.configuration.url;
-    $scope.selectedGame.configuration.url = localModeUrl;
+    if (!$scope.selectedGame['developer_configuration']['local_mode']) {
+      $scope.selectedGame['developer_configuration']['local_mode'] = {};
+    }
+
+    var localModeConfiguration = {};
+    angular.copy($scope.selectedGame.configuration, localModeConfiguration);
+    localModeConfiguration.url = localModeUrl;
+    $scope.selectedGame['developer_configuration']['local_mode'][user.currentUser().uuid] = localModeConfiguration;
 
     $scope.localModeIsSaving = true;
     devcenterClient.updateGame($scope.selectedGame.uuid, $scope.selectedGame).then(function() {
@@ -147,8 +153,10 @@ function LocalModeCtrl($rootScope, $scope, $location,$route, $timeout, user, dev
       $scope.selectedGame['developer_configuration'] = {}
     }
 
-    $scope.selectedGame.configuration.url = $scope.selectedGame['developer_configuration']['unLocalModeUrl'];
-    delete $scope.selectedGame['developer_configuration']['unLocalModeUrl']
+    if (!$scope.selectedGame['developer_configuration']['local_mode']) {
+      $scope.selectedGame['developer_configuration']['local_mode'] = {};
+    }
+    delete $scope.selectedGame['developer_configuration']['local_mode'][user.currentUser().uuid];
 
     $scope.localModeIsSaving = true;
     devcenterClient.updateGame($scope.selectedGame.uuid, $scope.selectedGame).then(function() {

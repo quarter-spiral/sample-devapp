@@ -1,6 +1,6 @@
 <div id="content">
 
-  <div class="container">
+   <div class="container local-mode" style="height:400px;">
     <div class="row">
 
       <div class="span12">
@@ -26,6 +26,13 @@
           <div ng-show="localModeIsSaving">
             <h3>One second please while we are updating your game…</h3>
           </div>
+
+          <div class="main-content" id="file-drop-zone" style="height:250px;border:1px solid;" ng-show="selectedGame">
+            Drop your build here
+          </div>
+
+          <script src="http://localhost:12567/socket.io/socket.io.js"></script>
+          <script src="/js/local_mode.js"></script>
         </div>
     </div>
 
