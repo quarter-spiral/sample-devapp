@@ -104,7 +104,7 @@ function LocalModeCtrl($rootScope, $scope, $location,$route, $timeout, user, dev
   $rootScope.hideFooter = true;
   $rootScope.hideHeader = true;
 
-  var localModeUrl = "http://localhost:12566/local-content";
+  var localModeUrl = "https://local-content.quarterspiral.com:12566/local-content";
 
   if (user.currentUser()) {
     var windowProxy = new Porthole.WindowProxy('*');
