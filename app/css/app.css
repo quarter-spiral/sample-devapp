@@ -1,3 +1,7 @@
+.topGames{border-top:1px solid #DDD;}.topGames li{border-bottom:1px solid #DDD;padding:5px;font-weight:bold;}
+.topGames .counter{float:right;margin-left:10px;font-weight:normal;}
+.topGames .plus{color:green;}
+.topGames .minus{color:red;}
 .hero-unit.stars{text-align:center;background:#000000 url('../img/stars.jpg') no-repeat right bottom;color:#FFF;-moz-text-shadow:0px 1px 3px #000000;-webkit-text-shadow:0px 1px 3px #000000;text-shadow:0px 1px 3px #000000;-moz-box-shadow:0px 1px 2px rgba(0, 0, 0, 0.8);-webkit-box-shadow:0px 1px 2px rgba(0, 0, 0, 0.8);box-shadow:0px 1px 2px rgba(0, 0, 0, 0.8);}.hero-unit.stars p,.hero-unit.stars a{color:#FF6;}
 .hero-unit.stars a{text-decoration:underline;font-weight:bold;}
 .large{font-size:1.3em;line-height:1.5em;}
@@ -13,12 +17,13 @@ h2{font-size:1.4em;}
 table#venuesTable td{width:20%;white-space:nowrap;}table#venuesTable td label{font-size:1em;color:#666;}
 table#venuesTable td input{vertical-align:top;}
 table#venuesTable td ul{list-style:none;margin:0px;padding:0px;}
-table.stat-table span{font-size:70%;vertical-align:bottom;}table.stat-table span.plus{color:#66DD00;}
+table.stat-table span{font-size:70%;vertical-align:bottom;}table.stat-table span.plus{color:green;}
 table.stat-table span.minus{color:red;}
 .tip{color:#999;}
 .teaserArt{height:250px;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;background-color:#EEE;text-align:center;line-height:250px;color:#999;-moz-box-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);-webkit-box-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);box-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);}
 p.large{font-size:1.2em;line-height:1.5em;}
 #rampUp ol{font-size:1.3em;}#rampUp ol li{line-height:1.5em;margin-bottom:0.5em;}
+.coming-soon,.coming-soon .full{color:#DDD !important;}
 .row{margin-top:0px !important;}
 .steps{font-size:1.2em;}.steps li{margin:0 0 1.5em 0px;}.steps li input{margin-top:0.5em;}
 .graph-placeholder{width:100%;height:350px;background-color:#EEE;-moz-box-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);-webkit-box-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);box-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);}

@@ -1,0 +1,35 @@
+<div id="header" ng-show="loggedIn">
+
+      <div class="container">
+
+
+
+        <a href="#/games/{{game.uuid}}" class="brand"><i class="icon-bar-chart"></i> Meta Mission Kontrol</a>
+
+        <a href="javascript:;" class="btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <i class="icon-reorder"></i>
+            </a>
+
+        <div class="nav-collapse">
+          <ul id="main-nav" class="nav pull-right">
+            <li class="nav-icon" ng-class="{active: currentUrl == 'meta'}">
+              <a href="#/meta">
+                <i class="icon-home"></i>
+                Overview
+              </a>
+            </li>
+
+            <li class="nav-icon" ng-class="{active: currentUrl == 'meta/payouts'}">
+              <a href="#/meta/payouts">
+                <i class="icon-money"></i>
+                Payouts
+              </a>
+            </li>
+
+          </ul>
+
+        </div> <!-- /.nav-collapse -->
+
+      </div> <!-- /.container -->
+
+    </div> <!-- /#header -->

@@ -24,6 +24,13 @@ FrontpageCtrl.$inject = ['$scope', '$location', 'user'];
 
 
 
+function MetaCtrl($scope, $location, user) {
+  $scope.currentUrl = $location.path().substr(1, $location.path().length);
+}
+MetaCtrl.$inject = ['$scope', '$location', 'user'];
+
+
+
 
 function FAQsCtrl($scope, $location,$route, user) {
   if (redirectToBetaWall($location, user)) {

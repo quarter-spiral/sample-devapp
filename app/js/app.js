@@ -8,6 +8,8 @@ angular.module('devcenterTest', ['ngCookies', 'devcenterTest.filters', 'devcente
     $routeProvider.when('/beta', {templateUrl: 'partials/beta.html'});
     $routeProvider.when('/games', {templateUrl: 'partials/games/index.html', controller: 'GamesCtrl'});
     //$routeProvider.when('/faqs', {templateUrl: 'partials/faqs.html', controller: 'FAQsCtrl'});
+    $routeProvider.when('/meta', {templateUrl: 'partials/meta/index.html', controller: 'MetaCtrl'});
+    $routeProvider.when('/meta/payouts', {templateUrl: 'partials/meta/payouts.html', controller: 'MetaCtrl'});
     $routeProvider.when('/local-mode', {templateUrl: 'partials/local-mode/index.html', controller: 'LocalModeCtrl'});
     $routeProvider.when('/documentation/:currentSection', {templateUrl: 'partials/documentation/index.html', controller: 'DocumentationCtrl'});
     $routeProvider.when('/games/new', {templateUrl: 'partials/games/new.html', controller: 'GamesCtrl'});
