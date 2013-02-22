@@ -24,6 +24,13 @@
               </a>
             </li>
 
+            <li ng-class="{active: currentUrl == 'revenue'}">
+              <a href="#/games/{{game.uuid}}/revenue">
+                <i class="icon-money"></i>
+                <span>Revenue</span>
+              </a>
+            </li>
+
             <li class="dropdown" ng-class="{active: currentUrl == 'builds'||currentUrl == 'screens'}">
               <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="icon-cloud"></i>
@@ -71,6 +78,12 @@
                   <a href="#/games/{{game.uuid}}/venues">
                     <i class="icon-sitemap"></i>
                     <span>Venues</span>
+                  </a>
+                </li>
+                <li ng-class="{active: currentUrl == 'revenuesettings'}">
+                  <a href="#/games/{{game.uuid}}/revenuesettings">
+                    <i class="icon-money"></i>
+                    <span>Revenue Settings</span>
                   </a>
                 </li>
                 <li ng-class="{active: currentUrl == 'developers'}">

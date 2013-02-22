@@ -1,0 +1,176 @@
+<div ng-init="game = getGame(gameUuid)">
+
+  <div ng-include src="'partials/games/header.html'"></div>
+
+  <div id="masthead">
+    <div class="container">
+
+      <div class="masthead-pad">
+        <div class="masthead-text" ng-hide="game|gameReady">
+          <h2>Getting started</h2>
+          <p>in 3 easy steps</p>
+        </div> <!-- /.masthead-text -->
+
+        <div class="masthead-text" ng-show="game|gameReady">
+          <h2>Revenue</h2>
+          <p>Make money from your game</p>
+        </div> <!-- /.masthead-text -->
+
+      </div>
+
+    </div> <!-- /.container -->
+
+  </div> <!-- /#masthead -->
+
+
+
+
+  <div id="content">
+
+    <div class="container">
+
+      <div class="row">
+
+
+        <div class="span8">
+          <h2>At a Glance</h2>
+          <hr />
+          <div class="row">
+            <div class="span4">
+              <table class="table stat-table">
+                <tbody>
+                  <tr>
+                    <td class="value">$320.12</td>
+                    <td class="full">Current Balance</td>
+                  </tr>
+                  <tr>
+                    <td class="value">$120.12</td>
+                    <td class="full">Last Payout</td>
+                  </tr>
+                  <tr>
+                    <td class="value">$233,021.24</td>
+                    <td class="full">Lifetime Revenue</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="tip">
+                Most recent payout was on 1/1/2013 (Payment ID: #12345)
+              </p>
+            </div>
+            <div class="span4">
+              <p class="tip">
+                Currently all revenune is generated from pre-roll ads. We'll add additional options soon.
+              </p>
+              <p class="tip">
+                Payouts are being made no later than every 2 month if you have qualifying balance of $US100 or more.
+              </p>
+              <p>
+                <a href="#/games/{{game.uuid}}/revenuesettings">Change revenue settings</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="span3 offset1">
+          <h2>Payee Information</h2>
+          <hr />
+          <p>
+            <strong>IMPORTANT:</strong> All payments are made to:
+          </p>
+          <p>
+            Ethan Levy<br />
+            Adress<br />
+            Email: ewrewr@werwerer.com<br />
+            Phone: 123-456-7891
+          </p>
+          <p><a href="#/games/{{game.uuid}}/revenuesettings" class="btn btn-mini">Update Payee Information</a></p>
+        </div>
+
+
+        <div class="span12">
+          <h2>Payment History</h2>
+          <hr />
+
+          <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Payment ID#</th>
+              <th>Paid to</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="">
+              <td>$US 120.12</td>
+              <td>
+                1/1/2013<br />
+              </td>
+              <td>
+                #12345
+              </td>
+              <td>
+                <strong>Ethan Levy</strong><br />
+                Adress<br />
+                Email: sdfsdf@asfs.com</br>
+                Phone: 124-124-1234
+              </td>
+            </tr>
+            <tr class="">
+              <td>$US 120.12</td>
+              <td>
+                1/1/2013<br />
+              </td>
+              <td>
+                #12345
+              </td>
+              <td>
+                <strong>Ethan Levy</strong><br />
+                Adress<br />
+                Email: sdfsdf@asfs.com</br>
+                Phone: 124-124-1234
+              </td>
+            </tr>
+            <tr class="">
+              <td>$US 109.18</td>
+              <td>
+                12/1/2012<br />
+              </td>
+              <td>
+                #4321
+              </td>
+              <td>
+                <strong>Ethan Levy</strong><br />
+                Adress<br />
+                Email: sdfsdf@asfs.com</br>
+                Phone: 124-124-1234
+              </td>
+            </tr>
+            <tr class="">
+              <td>$US 76.18</td>
+              <td>
+                11/1/2012<br />
+              </td>
+              <td>
+                #43221
+              </td>
+              <td>
+                <strong>Ethan Levy</strong><br />
+                Adress<br />
+                Email: sdfsdf@asfs.com</br>
+                Phone: 124-124-1234
+              </td>
+            </tr>
+          </tbody>
+        </table>
+          
+        </div>
+
+      </div>
+
+
+
+
+    </div>
+  </div>
+</div>

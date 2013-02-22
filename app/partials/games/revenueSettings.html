@@ -1,0 +1,140 @@
+<div ng-init="game = getGame(gameUuid)">
+
+  <div ng-include src="'partials/games/header.html'"></div>
+
+  <div id="masthead">
+
+    <div class="container">
+
+      <div class="masthead-pad">
+
+        <div class="masthead-text">
+          <h2>Revenue Settings</h2>
+          <p>Configure how your game makes money and where we should send it.</p>
+        </div> <!-- /.masthead-text -->
+
+      </div>
+
+    </div> <!-- /.container -->
+
+  </div> <!-- /#masthead -->
+
+
+
+
+  <div id="content">
+
+    <div class="container">
+
+      <div class="row">
+
+        <div class="span12">
+          <h2>Configuration</h2>
+          <hr />
+        </div>
+
+       
+
+        <div class="span8">
+          <form class="form-inline">
+            <label class="checkbox">
+              <input type="checkbox"> Show pre-roll ads before players can play
+            </label>
+          </form>       
+        </div>
+
+         <div class="span4">
+          <p class="tip">
+            More options are in the making...
+          </p>        
+        </div>
+
+
+
+
+        <div class="span12">
+          <h2>Payee Information</h2>
+          <hr />
+        </div>
+
+        <div class="span2">
+          <p class="tip">
+            It is essential to keep this information up to date at all times.
+          </p>
+          <p class="tip">
+            Any payments will be sent there. 
+          </p>
+          
+        </div>
+
+        <div class="span7">
+          <form class="form-horizontal">
+            <div class="control-group">
+              <label class="control-label" for="inputName">Name</label>
+              <div class="controls">
+                <input type="text" id="inputName" placeholder="Name" class="span4">
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="inputName">Adress</label>
+              <div class="controls controls-row">
+                <input type="text" id="inputName" placeholder="Street" class="span4">
+                <input type="text" id="inputName" placeholder="Apt #" class="span1">
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="inputName">City</label>
+              <div class="controls">
+                <input type="text" id="inputName" placeholder="City" class="span4">
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="inputName">State</label>
+              <div class="controls">
+                <select>
+                  <option>CA - California</option>
+                  <option>NC - Norh Carolina</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="inputName">Zip</label>
+              <div class="controls">
+                <input type="text" id="inputName" placeholder="Zip" class="span2">
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="inputName">Telephone</label>
+              <div class="controls">
+                <input type="text" id="inputName" placeholder="Phone" class="span4">
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="inputName">Email</label>
+              <div class="controls">
+                <input type="text" id="inputName" placeholder="Email" class="span4">
+              </div>
+            </div>
+
+            
+            <div class="control-group">
+              <div class="controls">
+                <button ng-click="" class="btn btn-success">Update</button>
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
