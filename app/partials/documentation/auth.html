@@ -138,7 +138,7 @@ You can request an OAuth token for either a user or a registered app.
 
 **POST** to ``/api/v1/token``
 
-Use HTTP basic auth to authenticate the user on who's behalf the token is issued.
+Use HTTP basic auth to authenticate the user on for whom the token is issued.
 
 ##### Response
 
@@ -171,7 +171,7 @@ The response comes as JSON like this:
 
 #### Venues
 
-Apps can request an OAuth token for a user identified by it's ID on any supported venue. These requests must be authenticated by an app's OAuth token.
+Apps can request an OAuth token for a user identified by his ID on any supported venue. These requests must be authenticated by an app's OAuth token.
 
 If there is no user associated for the given venue and venue ID a new one will be created and associated with that venue ID.
 
@@ -209,7 +209,7 @@ The response comes as JSON like this:
 
 ### Get or create UUIDs of a batch of users identified by their venue information
 
-Used to translate a batch of users on a venue to their identities in our system. E.g. get the QS identity of a bunch of facebook friends of a user.
+Used to translate a batch of users on a venue to their identities in our system. E.g. get the QS identity of a bunch of Facebook friends of a user.
 
 #### Request
 
@@ -299,7 +299,7 @@ client = Rack::Client.new {run Auth::Backend::App.new(test: true)}
 
 ### Test API
 
-All parameters most be sent form encoded.
+All parameters must be sent from encoded.
 
 #### Add a user
 

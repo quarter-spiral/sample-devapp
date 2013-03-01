@@ -1,6 +1,6 @@
 <markdown class="documentation">
 
-Every entity can save a [*data sets*](#data-set). The data sets can only be read by [*authorized parties*](#authorized-party). New data sets can only be created by authorized parties. As well can changes to existing data sets only be made by authorized parties.
+Every entity can save a [*data sets*](#data-set). The data sets can only be read by [*authorized parties*](#authorized-party). New data sets can only be created by authorized parties. Similarly, changes to existing data sets can only be made by authorized parties.
 
 The data store must be accessed by HTTPS.
 
@@ -50,7 +50,7 @@ JSON encoded hash like this:
 ```{"uuid": "the-uuid-of-the-document", "data": "{\"some\":
 \"data\"}"}```
 
-The response always contains the whole data set no matter if only a sub
+The response always contains the whole data set even if only a sub
 set of the data set was changed (via a ``key`` parameter).
 
 #### Example
@@ -74,7 +74,7 @@ If you have a data set with the uuid ``some-uuid`` that looks like this:
 }
 ```
 
-you could change it's name like this:
+you could change its name like this:
 
 Send a ``PUT`` to ``/some-uuid/name`` with a JSON body like this
 ``{"name": "Another name"}``.

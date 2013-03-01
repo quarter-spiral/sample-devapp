@@ -2,7 +2,7 @@
 
 This guide assumes that you already [display player data](/#/documentation/integration) in your game.
 
-Our next step is to store the high score with Mission Kontrol. This way our high score will never be lost again. Mission Kontrol is able of holding data for each player for you. To leverage that we are going to change the way we store the high score in the controller. First let's save the ``qs`` object we get after initializing the SDK. Change the initialization code to:
+Our next step is to store the high score with Mission Kontrol. This way our high score will never be lost again. Mission Kontrol is capable of holding game data for each player for you. To leverage the data store we are going to change the way we store the high score in the controller. First let's save the ``qs`` object we recieve after initializing the SDK. Change the initialization code to:
 
 ```javascript
 var qs = null;
@@ -23,7 +23,7 @@ Now find the first line of the ``$scope.reset`` function where the high score is
 
 ![Old high score storage](/img/documentation/integration_18.jpg)
 
-We will change that so save the score to Mission Kontrol like this:
+We will change that to save the score in Mission Kontrol like this:
 
 ```javascript
 if ($scope.points > $scope.highScore) {
@@ -32,7 +32,7 @@ if ($scope.points > $scope.highScore) {
 }
 ```
 
-so the whole function is now reading:
+The whole function now reads:
 
 ![New high score storage](/img/documentation/integration_19.jpg)
 
@@ -42,9 +42,9 @@ With just one line
 qs.setPlayerData('highScore', $scope.highScore);
 ```
 
-we are now storing the high score in the cloud! Actually we are cheating a little bit here as we use the ``qs`` object without any checks even is the initialization has not yet happened. We encourage you to use a more clever approach in your game or at least check if the ``qs`` variable is already set. But for this demo it will do.
+we are now storing the high score in the cloud! Actually we are cheating a little bit here as we use the ``qs`` object without any checks even if the initialization has not yet happened. We encourage you to use a more thorough approach in your game or at least check if the ``qs`` variable is already set. But for this demo the shorcut will satisfy.
 
-Let's do the last step and make sure we pick up on the stored value when the page is loaded. We are going to change the initialization one last time. Right before the end of the ``then`` function of the ``setup`` call add this code:
+Let's do the last step and make sure we recieve the stored value when the page is loaded. We are going to change the initialization one last time. Right before the end of the ``then`` function of the ``setup`` call add this code:
 
 ```javascript
 qs.retrievePlayerData().then(function (data) {
@@ -59,25 +59,25 @@ that should now look like this:
 
 ![Final initialization code](/img/documentation/integration_20.jpg)
 
-After updating the fiddle, reloading the game on facebook and playing for a while you should get a new high score when you click on "Start over" after losing a game. Now go and reload the page aaaaand tada! You should see your high score magicaly showing up even after the reload like this:
+After updating the fiddle, reloading the game on Facebook and playing for a while you should get a new high score when you click "Start over" after completing a game. Now go and reload the page aaaaand tada! You should see your high score magicaly show up after the reload like this:
 
 ![Loaded high score](/img/documentation/integration_21.jpg)
 
-To finish off this guide we will add a social twist to the high score integrate it with the friend bar. Head over to Mission Kontrol and open the "Settings / Friendbar" page
+To finish off this guide we will add a social twist to the high score by integrating it with the Friend Bar. Head over to Mission Kontrol and open the "Settings / Friendbar" page
 
 ![Open friendbar settings](/img/documentation/integration_22.jpg)
 
-Now enter "High Score" as the top value's label and ``highScore`` (as the name we used in our JavaScript code) as it's key. After that hit "Update".
+Now enter "High Score" as the top value's label and ``highScore`` (as the name we used in our JavaScript code) as its key. After that click "Update".
 
 ![Friendbar settings](/img/documentation/integration_23.jpg)
 
-That is all you have to do! Now when you and your friends are playing the game you can see each others high scores in the friend bar. You can even sort your friends by high score with no extra effort.
+That is all you have to do! Now when you and your friends are playing the game you can see each other's high scores in the Friend Bar. You can even sort your friends by high score with no additional coding effort.
 
 ![High score in friend bar](/img/documentation/integration_24.jpg)
 
-And with that we are done. You have learned how to get basic information about the player like his name and how to use Mission Kontrol as a data store for your game. In the end we even added a social leader board to your game with very little effort.
+And with that we are done. You have learned how to get basic information about the player like his name and how to use Mission Kontrol as a data store for your game. To finsih the tutorial, we added a social leader board to your game with very little effort.
 
-If we got you hooked have a look at our SDK documentation for [HTML5](/#/documentation/sdkHtml) and [Flash](/#/documentation/sdkFlash) to learn about all the tricks Mission Kontrol has up it's sleeves and super charge your game with it.
+If we got you hooked please take a look at our SDK documentation for [HTML5](/#/documentation/sdkHtml) and [Flash](/#/documentation/sdkFlash) to learn about all the tricks Mission Kontrol has up it's sleeves and super charge your game with it.
 
 And of course let us know any question you have or what ever else might be on your mind. We are happy to hear from you: [support@quarterspiral.com](mailto:support@quarterspiral.com)
 

@@ -3,19 +3,19 @@
 
 ### Usage
 
-All our services are available to you through our API. This way you can bend the Quarter Spiral universe to your liking and unlock the power that hides behind the facade of our SDK. Do not fear! It's no problem to just get started by using the SDK and slowly switch over to a custom API integration when you outgrow the SDK. This way you can create for example your own social friendbar implementation rather then just using ours.
+All our services are available to you through our API. This way you can bend the Quarter Spiral universe to your liking and unlock your game's full potential. It is simple to get started by using the SDK. In the future you can easily transition to a custom API integration when you outgrow the SDK. This way you can, for example, create your a custome Friend Bar visualization instead of using our implementation.
 
 ### General
 
-**Important:** While all services are described in great detail please make sure to read this page first. It will save you some headaches later!
+**Important:** While we strive to describe all our services in great detail, please read this page first. It will save you some headaches later!
 
 Our API is available over HTTPS and speaks JSON only. We made sure that you can reach it even in cross-domain scenarios by employing the right [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) headers.
 
-The documenation of each services comes with a detailed outline of all available endpoints, it's URLs and possible request options as well as a description of the response. We also try to include as many examples as possible to save you from suprises. If you feel that the documentation is unclear or lacking something please tell us via [email](mailto:support@quarterspiral.com) or on [Twitter](https://twitter.com/quarterspiral).
+The documenation of each services comes with a detailed outline of all available endpoints, URLs and possible request options as well as a description of the response. We also try to include as many examples as possible to save you from suprises. If you feel that the documentation is unclear or lacking something please tell us via [email](mailto:support@quarterspiral.com) or on [Twitter](https://twitter.com/quarterspiral).
 
-Yeah cURL is cool but playing around with APIs can get a pain. Internally we use an OS X tool called [RESTed](https://itunes.apple.com/us/app/rested-simple-http-requests/id421879749?mt=12) whenever we tinker around with our raw API but we also heard wonders about other helpers like [Postman](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en) for Chrome.
+Yeah cURL is cool but playing around with APIs can get a pain. Internally we use an OS X tool called [RESTed](https://itunes.apple.com/us/app/rested-simple-http-requests/id421879749?mt=12) whenever we tinker around with our raw API but we also hear good things about other helpers like [Postman](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en) for Chrome.
 
-All endpoint descriptions include a list of parameters whenever parameters can be send. Some of these are documented to be send as the HTTP body. As it can be difficult to make that happen for request methods other than POST or PUT we also support normal query strings as an alternative. So e.g. if you have to issue a get request with a JSON encoded body like this:
+All endpoint descriptions include a list of parameters whenever parameters can be send. Some of these are documented to be sent as the HTTP body. As it can be difficult to make that happen for request methods other than POST or PUT we also support normal query strings as an alternative. For example. if you have to issue a get request with a JSON encoded body like this:
 
 ```javascript
 {
@@ -38,7 +38,7 @@ The documentation describes cases in which a successful response returns some ot
 
 ### Authentification
 
-We use OAuth as the only authentication mechanism for our whole platform. That means you need to pass an OAuth token to all endpoints that require authorization.
+We use OAuth as the only authentication mechanism for our platform. That means you need to pass an OAuth token to all endpoints that require authorization.
 
 #### Endpoint Authorization
 
@@ -46,13 +46,13 @@ All endpoints that do not explicitly state that they are publicly available requ
 
 #### Authorize HTTP requests
 
-Right now we only support to do that through the HTTP ``Authorization`` header. E.g. if your token is ``1234567890`` you should pass a HTTP header like this: ``Authorization: Bearer 1234567890``.
+Right now we only support these requests through the HTTP ``Authorization`` header. E.g. if your token is ``1234567890`` you should pass a HTTP header like this: ``Authorization: Bearer 1234567890``.
 
 #### Obtain an OAuth token
 
 ##### From within a game
 
-In most cases you will use our API from within one of your games. We have some good news for you: All the hard work of getting that precious little token is already be done by us if you use our SDK. The ``setup`` method of the SDK passes an object to the handler you provide, that object comes with a Quarter Spiral OAuth token issued to the player playing your game. Just access it like this (example of an HTML5 game using our SDK):
+In most cases you will use our API from within one of your games. We have some good news for you: all the hard work of getting that precious little token is already be done by us if you use the SDK. The ``setup`` method of the SDK passes an object to the handler you provide, that object comes with a Quarter Spiral OAuth token issued to the player playing your game. Just access it like this (example of an HTML5 game using our SDK):
 
 ```javascript
 QS.setup().then(function (qs) {
@@ -74,7 +74,7 @@ To get the token make sure to supply the basic auth credentials even if the endp
 
 ### Authorization
 
-**Important**: The biggest caveat of our platform right now is the absence of any authorization mechanism. Everyone is allowed to carryout any operation on any entity in the system. We will change that as soon as possible but ask you to bear that in mind while operating on our platform right now.
+**Important**: The biggest caveat of our platform right now is the absence of any authorization mechanism. Everyone is allowed to carry out any operation on any entity in the system. We will change that as soon as possible but ask you to bear that in mind while operating on our platform right now.
 
 ### URLs
 

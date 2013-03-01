@@ -2,19 +2,19 @@
 
 This guide assumes that you already have [set up a game](/#/documentation/setup) and [published it to Facebook](/#/documentation/facebook).
 
-This guide is based on the [HTML5 SDK](/#/documentation/sdkHtml). However, the principles are the same for Flash based games. Once you have worked through this guide you can consult the [Flash SDK documentation](/#/documentation/sdkFlash) for details.
+This guide is based on the [HTML5 SDK](/#/documentation/sdkHtml). However, the principles are the same for Flash  games. Once you have worked through this guide you can consult the [Flash SDK documentation](/#/documentation/sdkFlash) for details.
 
-If there are any questions at any time just get in toch at [support@quarterspiral.com](mailto:support@quarterspiral.com). We are here to help you out!
+If you have questions at any time just send them our way at [support@quarterspiral.com](mailto:support@quarterspiral.com). We are eager to help you out!
 
 ## Basic principles
 
-The most important thing to understand when working with the Mission Kontrol SDK is, that things are asynchronous. There are no calles that yield immediate results as they first have to go to our system and then back to your player. As a consequence of that no call to our SDK will come back with a meaningful return value right away. Instead we use callbacks and *promises* to inform you when an action was carried out successfully or failed. But lets not get too technical now. It's time to play!
+The most important thing to understand when working with the Mission Kontrol SDK is that things are asynchronous. There are no calles that yield immediate results. They first have to go to our system and then back to your player. As a consequence of that no call to our SDK will come back with a meaningful return value right away. Instead we use callbacks and *promises* to inform you when an action was carried out successfully or failed. But lets not get too technical now. It's time to play!
 
 ## Getting to know your player
 
 Do you remember our [Rock-paper-scissors-lizard-Spock](http://jsfiddle.net/walski/LnmfB/embedded/result/) example game from the [enrollment guide](/#/documentation/setup)? We will use that to showcase our SDK and assume you have a fork of that game setup in Mission Kontroll as well.
 
-First thing we will add to the game is to make it feel a little less anonymous and the players name to the canvas, right next to the high score.
+First thing we will add to the game is to make it feel a little less anonymous by displaying the player's name on the canvas, right next to the high score.
 
 For all HTML5 based games the most important step is to include our SDK in the game. Add the following line at the bottom of the HTML file:
 
@@ -28,7 +28,7 @@ It should look like this now:
 
 In your game that tag will go near the bottom of your HTML page before the closing ``</body>``-tag.
 
-Now lets initialize the SDK and alert the player once that has been done. In our AngularJS game we will add the initialization to our ``GameController`` right before the ``reset  `` function. In your own game this can happen at any time after the DOM is loaded completely. Just remember to call ``setup`` only once!
+Now let's initialize the SDK and alert the player once that has been done. In our AngularJS game we will add the initialization to our ``GameController`` right before the ``reset  `` function. In your own game this can happen at any time after the DOM is loaded completely. Just remember to call ``setup`` only once!
 
 We're using this code:
 
@@ -46,11 +46,11 @@ To save the changes in the fiddle hit the "Update" button in the toolbar.
 
 ![Update the fiddle](/img/documentation/integration_3.jpg)
 
-The way JS Fiddle works is to save each update in it's own version by appending a version number to the URL like here:
+The way JS Fiddle works is to save each update in its own version by appending a version number to the URL like here:
 
 ![JS Fiddle URL versioning](/img/documentation/integration_4.jpg)
 
-When we setup the game on Mission Kontrol, though we have entered the URL without any version number. In order to avoid updating Mission Kontrol every single time we update the fiddle there is a simple solution: When signing up for a JS Fiddle account you can actually make any version of the fiddle the "base version" which is served when you hit the fiddle without any version number in the URL. This way we can keep the base URL in Mission Kontrol as we already have and make all changes in JS Fiddle. We will walk you through the quick sign up process with JS Fiddle but if you opt to rather not do that right now, don't worry. You then would just have to update Mission Kontrol with the new URL every time you click the "Update" button in JS Fiddle.
+When we setup the game on Mission Kontrol, though, we entered the URL without any version number. In order to avoid updating Mission Kontrol every single time we update the fiddle there is a simple solution: when signing up for a JS Fiddle account you can actually make any version of the fiddle the "base version" which is served when you hit the fiddle without any version number in the URL. This way we can keep the base URL in Mission Kontrol as we already have and make all changes in JS Fiddle. We will walk you through the quick sign up process with JS Fiddle but if you opt to rather not do that right now, don't worry. Instead you will have to update Mission Kontrol with the new URL every time you click the "Update" button in JS Fiddle.
 
 First copy the current URL of your fiddle to the clipboard. Then to sign up click the "Login/Sign up" button in the top right.
 
@@ -72,7 +72,7 @@ You will now see a new button labeled "Base" in the tool bar. Clicking this make
 
 ![Base button](/img/documentation/integration_9.jpg)
 
-Unfortunately claiming the fiddle also changed the URL one last time. Head over to Mission Kontrol real quick and adopt that change their.
+Unfortunately claiming the fiddle also changed the URL one last time. Head over to Mission Kontrol and adopt that change.
 
 Copy the full screen result link from JS Fiddle.
 
@@ -86,13 +86,13 @@ paste the URL there and hit "Save"
 
 ![Change builds URL](/img/documentation/integration_12.jpg)
 
-**Important:** It may take JS Fiddle some time till a new base version is served while they still serve a cached old version of your code. In this case please wait a little while or just hit "Update" again without clicking "Set as base" afterwards and update the new URL with a version number in it in Mission Kontrol to circumvent the cache.
+**Important:** It may take JS Fiddle some time until a new base version is served while they still serve a cached old version of your code. In this case please wait a little while or just hit "Update" again without clicking "Set as base" afterwards and update the new URL with a version number in it in Mission Kontrol to circumvent the cache.
 
 If you check your game on Facebook now you will see the alert.
 
 ![SDK loaded message](/img/documentation/integration_13.jpg)
 
-When the setup promise (that is the function we pass in to the ``then`` call) is executed the SDK passes in an object we call ``qs`` in our example. That object is the key to our whole SDK. We can use it for example to gather some information about the current player. To do that lets add the players name to the UI first. Go to the HTML file and look for this line:
+When the setup promise (that is the function we pass in to the ``then`` call) is executed the SDK passes in an object we call ``qs`` in our example. This object is the key to our whole SDK. We can use it for example to gather some information about the current player. To do that lets add the players name to the UI first. Go to the HTML file and locate this line:
 
 ```html
 <h3>Round {{round}} - {{points}} points - High score: {{highScore}} points</h3>
@@ -108,7 +108,7 @@ This tells AngularJS to insert a variable called ``playerName`` at the end. The 
 
 ![Player name label](/img/documentation/integration_14.jpg)
 
-Now we need to retrieve the name and then set this variable. To do that we change the code in our controller to:
+Now we need to retrieve the name and set this variable. To do that we change the code in our controller to:
 
 ```javascript
 QS.setup().then(function (qs) {

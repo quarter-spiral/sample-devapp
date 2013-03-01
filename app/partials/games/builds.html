@@ -10,7 +10,7 @@
 
         <div class="masthead-text">
           <h2>Builds</h2>
-          <p>Upload your latest build</p>
+          <p>Upload your latest build.</p>
         </div> <!-- /.masthead-text -->
 
       </div>
@@ -38,13 +38,13 @@
           <br />
 
           <div ng-hide="game.configuration.type != 'flash'" class="well">
-            <div ng-show="game.originalConfiguration.type == 'flash' && game.originalConfiguration.url">Currently saved <span ng-dblclick="powerDevMode=!powerDevMode">build</span>: <a ng-hide="powerDevMode" href="{{game.originalConfiguration.url}}">{{game.originalConfiguration.url}}</a><input type="text" ng-model="game.configuration.url" ng-show="powerDevMode"/></div>
-            <div ng-show="game.configuration.url && game.configuration.url != game.originalConfiguration.url">Newly uploaded build: <a href="{{game.configuration.url}}">{{game.configuration.url}}</a></div>
-            <a class="btn btn-info" ng-click="addFlashBuild(game)">Upload a new SWF file</a>
+            <div ng-show="game.originalConfiguration.type == 'flash' && game.originalConfiguration.url">Current <span ng-dblclick="powerDevMode=!powerDevMode">build</span>: <a ng-hide="powerDevMode" href="{{game.originalConfiguration.url}}">{{game.originalConfiguration.url}}</a><input type="text" ng-model="game.configuration.url" ng-show="powerDevMode"/></div>
+            <div ng-show="game.configuration.url && game.configuration.url != game.originalConfiguration.url">New build: <a href="{{game.configuration.url}}">{{game.configuration.url}}</a></div>
+            <a class="btn btn-info" ng-click="addFlashBuild(game)">Upload a new SWF file:</a>
           </div>
 
           <div ng-hide="game.configuration.type != 'html5'" class="well">
-            <label for="inputHtml5Url">Enter the game URL for {{game.name}}</label>
+            <label for="inputHtml5Url">Enter the URL for {{game.name}}:</label>
             <input ng-model="game.configuration.url" type="text" id="inputHtml5Url" placeholder="http://" />
           </div>
 

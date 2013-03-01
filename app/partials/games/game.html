@@ -7,13 +7,13 @@
 
       <div class="masthead-pad">
         <div class="masthead-text" ng-hide="game|gameReady">
-          <h2>Getting started</h2>
-          <p>in 3 easy steps</p>
+          <h2>Getting Started</h2>
+          <p>3 easy steps to a playable game.</p>
         </div> <!-- /.masthead-text -->
 
         <div class="masthead-text" ng-show="game|gameReady">
           <h2>Dashboard</h2>
-          <p>Everything you need to manage your game</p>
+          <p>Command and Kontrol center to manage your game.</p>
         </div> <!-- /.masthead-text -->
 
       </div>
@@ -36,13 +36,13 @@
           <div id="rampUp">
             <ol>
               <li>
-                Upload your game: Files > <a href="/#/games/{{game.uuid}}/builds">Builds</a>
+                Upload your game at Files > <a href="/#/games/{{game.uuid}}/builds">Builds</a>
               </li>
               <li>
-                Decide where you want your game to appear: Settings > <a href="/#/games/{{game.uuid}}/venues">Venues</a>
+                Choose venues to host your game at Settings > <a href="/#/games/{{game.uuid}}/venues">Venues</a>
               </li>
               <li>
-                All done. Ready to play!
+                All done. Your game is ready to play!
               </li>
             </ol>
           </div>
@@ -115,7 +115,7 @@
           <p ng-show="game.screenshots.length > 0" class="teaserArt" style="background-image: url({{game.screenshots[0].url}});">
           </p>
           <p ng-hide="game.screenshots.length > 0" class="teaserArt">
-            No Screenshots yet. <a href="#/games/{{game.uuid}}/screens"> Add one now</a>
+            No screenshots added. <a href="#/games/{{game.uuid}}/screens"> Upload a screenshot.</a>
           </p>
         </div>
 
@@ -132,7 +132,7 @@
 
         <div class="span2 offset1">
           <p class="tip">
-            You can change these and other settings from the settings menu above.
+            You can change these and other values from the Settings menu on the top bar.
           </p>
         </div>
 

@@ -10,7 +10,7 @@
 
       <div class="masthead-text">
         <h2><a href="#/games/{{game.uuid}}/venues">Venues</a> / Facebook</h2>
-        <p>Setup your Facebook application</p>
+        <p>Set up your Facebook application.</p>
       </div> <!-- /.masthead-text -->
     </div>
 
@@ -30,16 +30,16 @@
 
         <ol class="steps">
 
-          <li>Enter this URL into the URL field of your Facebook Application
+          <li>Enter this URL into the URL field of your Facebook Application:
             <div><input type="text" value="{{game.uuid|canvasUrl:'facebook'}}?" id="inputAppId" class="span6" readonly="readonly" /></div>
 
           </li>
 
-          <li>Enter your Facebook Application ID here
+          <li>Enter your Facebook Application ID here:
             <div><input type="text" ng-model="game.venues['facebook']['app-id']" id="inputAppId" placeholder="Facebook Application ID" class="span6" /></div>
           </li>
 
-          <li>Enter your Facebook Application Secret here
+          <li>Enter your Facebook Application Secret here:
             <div><input type="text" ng-model="game.venues['facebook']['app-secret']" id="inputAppSecret" placeholder="Facebook Application Secret" class="span6" /></div>
           </li>
 
@@ -49,8 +49,8 @@
 
       <div class="span4 offset1">
         <h3>Facebook Applications</h3>
-        <p>Set up your own <a href="https://developers.facebook.com/apps" target="new">Facebook application</a>. It will be owned by you and under your control at all times.</p>
-        <p>Once your Application is created follow the configuration steps so Quarter Spiral can deliver your game to Faceook.</p>
+        <p>Set up your own <a href="https://developers.facebook.com/apps" target="new">Facebook application</a>. Applications are owned by you and under your control at all times.</p>
+        <p>Once your Application is created follow the configuration steps for Mission Kontrol to  deliver your game to Faceook.</p>
       </div>
 
 

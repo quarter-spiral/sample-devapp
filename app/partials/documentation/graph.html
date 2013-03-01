@@ -49,7 +49,7 @@ JSON encoded array of objects which contains the new meta information (the array
 
 The relationship: ``Peter plays Chess`` would be created as a ``POST`` to: ``/entities/peter/plays/chess`` with the body ``{"direction": "outgoing"}``.
 
-The relationship: ``Peter plays Chess in Paris`` could be created as a ``POST`` to: ``/entities/peter/plays/chess`` with the body ``{"direction": "outgoing", "meta": {"location": "Paris"}``.
+The relationship: ``Peter plays Chess in Space`` could be created as a ``POST`` to: ``/entities/peter/plays/chess`` with the body ``{"direction": "outgoing", "meta": {"location": "Space"}``.
 
 ### Check for an existing relationship
 
@@ -127,7 +127,7 @@ JSON encoded array of objects which contains the new meta information (might be 
     "target": "chess",
     "relation": "plays",
     "meta": {
-      "location": "Rome"
+      "location": "Dimension Z"
     }
   }
 ]
@@ -135,7 +135,7 @@ JSON encoded array of objects which contains the new meta information (might be 
 
 #### Example
 
-To change Peter's location where plays chess from Paris to Rome ``PUT`` to: ``/entities/peter/plays/chess`` with the body ``{"direction": "outgoing", "meta": {"location": "Rome"}``.
+To change Peter's location where plays chess from Space to Dimension Z ``PUT`` to: ``/entities/peter/plays/chess`` with the body ``{"direction": "outgoing", "meta": {"location": "Dimension Z"}``.
 
 ### Delete an existing relationship
 
@@ -194,7 +194,7 @@ A JSON encoded object of the related entities:
     "target": "chess",
     "relation: "plays",
     "meta": {
-      "location": "Paris"
+      "location": "Space"
     }
   },
   {
@@ -241,7 +241,7 @@ JSON encoded object.
 
 #### Response
 
-An JSON encoded array of arrays of whatever you have returned in the Cypher query.
+A JSON encoded array of arrays of whatever you have returned in the Cypher query.
 
 *Hint*: It's very likely that you want to return single UUIDs.
 

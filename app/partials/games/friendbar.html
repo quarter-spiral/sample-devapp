@@ -4,8 +4,8 @@
     <div class="container">
       <div class="masthead-pad">
         <div class="masthead-text">
-          <h2>Friends Bar</h2>
-          <p>Display custom values as badges on each player in the friends bar</p>
+          <h2>Friend Bar</h2>
+          <p>Display custom data as badges for each player in the Friend Bar.</p>
         </div> <!-- /.masthead-text -->
       </div>
     </div> <!-- /.container -->
@@ -16,27 +16,27 @@
       <div class="row">
         <div class="span4">
           
-          <p class="tip">You can use the badges to display a player's Level, XP, Score, etc... And since players can sort their friends by them, it can be an instant high score feature!</p>
+          <p class="tip">For instance, Friend Bar badges can display each player's score, level, xp, rank or anything else you can imagine. Many developers use the Friend Bar as a social high scores table.</p>
 
         </div>
 
         <div class="span4">
 
-          <p class="tip">Consult the <a href="#/documentation/overview">Integration Docs</a> to learn how to store (and retrieve) custom values from your game that can be used here.</p>
+          <p class="tip">Consult the <a href="#/documentation/overview">integration docs</a> to learn how to store and retrieve custom data which the Friend Bar can access.</p>
         </div>
 
         <div class="span12">
           <form class="form-horizontal">
             <div class="control-group">
               <legend>Top Badge</legend>
-              <label class="control-label" for="inputTopValueLabel">Label</label>
+              <label class="control-label" for="inputTopValueLabel">Data Label</label>
               <div class="controls">
                 <input ng-model="game.configuration.friendbarTopValueLabel" type="text" id="inputTopValueLabel" class="span3"/>
                 
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label" for="inputTopValueKey">Key</label>
+              <label class="control-label" for="inputTopValueKey">Data Key</label>
               <div class="controls">
                 <input ng-model="game.configuration.friendbarTopValueKey" type="text" id="inputTopValueKey" class="span3"/>
                 <span class="help-block">As set by your game through the API</span>
@@ -46,18 +46,18 @@
               <label class="control-label" for="inputTopValueDefault">Default Value</label>
               <div class="controls">
                 <input ng-model="game.configuration.friendbarTopValueDefault" type="text" id="inputTopValueDefault" class="span2"/>
-                <span class="help-block">Displayed when no value has been stored for a player yet</span>
+                <span class="help-block">Displayed when no value has been stored for a player</span>
               </div>
             </div>
             <legend>Bottom Badge</legend>
             <div class="control-group">
-              <label class="control-label" for="inputBottomValueLabel">Label</label>
+              <label class="control-label" for="inputBottomValueLabel">Data Label</label>
               <div class="controls">
                 <input ng-model="game.configuration.friendbarBottomValueLabel" id="inputBottomValueLabel" type="text" class="span3"/>
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label" for="inputBottomValueKey">Key</label>
+              <label class="control-label" for="inputBottomValueKey">Data Key</label>
               <div class="controls">
                 <input ng-model="game.configuration.friendbarBottomValueKey" id="inputBottomValueKey" type="text" class="span3"/>
                 <span class="help-block">As set by your game through the API</span>
@@ -67,7 +67,7 @@
               <label class="control-label" for="inputBottomValueDefault">Default Value</label>
               <div class="controls">
                 <input ng-model="game.configuration.friendbarBottomValueDefault" type="text" id="inputBottomValueDefault" class="span2"/>
-                <span class="help-block">Displayed when no value has been stored for a player yet</span>
+                <span class="help-block">Displayed when no value has been stored for a player</span>
               </div>
             </div>
 

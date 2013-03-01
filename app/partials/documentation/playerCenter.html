@@ -8,7 +8,7 @@ The Player API handles everything player related in our system. This is the serv
 
 ### Retrieve public information about a player
 
-Does not need any authentication. The response from this endpoint is very close to the non-public information about players (**GET** ``/:UUID:``) . It omits any sensible data (e.g. venue specific IDs), though.
+Does not need any authentication. The response from this endpoint is very close to the non-public information about players (**GET** ``/:UUID:``) . It omits any sensible data (e.g. venue specific IDs) though.
 
 #### Request
 
@@ -44,7 +44,7 @@ JSON encoded object like this:
 
 All information under the ``venues`` is present for each venue this player is playing a Quarter Spiral game on.
 
-### List player's friends public information
+### List player's friends' public information
 
 This endpoint does not need any authentication and resembles closely the ``List player's friends`` endpoint (**GET** to ``/:UUID:/friends``) which needs to be called authenticated over OAuth. This endpoint will only return publicly available information about friends.
 
@@ -62,7 +62,7 @@ Empty
 
 #### Response
 
-Please note that the list of friends always includes the requester itself, too.
+Please note that the list of friends always includes the requester himself.
 
 ##### Body
 
@@ -101,13 +101,13 @@ This endpoint does not need authentication.
 
 JSON encoded Object with additional options:
 
-* **venue**: If set only games that the player play's on the given venue will be listed
+* **venue**: If set only games that the player plays on the given venue will be listed
 
 #### Response
 
 ##### Body
 
-JSON encoded object of games in the way the ``devcenter-backend`` public API returns game lists.
+JSON encoded object of games in the format the ``devcenter-backend`` public API returns game lists.
 
 ### Retrieve information about a player
 
@@ -155,18 +155,18 @@ All information under the ``venues`` is present for each venue this player is pl
 
 ##### Parameters
 
-- **UUID** [REQUIRED]: The UUID of the player who's friends you want to retrieve.
+- **UUID** [REQUIRED]: The UUID of the player whose friends you want to retrieve.
 
 ##### Body
 
-JSON encoded object with further options:
+JSON encoded object with additional options:
 
 * **game**: If present only displays friends who play the game with the given UUID
 * **meta**: An array of keys of player meta data that is added to each friend. This parameter requires the game parameter to be set as the meta data is stored per player/game pair.
 
 #### Response
 
-Please note that the list of friends always includes the requester itself, too.
+Please note that the list of friends always includes the requester himself.
 
 ##### Body
 
@@ -232,7 +232,7 @@ This endpoint is deprecated in favor of the public endpoint at ``/public/:UUID:/
 
 ##### Parameters
 
-- **UUID** [REQUIRED]: The UUID of the player who's games are going to be retrieved
+- **UUID** [REQUIRED]: The UUID of the player whose games are going to be retrieved
 
 ##### Body
 
@@ -244,7 +244,7 @@ JSON encoded Object with additional options:
 
 ##### Body
 
-JSON encoded object of games in the way the ``devcenter-backend`` public API returns game lists.
+JSON encoded object of games in the format the ``devcenter-backend`` public API returns game lists.
 
 ### Update a users friends
 
@@ -290,7 +290,7 @@ This request does not require any authentication.
 
 ##### Parameters
 
-- **UUID** [REQUIRED]: The UUID of the player who's avatar is going to be retrieved
+- **UUID** [REQUIRED]: The UUID of the player whose avatar is going to be retrieved
 - **VENUE** [REQUIRED]: The venue of which the user's avatar is going to be retrieved from
 
 ##### Body
