@@ -1,0 +1,95 @@
+<div ng-init="game = getGame(gameUuid)">
+
+  <div ng-include src="'partials/games/header.html'"></div>
+
+  <div id="masthead">
+
+    <div class="container">
+
+      <div class="masthead-pad">
+
+        <div class="masthead-text">
+          <h2>Dimensions</h2>
+          <p>Show your game at it's best.</p>
+        </div> <!-- /.masthead-text -->
+
+      </div>
+
+    </div> <!-- /.container -->
+
+  </div> <!-- /#masthead -->
+
+
+
+
+  <div id="content">
+
+    <div class="container">
+
+      <div class="row">
+        <form class="form" ng-init="sizeType='fixedSize'">
+          <div class="span3">
+            <h3>Behaviour</h3>
+            <hr />
+            <label class="radio">
+              <input ng-model="sizeType" value="fixedSize" type="radio" name="size-type">
+              Fixed Size
+            </label>
+            <span class="help-block">Your game appears at a specific size (or sizes).</span>
+            <label class="radio">
+              <input ng-model="sizeType" value="fluid" type="radio" name="size-type">
+              Fluid / Variable
+            </label>
+            <span class="help-block">Your game gets as much (or as little) space as the player or venue offers.</span>
+          </div>
+          <div class="span8 offset1" ng-show="sizeType == 'fixedSize'">
+            <h3>Configure: Fixed Size(s)</h3>
+            <hr />
+            <p>If you supply multiple sets we will use the one that makes best use of any given venue and player set up. Your game will need to support all of these.</p>
+            <div class="row">
+              <div class="span2">
+              <label>Fixed Width</label>
+                <div class="input-append">
+                  <input type="text" class="span1" placeholder="eg 600">
+                  <span class="add-on">Pixels</span>
+                </div>
+              </div>
+              <div class="span2">
+                <label>Fixed Height</label>
+                <div class="input-append">
+                  <input type="text" class="span1" placeholder="eg 400">
+                  <span class="add-on">Pixels</span>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <p><a>Add another size</a></p>
+
+          </div>
+          <div class="span8 offset1" ng-show="sizeType == 'fluid'">
+            <h3>Configure: Fluid / Variable</h3>
+            <hr />
+            <p>This requires your game to dynamically adapt to different sizes depending on the venue and the player's screen size. However we will never go below the minimum values below.</p>
+            <div class="row">
+              <div class="span2">
+              <label>Minimum Width</label>
+                <div class="input-append">
+                  <input type="text" class="span1" placeholder="eg 600">
+                  <span class="add-on">Pixels</span>
+                </div>
+              </div>
+              <div class="span2">
+                <label>Minimum Height</label>
+                <div class="input-append">
+                  <input type="text" class="span1" placeholder="eg 400">
+                  <span class="add-on">Pixels</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        <form>
+      </div>
+    </div>
+
+  </div>
+</div>
