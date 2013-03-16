@@ -65,7 +65,7 @@ Empty.
 
 #### Demoting an entity from being a developer
 
-Doing so will also remove the entity as a developer from from all games he currently develops
+Doing so will also remove the entity as a developer from from all games he currently develops.
 
 ##### Request
 
@@ -91,7 +91,7 @@ Empty.
 
 ###### Parameters
 
-- **UUID** [REQUIRED]: The UUID of the developer you want to list the games developed by
+- **UUID** [REQUIRED]: The UUID of the developer you want to list the games from
 
 ###### Body
 
@@ -128,6 +128,7 @@ JSON encoded options hash.
 
 - **name** [REQUIRED]: Name of the game
 - **description** [REQUIRED]: Text describing the game
+- **category** [REQUIRED]: Category of the game
 - **configuration** [REQUIRED]: Hash that describes the game. Must include the key ``type`` which can be either ``html5`` or ``flash``.
 - **developers** [REQUIRED]: Array of UUIDs of the developers of this game
 - **screenshots** [OPTIONAL]: Array of image URLs of screenshots of the game
@@ -228,6 +229,7 @@ JSON encoded options hash.
 
 - **name** [OPTIONAL]: Name of the game
 - **description** [OPTIONAL]: Text describing the game
+- **category** [OPTIONAL]: Category of a game
 - **configuration** [REQUIRED]: Hash that describes the game. See [Game
   Types](#game-types) for more information.
 - **developers** [OPTIONAL]: Array of UUIDs of the developers of this game
@@ -247,8 +249,9 @@ JSON encoded hash of the game's configuration. Example:
 ```javascript
 {
   "name": "Nonsense's Tale",
-  "description": "Rumble your way to the treasures of Cpt. McDoodle and his crew. Fight parrots, barrels and pirates! Mostly barrels...",
-  "configuration": {"type": "html5", "url": "http://example.com/game"},
+  "description": "Rumble your way to the treasures of Cpt. McDoodle and his crew. Fight parrots, barrels and pirates!",
+  "category": "Jump n Run",
+  "configuration": {"type": "html5", "url": "http://example.com/game", "sizes": [{"width": 600, "height": 400}], "fluid-size": true},
   "developers": ["eb6d96b0-cb55-012f-4393-58b035f5cdfb", "ebc08260-cb55-012f-4394-58b035f5cdfb"],
   "screenshots": ["http://example.com/nonsense/1.jpg", "http://example.com/nonsense/2.jpg"],
   "developer_configuration": {"background": "red", "musicTheme": "caribbean"},
@@ -327,13 +330,11 @@ Currently available venues.
 
 ##### Options
 
-
-
 #### Spiral Galaxy
 
 **Key**: ``spiral-galaxy``
 
-Quarter Spiral game portal where you can make the most money of any portal!
+A Quarter Spiral game portal.
 
 
 #### Embedded
@@ -344,4 +345,28 @@ A white-label venue to embed your game on any website.
 
 Comes with a ``code`` value in the computed configuration that has the complete embed code you need to embed in your website.
 
+
+### General Configuration
+
+The ``configuration`` object also contains the following properties:
+
+### ``sizes`` [OPTIONAL]
+
+An array that indicates the allowed sizes for the game. Each object in the array must have a ``width`` and ``height`` property. For games using the fluid canvas only the first element of the array is used as a minimal width and height.
+
+#### Examples
+
+```javascript
+"configuration": {…, "sizes": [{"width": 600, "height": 400}, {"width": 320, "height": 200}]}
+```
+
+### ``fluid-size`` [OPTIONAL]
+
+Boolean property that indicates if a fluid canvas is used. If this property is ``falsy`` a canvas with a fixed size will be used.
+
+#### Examples
+
+```javascript
+"configuration": {…, "fluid-size": true}
+```
 </markdown>

@@ -265,7 +265,8 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
 
   $scope.getGame = function(gameUuid) {
     devcenterClient.getGame(gameUuid).then(function(game) {
-      game.originalConfiguration = angular.fromJson(angular.toJson(game.configuration))
+      game.originalConfiguration = angular.copy(game.configuration)
+      game.configuration['fluid-size'] = !!game.configuration['fluid-size']
       $scope.game = game;
     }, function() {
       alert("Could not retrieve game " + gameUuid);
@@ -355,3 +356,12 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
 }
 GamesCtrl.$inject = ['$scope', '$location', '$route', 'user', 'devcenterClient'];
 
+function DimensionsController($scope) {
+  $scope.addSize = function() {
+    $scope.game.configuration.sizes.push({})
+  }
+  $scope.removeSize = function(index) {
+    $scope.game.configuration.sizes.splice(index, 1)
+  }
+}
+DimensionsController.$inject = ['$scope']
