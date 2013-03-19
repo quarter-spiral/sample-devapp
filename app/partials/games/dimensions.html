@@ -29,8 +29,7 @@
       <div class="row">
         <form class="form" ng-init="sizeType='fixedSize'">
           <div class="span3">
-            <h3>Behaviour</h3>
-            <hr />
+            <legend>Behaviour</legend>
             <label class="radio">
               <input ng-model="sizeType" value="fixedSize" type="radio" name="size-type">
               Fixed Size
@@ -43,8 +42,7 @@
             <span class="help-block">Your game gets as much (or as little) space as the player or venue offers.</span>
           </div>
           <div class="span8 offset1" ng-show="sizeType == 'fixedSize'">
-            <h3>Configure: Fixed Size(s)</h3>
-            <hr />
+            <legend>Configure: Fixed Size(s)</legend>
             <p>If you supply multiple sets we will use the one that makes best use of any given venue and player set up. Your game will need to support all of these.</p>
             <div class="row">
               <div class="span2">
@@ -67,8 +65,7 @@
 
           </div>
           <div class="span8 offset1" ng-show="sizeType == 'fluid'">
-            <h3>Configure: Fluid / Variable</h3>
-            <hr />
+            <legend>Configure: Fluid / Variable</legend>
             <p>This requires your game to dynamically adapt to different sizes depending on the venue and the player's screen size. However we will never go below the minimum values below.</p>
             <div class="row">
               <div class="span2">
