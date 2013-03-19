@@ -1,147 +1,111 @@
 <markdown class="documentation">
+# Quarter Spiral Flash SDK
 
-Use the Flash SDK to quickly and easily integrate your Flash game with the various Quarter Spiral APIs.
+The easy way to integrate your game with the Quarter Spiral universe. Find the library's source code on [Github](https://github.com/quarter-spiral/flash-sdk-lib).
 
-### Setup
+## Setup
 
-Import these packages:
+Add the ``Quarter Spiral SDK.swc`` file to the build path of your app. You can find the latest version [here](https://github.com/quarter-spiral/flash-sdk-lib/raw/master/bin/Quarter%20Spiral%20SDK.swc).
 
-```actionscript
-import flash.display.LoaderInfo;
-import flash.external.ExternalInterface;
-import flash.system.Security;
+## First steps
+
+To start using our SDK you first need to obtain an instance of the SDK. You can get one easily like this:
+
+```as3
+  import com.quarterspiral.sdk.*;
+  …
+  var qsSdk:Sdk = SdkFactory.getInstance(Starling.current.nativeStage.root.loaderInfo);
 ```
 
-Then make sure to allow communication with QS:
+In the code above we are using the [Starling]() game framework as an example. It doesn't matter if you use a framework at all or which one you use. Just make sure to pass in the ``LoaderInfo`` object to the ``getInstance`` method of the ``SdkFactory`` which comes with the flash params of your project. Using your main stage has proven to be a good start.
 
-```actionscript
-var flashVars:Object = LoaderInfo(this.root.loaderInfo).parameters;
+## Information about a player
 
-flash.system.Security.allowInsecureDomain(flashVars.qsCanvasHost)
-flash.system.Security.allowDomain(flashVars.qsCanvasHost)
+To get information about the current player the SDK provides you with the ``playerInformation`` property that returns a ``PlayerInformation`` object that gives you insight on the player's name, email address and internal id within the Quarter Spiral universe.
+
+```as3
+  trace(qsSdk.playerInformation.name);
+  trace(qsSdk.playerInformation.email);
+  trace(qsSdk.playerInformation.uuid);
 ```
 
-Once the QS initialization is done, the SDK will reach out to a special callback. Register it like this:
+As this information is going to be retrieved asynchronously, the ``playerInformation`` can return ``null`` as long as the retrieval process hat not yet been completed. You can either check if the retrieval is done already like this:
 
-```actionscript
-function qsSetupCallback(qs):void {
-  // QS SDK ready!
-}
-ExternalInterface.addCallback('qsSetupCallback', qsSetupCallback);
+```as3
+  if (qsSdk.playerInformationReady) {
+    trace(qsSdk.playerInformation.name);
+  }
 ```
 
-Now you got to initialize the QS SDK with:
+or you can even be notified whenever the information becomes available
 
-```actionscript
-ExternalInterface.call('QS.setup')
+```as3
+  qsSdk.onPlayerInformationReady(function(playerInformation:PlayerInformation):void {
+    trace(playerInformation.name);
+  });
 ```
 
-**Make sure to call ``QS.setup`` only once!**
+Please note, that ``qsSdk.playerInformationReady`` will not trigger the retrieval process. Make sure that you call ``qsSdk.playerInformation`` once before to trigger the process.
 
-Once that callback was called you have access to the full QS functionality.
+## Manage data for players
 
-If a player is not logged in when playing the game (e.g. when playing through an embed on a third party website) the SDK will not set up! It will instead call an error callback. You can register it like this:
+### Reading data
 
-```actionscript
-function qsSetupErrorCallback(message):void {
-  // QS SDK not ready! Reason can be found in the message variable
-}
-ExternalInterface.addCallback('qsSetupErrorCallback', qsSetupErrorCallback);
+Quarter Spiral allows you to store arbitrary data for any of your players. That data comes in form of an ordinary ``Dictionary`` and can be read like this:
+
+```as3
+  trace(qsSdk.playerData['highScore']);
 ```
 
-### Retrieve information about the player
+As this information is going to be retrieved asynchronously, the ``playerData`` can return ``null`` as long as the retrieval process hat not yet been completed. You can either check if the retrieval is done already like this:
 
-First register the callback to retrieve the info about the player or errors in case they happen:
-
-```actionscript
-function qsPlayerInfoCallback(player):void {
-  trace("Player info loaded");
-  trace(player.name);
-  trace(player.email);
-}
-ExternalInterface.addCallback('qsPlayerInfoCallback', qsPlayerInfoCallback);
-
-function qsPlayerInfoErrorCallback(message):void {
-  //An error has happened!
-}
-ExternalInterface.addCallback('qsPlayerInfoErrorCallback', qsPlayerInfoErrorCallback);
+```as3
+  if (qsSdk.playerDataReady) {
+    trace(qsSdk.playerData['highScore']);
+  }
 ```
 
-Then call ``QS.flash.retrievePlayerInfo`` to trigger the retrieval of the information:
+or you can even be notified whenever the data becomes available
 
-```actionscript
-function qsSetupCallback(qs):void {
-  ExternalInterface.call('QS.flash.retrievePlayerInfo')
-}
-ExternalInterface.addCallback('qsSetupCallback', qsSetupCallback);
-
-ExternalInterface.call('QS.setup')
+```as3
+  qsSdk.onPlayerDataReady(function(playerData:Dictionary):void {
+    trace(playerData['highScore']);
+  });
 ```
 
-The ``retrievePlayerInfo`` call gives you a player object that holds information about the currently logged in player. You can access it's ``name``, ``email`` and ``uuid`` which is it's unique identifier within the Quarter Spiral universe.
+Please note, that ``qsSdk.playerDataReady`` will not trigger the retrieval process. Make sure that you call ``qsSdk.playerData`` once before to trigger the process.
 
-In some cases an email address might not be present. For the time being we return ``unknown@example.com`` in these cases but this will be subject to change.
+### Writing data
 
-### Manage player data
+Writing data back to Quarter Spiral can be done like this:
 
-Quarter Spiral lets you save data for every player that plays your game.
-
-```actionscript
-function qsSetupCallback(qs):void {
-  ExternalInterface.call('QS.flash.setPlayerData', {
-    highScore: 190,
-    tutorialCompleted: true
-  })
-}
-ExternalInterface.addCallback('qsSetupCallback', qsSetupCallback);
-
-ExternalInterface.call('QS.setup')
+```as3
+  var data:Dictionary = new Dictionary();
+  data['highScore'] = 12345;
+  data['lastLevel'] = "Tower of Happiness";
+  qsSdk.setPlayerData(data);
 ```
 
-This call will overwrite all data that was previously stored for this player. If you only want to adjust a single value you can do that:
+If you only want to write a single attribute of the data without touching the rest you can do that like this:
 
-```javascript
-function qsSetupCallback(qs):void {
-  ExternalInterface.call('QS.flash.setPlayerData', 'highScore', 190);
-}
-ExternalInterface.addCallback('qsSetupCallback', qsSetupCallback);
-
-ExternalInterface.call('QS.setup')
+```as3
+  qsSdk.setPlayerData("highScore", 67890);
 ```
 
-To know if the data could be saved or an error have occurred there are two callbacks you can register:
+Please note, that all writing operations will be queued up until the SDK becomes ready. When you try to carry out writing operations while an older one is still in progress, that leads to queuing as well.
 
-```actionscript
-function qsPlayerDataSetCallback(data):void {
-  //Data was saved and the complete data is passed in in the data variable.
-  //Please note that even if you only set a single value the data variable always holds the complete data!
-}
-ExternalInterface.addCallback('qsPlayerDataSetCallback', qsPlayerDataSetCallback);
+For more fine grained control over the result of all writing operations a ``SetPlayerDataResponse`` is returned from the ``setPlayerData`` method. This response can be used to determine if an operation has already been completed and if it was successful or not.
 
-function qsPlayerDataSetErrorCallback(message):void {
-  trace("Problem setting player data:: " + message)
-}
-ExternalInterface.addCallback('qsPlayerDataSetErrorCallback', qsPlayerDataSetErrorCallback);
+## Testing
+
+To test your game with the Quarter Spiral SDK you can activate a test mode on the ``SdkFactory``. As a result of that you will get an instance of ``DomSdk`` as your SDK which uses a ``MockDomSdkDriver`` internally. Use it like this:
+
+```as3
+  SdkFactory.testing = true;
+  var sdk:DomSdk = DomSdk(SdkFactory.getInstance("http://canvas.example.com"));
+  sdk.driver.playerInformation = new PlayerInformation("1111-2222-3333", "Peter", "peter@example.com");
+  //sdk.playerInformation will now return the information we set above
 ```
 
-There is also a convenient way to retrieve the current player's data:
-
-```actionscript
-function qsPlayerDataCallback(data):void {
-  trace("Player data loaded!")
-}
-ExternalInterface.addCallback('qsPlayerDataCallback', qsPlayerDataCallback);
-
-function qsPlayerDataErrorCallback(message):void {
-  trace("Problem loading player data: " + message)
-}
-ExternalInterface.addCallback('qsPlayerDataErrorCallback', qsPlayerDataErrorCallback);
-
-function qsSetupCallback(qs):void {
-  ExternalInterface.call('QS.flash.retrievePlayerData')
-}
-ExternalInterface.call('QS.setup')
-```
-
-
+You have to set ``SdkFactory.testing`` before **any** call to ``SdkFactory.getinstance``. Also please note that the ``MockDomSdkDriver`` is as dumb as possible. You have to manage all the state yourself.
 </markdown>
