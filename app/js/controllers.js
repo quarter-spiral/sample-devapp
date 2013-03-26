@@ -132,6 +132,29 @@ function NavigationCtrl($scope, $location, user) {
 }
 NavigationCtrl.$inject = ['$scope', '$location', 'user'];
 
+function HeaderController($scope, $location) {
+  $scope.isActive = function(sectionInQuestion) {
+   var section = $location.path().replace(/\/games\/[^\/]+\/?/, '')
+   if ((typeof sectionInQuestion) === 'string') {
+     sectionInQuestion = new RegExp("^" + sectionInQuestion + "$");
+   }
+   return section.match(sectionInQuestion);
+  }
+
+  $scope.insightsActive = function() {
+    return $scope.isActive('insights');
+  }
+
+  $scope.filesActive = function() {
+    return $scope.isActive('builds') || $scope.isActive('screens');
+  }
+
+  $scope.settingsActive = function() {
+    return $scope.isActive('details') || $scope.isActive(/^venues(\/.+)?$/) || $scope.isActive('developers') || $scope.isActive('dimensions') || $scope.isActive('friendbar');
+  }
+}
+HeaderController.$inject = ['$scope', '$location']
+
 function GamesCtrl($scope, $location, $route, user, devcenterClient) {
   if (redirectToBetaWall($location, user)) {
     return;
@@ -144,7 +167,6 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
     return;
   }
 
-  $scope.currentUrl = $location.path().substr(44, $location.path().length);
   $scope.QS_CANVAS_APP_URL = '';
 
   $scope.venues = [

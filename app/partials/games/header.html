@@ -1,4 +1,4 @@
-<div id="header" ng-show="loggedIn">
+<div id="header" ng-show="loggedIn" ng-controller="HeaderController">
 
       <div class="container">
 
@@ -10,21 +10,21 @@
 
         <div class="nav-collapse">
           <ul id="main-nav" class="nav pull-right">
-            <li class="nav-icon" ng-class="{active: currentUrl == ''}">
+            <li class="nav-icon" ng-class="{active: isActive('')}">
               <a href="#/games/{{game.uuid}}">
                 <i class="icon-home"></i>
                 <span>Overview</span>
               </a>
             </li>
 
-            <li ng-class="{active: currentUrl == 'insights'}">
+            <li ng-class="{active: insightsActive()}">
               <a href="#/games/{{game.uuid}}/insights">
                 <i class="icon-bar-chart"></i>
                 <span>Insights</span>
               </a>
             </li>
 
-            <li class="dropdown" ng-class="{active: currentUrl == 'builds'||currentUrl == 'screens'}">
+            <li class="dropdown" ng-class="{active: filesActive()}">
               <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="icon-cloud"></i>
                 <span>Files</span>
@@ -32,13 +32,13 @@
               </a>
 
               <ul class="dropdown-menu">
-                <li ng-class="{active: currentUrl == 'builds'}">
+                <li ng-class="{active: isActive('builds')}">
                   <a href="#/games/{{game.uuid}}/builds">
                     <i class="icon-upload-alt"></i>
                     <span>Builds</span>
                   </a>
                 </li>
-                <li ng-class="{active: currentUrl == 'screens'}">
+                <li ng-class="{active: isActive('screens')}">
                   <a href="#/games/{{game.uuid}}/screens">
                     <i class="icon-picture"></i>
                     <span>Media</span>
@@ -48,38 +48,38 @@
             </li>
 
 
-            <li class="dropdown" ng-class="{active: currentUrl == 'details'||currentUrl == 'venues'||currentUrl == 'developers'||currentUrl == 'venues/facebook'}">
+            <li class="dropdown" ng-class="{active: settingsActive()}">
               <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="icon-cogs"></i>
                 <span>Settings</span>
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li ng-class="{active: currentUrl == 'details'}">
+                <li ng-class="{active: isActive('details')}">
                   <a href="#/games/{{game.uuid}}/details">
                     <i class="icon-pencil"></i>
                     <span>Name, Description etc...</span>
                   </a>
                 </li>
-                <li ng-class="{active: currentUrl == 'dimensions'}">
+                <li ng-class="{active: isActive('dimensions')}">
                   <a href="#/games/{{game.uuid}}/dimensions">
                     <i class="icon-fullscreen"></i>
                     <span>Dimensions</span>
                   </a>
                 </li>
-                <li ng-class="{active: currentUrl == 'friendbar'}">
+                <li ng-class="{active: isActive('friendbar')}">
                   <a href="#/games/{{game.uuid}}/friendbar">
                     <i class="icon-heart"></i>
                     <span>Friend Bar</span>
                   </a>
                 </li>
-                <li ng-class="{active: currentUrl == 'venues'}">
+                <li ng-class="{active: isActive('venues')}">
                   <a href="#/games/{{game.uuid}}/venues">
                     <i class="icon-sitemap"></i>
                     <span>Venues</span>
                   </a>
                 </li>
-                <li ng-class="{active: currentUrl == 'developers'}">
+                <li ng-class="{active: isActive('developers')}">
                   <a href="#/games/{{game.uuid}}/developers">
                     <i class="icon-group"></i>
                     <span>Team</span>
