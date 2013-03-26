@@ -29,12 +29,16 @@
         <div class="span12">
 
           <ul class="nav nav-tabs nav-stacked">
+            <li class="loadingGames" ng-hide="games">
+              <img src="../img/loadingbar.gif" width="220" height="19" /><br />
+              Loading games
+            </li>
             <li ng-repeat="game in games | orderBy:'name'" >
               <a href="#/games/{{game.uuid}}"><i class="icon-dashboard"></i> {{game.name}}</a>
             </li>
           </ul>
 
-          <a href="#/games/new" class="btn">Add a new game...</a>
+          <a href="#/games/new" class="btn" ng-show="games">Add a new game...</a>
 
         </div>
 
