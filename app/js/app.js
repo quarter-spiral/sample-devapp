@@ -12,7 +12,7 @@ angular.module('devcenterTest', ['ngCookies', 'devcenterTest.filters', 'devcente
     $routeProvider.when('/documentation/:currentSection', {templateUrl: 'partials/documentation/index.html', controller: 'DocumentationCtrl'});
     $routeProvider.when('/games/new', {templateUrl: 'partials/games/new.html', controller: 'GamesCtrl'});
     $routeProvider.when('/games/:gameUuid', {templateUrl: 'partials/games/game.html', controller: 'GamesCtrl'});
-    $routeProvider.when('/games/:gameUuid/insights', {templateUrl: 'partials/games/insights.html', controller: 'GamesCtrl'});
+    //$routeProvider.when('/games/:gameUuid/insights', {templateUrl: 'partials/games/insights.html', controller: 'GamesCtrl'});
     $routeProvider.when('/games/:gameUuid/venues', {templateUrl: 'partials/games/venues/index.html', controller: 'GamesCtrl'});
     $routeProvider.when('/games/:gameUuid/venues/facebook', {templateUrl: 'partials/games/venues/facebook.html', controller: 'GamesCtrl'});
     $routeProvider.when('/games/:gameUuid/venues/embedded', {templateUrl: 'partials/games/venues/embedded.html', controller: 'GamesCtrl'});
