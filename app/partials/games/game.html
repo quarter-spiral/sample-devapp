@@ -57,47 +57,40 @@
 
 
         <div class="span4">
+          <h3>{{game.name}}</h3>
+          <hr />
+          <p class="large">{{game.description}}</p>
+          <ul class="nav nav-pills">
+            <li ng-repeat="venue in venues" ng-show="game.venues[venue.id].enabled && game.venues[venue.id].computed.ready">
+              <a href="{{game.uuid|canvasUrl:venue.id}}">{{venue.label}}</a>
+            </li>
+          </ul>
+          <a href="#/games/{{game.uuid}}/details"><i class="icon-wrench"></i> Edit Details</a><br />
+          <a href="#/games/{{game.uuid}}/venues"><i class="icon-sitemap"></i> Manage Venues</a>
+        </div>
+
+
+        <div class="span4">
+          <h3>The numbers</h3>
+          <hr />
           <table class="table stat-table">
             <tbody>
               <tr>
-                <td class="value">$320.12 <span class="plus">+4%</span></td>
-                <td class="full">Revenue Today</td>
+                <td class="value">203220</td>
+                <td class="full">Registered Players</td>
               </tr>
               <tr>
-                <td class="value">32,211 <span class="minus">-2%</span></td>
-                <td class="full">DAU Today</td>
+                <td class="value">1243220</td>
+                <td class="full">Total Plays</td>
               </tr>
             </tbody>
           </table>
-          <p class="tip">
-            $234.76 Revenue &amp; 34,311 DAU 7 days ago<br />
-            Resets at 12am EST (7h 32m ago)
-          </p>
         </div>
 
         <div class="span4">
-          <table class="table stat-table">
-            <tbody>
-              <tr>
-                <td class="value">$4312.12</td>
-                <td class="full">Current Balance</td>
-              </tr>
-              <tr>
-                <td class="value">$233,021.24</td>
-                <td class="full">Lifetime Revenue</td>
-              </tr>
-            </tbody>
-          </table>
-          <p class="tip">
-            Next pay out will be on 1/1/2013<br />
-            Previous pay out was $324
-          </p>
-        </div>
-
-        <div class="span2 offset2">
-          <p class="tip">
-            For historic data and additional metrics consult the <a href="#/games/{{game.uuid}}/insights">insights section</a>.
-          </p>
+          <h3>Plays over time</h3>
+          <hr />
+          <img src="http://thesocietypages.org/sociologylens/files/2012/03/Graph.png" width="600px" height="200px"  alt="graph" />
         </div>
 
       </div>
@@ -106,33 +99,25 @@
 
 
       <div class="row" ng-show="game|gameReady">
+
         <div class="span12">
+          <h3>Embed Code</h3>
           <hr />
-          
+          <p>Just copy the code below into any website and {{game.name}} will appear there.</p>
+
         </div>
 
-        <div class="span4">
-          <h3>{{game.name}}</h3>
-          <p class="large">{{game.description}}</p>
-          <ul class="nav nav-pills">
-            <li ng-repeat="venue in venues" ng-show="game.venues[venue.id].enabled && game.venues[venue.id].computed.ready">
-              <a href="{{game.uuid|canvasUrl:venue.id}}">{{venue.label}}</a>
-            </li>
-          </ul>
-          <a href="#/games/{{game.uuid}}/details"><i class="icon-wrench"></i> Edit Title or Description</a><br />
-          <a href="#/games/{{game.uuid}}/venues"><i class="icon-sitemap"></i> Manage Venues</a>
-        </div>
-
-        <div class="span5">
-          <h3>Embed {{game.name}} anywhere</h3>
-          <p>Just copy the code below into any website and your application will appear there.</p>
-          <pre class="code">{{game.venues.embedded.computed.code}}</pre>
-        </div>
-
-        <div class="span2 offset1">
-          <p class="tip">
-            You can adjust the dimensions of the default embed <a href="#/games/{{game.uuid}}/dimensions">here</a>.
-          </p>
+        <div class="span12">
+          <div class="row">
+            <div class="span8">
+              <pre class="code">{{game.venues.embedded.computed.code}}</pre>
+            </div>
+            <div class="span2">
+              <p class="tip">
+                You can adjust the dimensions of the default embed <a href="#/games/{{game.uuid}}/dimensions">here</a>.
+              </p>
+            </div>
+          </div>
         </div>
         
 
