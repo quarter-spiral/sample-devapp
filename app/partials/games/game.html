@@ -12,8 +12,8 @@
         </div> <!-- /.masthead-text -->
 
         <div class="masthead-text" ng-show="game|gameReady">
-          <h2>Dashboard</h2>
-          <p>Command and Kontrol center to manage your game.</p>
+          <h2>Overview</h2>
+          <p>{{game.name}} at a glance</p>
         </div> <!-- /.masthead-text -->
 
       </div>
@@ -56,8 +56,8 @@
       <div class="row coming-soon" ng-show="game|gameReady">
 
 
-        <div class="span4">
-          <h3>{{game.name}}</h3>
+        <div class="span3">
+          <h3>About</h3>
           <hr />
           <p class="large">{{game.description}}</p>
           <ul class="nav nav-pills">
@@ -70,7 +70,7 @@
         </div>
 
 
-        <div class="span4">
+        <div class="span3 offset1">
           <h3>The numbers</h3>
           <hr />
           <table class="table stat-table">
@@ -87,7 +87,7 @@
           </table>
         </div>
 
-        <div class="span4">
+        <div class="span4 offset1">
           <h3>Plays over time</h3>
           <hr />
           <img src="http://thesocietypages.org/sociologylens/files/2012/03/Graph.png" width="600px" height="200px"  alt="graph" />
