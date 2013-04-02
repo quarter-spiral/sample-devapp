@@ -1,6 +1,8 @@
-.hero-unit.stars{text-align:center;background:#000000 url('../img/stars.jpg') no-repeat right bottom;color:#FFF;-moz-text-shadow:0px 1px 3px #000000;-webkit-text-shadow:0px 1px 3px #000000;text-shadow:0px 1px 3px #000000;-moz-box-shadow:0px 1px 2px rgba(0, 0, 0, 0.8);-webkit-box-shadow:0px 1px 2px rgba(0, 0, 0, 0.8);box-shadow:0px 1px 2px rgba(0, 0, 0, 0.8);}.hero-unit.stars p,.hero-unit.stars a{color:#FF6;}
-.hero-unit.stars a{text-decoration:underline;font-weight:bold;}
+.big-banner.stars{padding:6em 0 3em;text-align:center;background:#000000 url('../img/stars.jpg') no-repeat left bottom;color:#FFF;-moz-text-shadow:0px 1px 3px #000000;-webkit-text-shadow:0px 1px 3px #000000;text-shadow:0px 1px 3px #000000;-moz-box-shadow:0px 1px 2px rgba(0, 0, 0, 0.8);-webkit-box-shadow:0px 1px 2px rgba(0, 0, 0, 0.8);box-shadow:0px 1px 2px rgba(0, 0, 0, 0.8);}.big-banner.stars p,.big-banner.stars a{color:#FF6;font-size:1.5em;}
+.big-banner.stars h1{font-size:4em;}
+.big-banner.stars a{text-decoration:underline;font-weight:bold;}
 .large{font-size:1.3em;line-height:1.5em;}
+.loadingGames{text-align:center;display:inline-block;color:#999;font-size:1.1em;}
 .alpha{font-size:1.3em;line-height:1.5em;text-align:right;color:#999;}
 h2{font-size:1.4em;}
 #footer ul{list-style:none;margin:0px;padding:0px 10px 0px 0px;}#footer ul li{margin-bottom:0.5em;}

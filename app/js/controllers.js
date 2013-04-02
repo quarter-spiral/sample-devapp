@@ -1,21 +1,9 @@
 'use strict';
 
-function redirectToBetaWall($location, user) {
-  if (!($location.path().match(/\/local-mode$/) || user.currentUser())) {
-    $location.path('/beta');
-    return true;
-  }
-  return false;
-}
-
 /* Controllers */
 
 
 function FrontpageCtrl($scope, $location, user) {
-  if (redirectToBetaWall($location, user)) {
-    return;
-  }
-
   if (user.currentUser()) {
     $location.path('/games');
   }
@@ -118,9 +106,6 @@ function UserCtrl($scope, $location, user) {
 UserCtrl.$inject = ['$scope', '$location', 'user'];
 
 function NavigationCtrl($scope, $location, user) {
-  if (redirectToBetaWall($location, user)) {
-    return;
-  }
 
   $scope.activeNavigation = function() {
     return window.location.hash;
@@ -156,9 +141,6 @@ function HeaderController($scope, $location) {
 HeaderController.$inject = ['$scope', '$location']
 
 function GamesCtrl($scope, $location, $route, user, devcenterClient) {
-  if (redirectToBetaWall($location, user)) {
-    return;
-  }
 
   if (!user.currentUser()) {
     if (!$location.path().match(/^\/documentation\//) && !$location.path().match(/^\/faqs/) && !$location.path().match(/^\/local-mode/)) {

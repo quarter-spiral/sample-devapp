@@ -2,7 +2,7 @@
 <html lang="en" ng-app="devcenterTest">
 <head>
   <meta charset="utf-8">
-  <title>Mission Kontrol</title>
+  <title>Friendbar.us</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
@@ -18,7 +18,7 @@
 
   <link rel="stylesheet" href="./css/ui-lightness/jquery-ui-1.8.21.custom.css">
 
-  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/application-fire-starter.css">
   <link rel="stylesheet" href="css/pages/dashboard.css">
 
   <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -33,7 +33,7 @@
   <div id="wrapper">
 
 
-    <div id="topbar" class="ng-cloak" ng-hide="hideHeader || !loggedIn">
+    <div id="topbar" class="ng-cloak">
 
       <div class="container">
 
@@ -45,7 +45,7 @@
 
           <ul ng-Controller="NavigationCtrl">
             <li ng-repeat="navigation in navigations">
-                <a href="{{navigation.href}}"><i class="icon-th-list"></i> Home</a>
+                <a href="{{navigation.href}}"><i class="icon-th-list"></i> Friendbar.us</a>
             </li>
             <li class="dropdown" ng-show="loggedIn">
               <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
