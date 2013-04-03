@@ -53,10 +53,46 @@
 
 
 
-      <div class="row coming-soon" ng-show="game|gameReady">
+      <div class="row" ng-show="game|gameReady">
+
+        <div class="span4">
+          <h3>Free Plan</h3>
+          <hr />
+          <p>{{game.name}} uses our free ad supported plan.</p>
+          <div id="upgrade">
+          <p>Remove the pre-roll ads from {{game.name}} for only $5 per month. Cancel any time.<p>
+          <p><button class="btn btn-success">Remove Ads</button><p>
+          </div>
+        </div>
+
+        
 
 
-        <div class="span3">
+        <div class="span4">
+          <h3>The numbers</h3>
+          <hr />
+          <table class="table stat-table">
+            <tbody>
+              <tr>
+                <td class="value">203220</td>
+                <td class="full">Registered Players</td>
+              </tr>
+              <tr>
+                <td class="value">1243220</td>
+                <td class="full">Total Views</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="span4">
+          <h3>Views over time</h3>
+          <hr />
+          <img src="http://thesocietypages.org/sociologylens/files/2012/03/Graph.png" width="600px" height="200px"  alt="graph" />
+        </div>
+
+
+        <div class="span4">
           <h3>About</h3>
           <hr />
           <p class="large">{{game.description}}</p>
@@ -69,47 +105,17 @@
           <a href="#/games/{{game.uuid}}/venues"><i class="icon-sitemap"></i> Manage Venues</a>
         </div>
 
+        
 
-        <div class="span3 offset1">
-          <h3>The numbers</h3>
-          <hr />
-          <table class="table stat-table">
-            <tbody>
-              <tr>
-                <td class="value">203220</td>
-                <td class="full">Registered Players</td>
-              </tr>
-              <tr>
-                <td class="value">1243220</td>
-                <td class="full">Total Plays</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="span4 offset1">
-          <h3>Plays over time</h3>
-          <hr />
-          <img src="http://thesocietypages.org/sociologylens/files/2012/03/Graph.png" width="600px" height="200px"  alt="graph" />
-        </div>
-
-      </div>
-
-
-
-
-      <div class="row" ng-show="game|gameReady">
-
-        <div class="span12">
-          <h3>Embed Code</h3>
-          <hr />
-          <p>Just copy the code below into any website and {{game.name}} will appear there.</p>
-
-        </div>
-
-        <div class="span12">
+        <div class="span8">
           <div class="row">
             <div class="span8">
+              <h3>Embed Code</h3>
+              <hr />
+              <p>Just copy the code below into any website and {{game.name}} will appear there.</p>
+
+            </div>
+            <div class="span5">
               <pre class="code">{{game.venues.embedded.computed.code}}</pre>
             </div>
             <div class="span2">

@@ -1,6 +1,8 @@
 .big-banner.stars{padding:6em 0 3em;text-align:center;background:#000000 url('../img/stars.jpg') no-repeat left bottom;color:#FFF;-moz-text-shadow:0px 1px 3px #000000;-webkit-text-shadow:0px 1px 3px #000000;text-shadow:0px 1px 3px #000000;-moz-box-shadow:0px 1px 2px rgba(0, 0, 0, 0.8);-webkit-box-shadow:0px 1px 2px rgba(0, 0, 0, 0.8);box-shadow:0px 1px 2px rgba(0, 0, 0, 0.8);}.big-banner.stars p,.big-banner.stars a{color:#FF6;font-size:1.5em;}
 .big-banner.stars h1{font-size:4em;}
 .big-banner.stars a{text-decoration:underline;font-weight:bold;}
+#upgrade{border:1px solid #DDD;margin-top:10px;padding:10px 25px 10px 25px;}#upgrade p{font-size:1.2em;margin:1em 0;}
+#upgrade button{font-weight:bold;}
 #preview{text-align:center;}#preview iframe{margin:0 auto;}
 #preview .warning{padding:5em 0;font-size:1.5em;}
 .large{font-size:1.3em;line-height:1.5em;}
