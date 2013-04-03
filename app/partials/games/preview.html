@@ -1,0 +1,41 @@
+<div ng-init="game = getGame(gameUuid)">
+
+  <div ng-include src="'partials/games/header.html'"></div>
+
+  <div id="masthead">
+    <div class="container">
+
+      <div class="masthead-pad">
+        <div class="masthead-text">
+          <h2>Preview</h2>
+          <p>This is how you game will look like when embedded.</p>
+        </div> <!-- /.masthead-text -->
+
+      </div>
+
+    </div> <!-- /.container -->
+
+  </div> <!-- /#masthead -->
+
+
+
+
+  <div id="content">
+
+    <div class="container">
+
+      <div class="row">
+
+        <div class="span12" >
+
+          <div ng-bind-html-unsafe="game.venues.embedded.computed.code">
+   
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
