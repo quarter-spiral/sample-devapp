@@ -43,7 +43,6 @@
 
           <div class="span8 offset1" ng-hide="game.configuration['fluid-size']">
             <legend>Configure: Fixed Size(s)</legend>
-            <hr />
             <p>If you supply multiple sets we will use the one that makes best use of any given venue and player set up. Your game will need to support all of these.</p>
             <div class="row" ng-repeat="size in game.configuration.sizes">
               <div class="span2">
@@ -52,6 +51,7 @@
                   <input type="number" pattern="[0-9]*" class="span1" placeholder="eg 600" ng-model="size.width">
                   <span class="add-on">Pixels</span>
                 </div>
+                <p ng-hide="$first && $last"><a ng-click="removeSize($index)">Remove</a></p>
               </div>
               <div class="span2">
                 <label>Fixed Height</label>
@@ -60,17 +60,15 @@
                   <span class="add-on">Pixels</span>
                 </div>
               </div>
-              <div class="span2" ng-hide="$first && $last">
-                  <a ng-click="removeSize($index)">Remove</a>
-              </div>
             </div>
-            <hr />
             <p><a ng-click="addSize()">Add another size</a></p>
+            
           </div>
+          
+
 
           <div class="span8 offset1" ng-show="game.configuration['fluid-size']">
             <legend>Configure: Fluid / Variable</legend>
-            <hr />
             <p>This requires your game to dynamically adapt to different sizes depending on the venue and the player's screen size. However we will never go below the minimum values below.</p>
             <div class="row">
               <div class="span2">
@@ -89,7 +87,10 @@
               </div>
             </div>
           </div>
-          <button class="btn btn-success">Save</button>
+          <div class="span8 offset4">
+            <hr />
+            <button class="btn btn-success">Update Dimensions</button>
+          </div>
         <form>
       </div>
     </div>
