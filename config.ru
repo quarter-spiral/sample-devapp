@@ -11,9 +11,12 @@ if !ENV['RACK_ENV'] || ENV['RACK_ENV'] == 'development'
   # Make sure to set the S3 access key ID and secret manually before
   # starting your server:
   ENV['QS_FILEPICKER_API_KEY'] ||= 'AWuIEz8TbaxzVkaCfhgQQz'
+
+  ENV['QS_STRIPE_SECRET_KEY'] ||= "sk_test_gQ3snq05Bqmj4hFSr3LI74EA"
+  ENV['QS_STRIPE_PUBLISHABLE_KEY'] = "pk_test_NEBIpT2gV1aRtZHzfdbQ0cRS"
 end
 
-ENV_KEYS_TO_EXPOSE = ['QS_DEVCENTER_BACKEND_URL', 'QS_CANVAS_APP_URL', 'QS_AUTH_BACKEND_URL', 'QS_FILEPICKER_API_KEY']
+ENV_KEYS_TO_EXPOSE = ['QS_DEVCENTER_BACKEND_URL', 'QS_CANVAS_APP_URL', 'QS_AUTH_BACKEND_URL', 'QS_FILEPICKER_API_KEY', 'QS_STRIPE_PUBLISHABLE_KEY']
 
 
 require 'newrelic_rpm'

@@ -55,17 +55,23 @@
 
       <div class="row" ng-show="game|gameReady">
 
-        <div class="span4">
+        <div class="span4" ng-hide="game.subscription && !game.subscription_phasing_out">
           <h3>Free Plan</h3>
           <hr />
-          <p>{{game.name}} uses our free ad supported plan.</p>
+          <p ng-hide="game.subscription_phasing_out">{{game.name}} uses our free ad supported plan.</p>
+          <p ng-show="game.subscription_phasing_out">The subscription for {{game.name}} was canceled. You can always renew that!</p>
           <div id="upgrade">
           <p>Remove the pre-roll ads from {{game.name}} for only $5 per month. Cancel any time.<p>
-          <p><button class="btn btn-success">Remove Ads</button><p>
+          <p>
+            <button class="btn btn-success" subscription-trigger game="game">
+              <span ng-hide="game.subscription_phasing_out">Remove Ads</span>
+              <span ng-show="game.subscription_phasing_out">Renew Subscription And Remove Ads</span>
+            </button>
+          <p>
           </div>
         </div>
 
-        
+
 
 
         <div class="span4">
@@ -105,7 +111,7 @@
           <a href="#/games/{{game.uuid}}/venues"><i class="icon-sitemap"></i> Manage Venues</a>
         </div>
 
-        
+
 
         <div class="span8">
           <div class="row">
@@ -125,8 +131,16 @@
             </div>
           </div>
         </div>
-        
 
+        <div class="span4" ng-show="game.subscription && !game.subscription_phasing_out">
+          <h3>Premium Plan</h3>
+          <hr />
+          <p>{{game.name}} uses our premium plan and does not come with any ads. Thank you for your support!</p>
+          <div id="upgrade">
+          <p>We would be heartbroken but if you want to cancel your subscription for {{game.name}} you can do so here<p>
+          <p><button class="btn btn-danger" cancel-subscription-trigger game="game">Cancel subscription now</button><p>
+          </div>
+        </div>
 
       </div>
 

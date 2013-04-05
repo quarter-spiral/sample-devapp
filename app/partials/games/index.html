@@ -34,7 +34,7 @@
               Loading games
             </li>
             <li ng-repeat="game in games | orderBy:'name'" >
-              <a href="#/games/{{game.uuid}}"><i class="icon-dashboard"></i> {{game.name}}</a>
+              <a href="#/games/{{game.uuid}}"><i class="icon-dashboard"></i> {{game.name}} <game-premium-badge game="game"/></a>
             </li>
           </ul>
 

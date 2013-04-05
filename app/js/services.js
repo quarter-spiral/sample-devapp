@@ -256,6 +256,21 @@ services.factory('devcenterClient', ['$q', '$http', 'user','qs_http', function($
           return data;
         }
       });
+    },
+
+    subscribeToGame: function(game, stripeToken) {
+      return http.makeRequest({
+        method: 'POST',
+        url: devcenterBackendUrl + '/games/' + game.uuid + '/subscription',
+        body: {token: stripeToken}
+      });
+    },
+
+    cancelGameSubscription: function(game) {
+      return http.makeRequest({
+        method: 'DELETE',
+        url: devcenterBackendUrl + '/games/' + game.uuid + '/subscription'
+      });
     }
   };
 }]);

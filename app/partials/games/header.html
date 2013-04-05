@@ -2,7 +2,9 @@
 
       <div class="container">
 
-        <a href="#/games/{{game.uuid}}" class="brand"><i class="icon-dashboard"></i> {{game.name}}</a>
+        <a href="#/games/{{game.uuid}}" class="brand"><i class="icon-dashboard"></i> {{game.name}}
+          <game-premium-badge game="game"/>
+        </a>
 
         <a href="javascript:;" class="btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
               <i class="icon-reorder"></i>
@@ -17,13 +19,13 @@
               </a>
             </li>
 
-            <!-- 
+            <!--
             <li ng-class="{active: insightsActive()}">
               <a href="#/games/{{game.uuid}}/insights">
                 <i class="icon-bar-chart"></i>
                 <span>Insights</span>
               </a>
-            </li> 
+            </li>
             -->
 
             <!--
@@ -73,7 +75,7 @@
                 <span>Preview</span>
               </a>
             </li>
-            <!-- 
+            <!--
             <li ng-class="{active: isActive('developers')}">
               <a href="#/games/{{game.uuid}}/developers">
                 <i class="icon-group"></i>
