@@ -1,4 +1,5 @@
 @import "mixins";
+@import "frontpage";
 
 
 /* app css stylesheet */
@@ -65,13 +66,6 @@
   font-size: 1.1em;
 }
 
-.alpha {
-  font-size: 1.3em;
-  line-height: 1.5em;
-  text-align: right;
-  color:#999;
-}
-
 h2 {
   font-size: 1.4em;
 }
@@ -86,42 +80,6 @@ h2 {
     }
   }
 }
-
-#inactiveVenues {
-  padding:0px;
-  background: #EEE url("../img/stripes.png") repeat top left;
-  border:1px solid #CCC;
-  .rounded-corners(5px);
-  ul {
-    list-style:none;
-    margin:0px;
-    padding:0px;
-    li {
-      padding:20px;
-      .rounded-corners(5px);
-      border-top:1px solid #FFF;
-      border-bottom:1px solid #EEE;
-      &:last-child {
-        border-bottom:0px;
-      }
-      &:first-child {
-        border-top:0px;
-      }
-    }
-    .title {
-      display: block;
-      font-weight:bold;
-      font-size:1em;
-    }
-    .description {
-      display: block;
-      color:#666;
-      margin-bottom: 1em
-    }
-  }
-}
-
-
 
 #header .brand {
   position: relative;
