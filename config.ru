@@ -12,7 +12,6 @@ if !ENV['RACK_ENV'] || ENV['RACK_ENV'] == 'development'
   # starting your server:
   ENV['QS_FILEPICKER_API_KEY'] ||= 'AWuIEz8TbaxzVkaCfhgQQz'
 
-  ENV['QS_STRIPE_SECRET_KEY'] ||= "sk_test_gQ3snq05Bqmj4hFSr3LI74EA"
   ENV['QS_STRIPE_PUBLISHABLE_KEY'] = "pk_test_NEBIpT2gV1aRtZHzfdbQ0cRS"
 end
 
@@ -22,6 +21,12 @@ ENV_KEYS_TO_EXPOSE = ['QS_DEVCENTER_BACKEND_URL', 'QS_CANVAS_APP_URL', 'QS_AUTH_
 require 'newrelic_rpm'
 require 'new_relic/agent/instrumentation/rack'
 require 'ping-middleware'
+
+if ENV['RACK_ENV'] == 'production'
+  use Rack::Auth::Basic, "Restricted Area" do |username, password|
+    password == 'redwoodpo'
+  end
+end
 
 class NewRelicMiddleware
   def initialize(app)
