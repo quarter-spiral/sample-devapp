@@ -65,7 +65,7 @@
           <p>
             <button class="btn btn-success" subscription-trigger game="game">
               <span ng-hide="game.subscription_phasing_out">Remove Ads</span>
-              <span ng-show="game.subscription_phasing_out">Renew Subscription And Remove Ads</span>
+              <span ng-show="game.subscription_phasing_out">Renew Subscription and Remove Ads</span>
             </button>
           <p>
           </div>
@@ -136,10 +136,7 @@
           <h3>Premium Plan</h3>
           <hr />
           <p>{{game.name}} uses our premium plan and does not come with any ads. Thank you for your support!</p>
-          <div id="upgrade">
-          <p>We would be heartbroken but if you want to cancel your subscription for {{game.name}} you can do so here<p>
-          <p><button class="btn btn-danger" cancel-subscription-trigger game="game">Cancel subscription now</button><p>
-          </div>
+          <p><a cancel-subscription-trigger game="game">Cancel Subscription</a></p>
         </div>
 
       </div>
