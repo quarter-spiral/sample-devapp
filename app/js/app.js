@@ -4,7 +4,7 @@
 // Declare app level module which depends on filters, and services
 angular.module('devcenterTest', ['ngCookies', 'devcenterTest.filters', 'devcenterTest.services', 'devcenterTest.directives']).
   config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/', {templateUrl: 'partials/frontpage.html'});
+    $routeProvider.when('/', {templateUrl: 'partials/frontpage.html', controller: 'FrontpageCtrl'});
     $routeProvider.when('/games', {templateUrl: 'partials/games/index.html', controller: 'GamesCtrl'});
     $routeProvider.when('/local-mode', {templateUrl: 'partials/local-mode/index.html', controller: 'LocalModeCtrl'});
     $routeProvider.when('/games/new', {templateUrl: 'partials/games/new.html', controller: 'GamesCtrl'});

@@ -1,17 +1,20 @@
-#why{padding:1em 0 6em;background-color:#DDD;}#why h1{font-size:1em;text-align:center;margin:0 0 4em 0;text-transform:uppercase;color:#999;}
-#why p{font-size:1.3em;text-align:center;line-height:1.5em;}
-#pricing{padding:1em 0 8em;}#pricing h1{font-size:1em;text-align:center;margin:0 0 4em 0;text-transform:uppercase;color:#999;}
-#pricing h2{font-size:1.4em;text-align:center;}
+#big-banner{background-color:#EEE;text-align:center;padding-top:3em;}#big-banner h1{margin:0 auto 1em;width:300px;height:66px;text-indent:-5000px;overflow:hidden;background:transparent url('../img/friendbarus-logo.png') no-repeat top center;}
+#big-banner a{text-decoration:underline;font-weight:bold;}
+#big-banner .signUp{padding:2em 0 2em;margin-top:4em;background-color:#333;}#big-banner .signUp p{margin:0;}
+#big-banner .signUp span{font-size:1.3em;color:#DDD;margin-right:1em;text-shadow:0px -1px 0px rgba(0, 0, 0, 0.5);}
+#why{padding:1em 0 6em;background:#000000 url('../img/stars_dark.jpg') no-repeat left bottom;}#why h2{font-size:1em;text-align:center;margin:0 0 4em 0;text-transform:uppercase;color:#999;}
+#why p{font-size:1.3em;text-align:center;line-height:1.5em;color:#BB3;}#why p a{color:#BB3;}#why p a:hover{color:#FF3;text-decoration:none;}
+#illu{text-align:center;}
+#pricing{padding:1em 0 4em;}#pricing h2{font-size:1em;text-align:center;margin:0 0 4em 0;text-transform:uppercase;color:#999;}
+#pricing h3{font-size:1.4em;text-align:center;}
 #pricing p{font-size:1.2em;line-height:1.5em;color:#999;}
 #pricing .plan{border:1px solid #DDD;padding:20px;}
 #pricing .more{text-align:center;margin-top:3em;}
-#features{padding:1em 0 4em;}#features h2{font-size:1.4em;}
+#features{padding:0 0 3em;}#features h2{font-size:1em;text-align:center;margin:0 0 1em 0;text-transform:uppercase;color:#999;}
+#features h3{font-size:1.4em;}
 #features p{font-size:1.2em;line-height:1.5em;color:#999;}
 #features .feature{margin:2em 2em;}
-#signUp{text-align:center;}#signUp .btn{display:block;}
-.big-banner.stars{padding:6em 0 3em;text-align:center;background:#000000 url('../img/stars.jpg') no-repeat left bottom;color:#FFF;-moz-text-shadow:0px 1px 3px #000000;-webkit-text-shadow:0px 1px 3px #000000;text-shadow:0px 1px 3px #000000;-moz-box-shadow:0px 1px 2px rgba(0, 0, 0, 0.8);-webkit-box-shadow:0px 1px 2px rgba(0, 0, 0, 0.8);box-shadow:0px 1px 2px rgba(0, 0, 0, 0.8);}.big-banner.stars p,.big-banner.stars a{color:#FF6;font-size:1.5em;}
-.big-banner.stars h1{font-size:4em;}
-.big-banner.stars a{text-decoration:underline;font-weight:bold;}
+.signUp{text-align:center;}.signUp .btn,.signUp a{text-decoration:none;}
 #upgrade{border:1px solid #DDD;margin-top:10px;padding:10px 25px 10px 25px;}#upgrade p{font-size:1.2em;margin:1em 0;}
 #upgrade button{font-weight:bold;}
 #preview{text-align:center;}#preview iframe{margin:0 auto;-moz-box-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);-webkit-box-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);box-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);}

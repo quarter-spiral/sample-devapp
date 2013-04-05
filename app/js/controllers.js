@@ -7,6 +7,7 @@ function FrontpageCtrl($scope, $location, user) {
   if (user.currentUser()) {
     $location.path('/games');
   }
+  $anchorScroll();
 }
 FrontpageCtrl.$inject = ['$scope', '$location', 'user'];
 
