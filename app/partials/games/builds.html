@@ -28,30 +28,114 @@
 
       <div class="row">
 
-        <div class="span6">
+        <div class="span12">
 
-          <h2>Select Game type</h2>
+          <legend>Select Game type</legend>
           <div class="btn-group" data-toggle="buttons-radio">
             <button type="button" class="btn" data-toggle="button" ng-class="{true:'active btn-primary', false:''}[game.configuration.type == 'flash']" ng-click="game.configuration.type = 'flash'">Flash</button>
             <button type="button" class="btn" data-toggle="button" ng-class="{true:'active btn-primary', false:''}[game.configuration.type == 'html5']" ng-click="game.configuration.type = 'html5'">HTML5</button>
           </div>
           <br />
 
-          <div ng-hide="game.configuration.type != 'flash'" class="well">
+          <div ng-hide="game.configuration.type != 'flash'">
             <div ng-show="game.originalConfiguration.type == 'flash' && game.originalConfiguration.url">Current <span ng-dblclick="powerDevMode=!powerDevMode">build</span>: <a ng-hide="powerDevMode" href="{{game.originalConfiguration.url}}">{{game.originalConfiguration.url}}</a><input type="text" ng-model="game.configuration.url" ng-show="powerDevMode"/></div>
             <div ng-show="game.configuration.url && game.configuration.url != game.originalConfiguration.url">New build: <a href="{{game.configuration.url}}">{{game.configuration.url}}</a></div>
             <a class="btn btn-info" ng-click="addFlashBuild(game)">Upload a new SWF file:</a>
           </div>
 
-          <div ng-hide="game.configuration.type != 'html5'" class="well">
+          <div ng-hide="game.configuration.type != 'html5'">
             <label for="inputHtml5Url">Enter the URL for {{game.name}}:</label>
             <input ng-model="game.configuration.url" type="text" id="inputHtml5Url" placeholder="http://" />
           </div>
 
-          <div ng-show="game.configuration.type != 'initial'">
-            <button ng-click="updateGame(game)" class="btn btn-success">Save</button>
-          </div>
+          <br />
+          <br />
 
+          
+
+
+        </div>
+
+      </div>
+
+      <div class="row" ng-controller="DimensionsController">
+        
+
+
+
+          <form class="form" ng-init="normalizeFluidSize(game)" ng-submit="updateGame(game)">
+            <div class="span6">
+              <legend>Behaviour</legend>
+              <label class="radio">
+                <input ng-model="game.configuration['fluid-size']" ng-value="false" type="radio" name="size-type">
+                Fixed Size
+              </label>
+              <span class="help-block">Your game appears at a specific size (or sizes).</span>
+              <label class="radio">
+                <input ng-model="game.configuration['fluid-size']" ng-value="true" type="radio" name="size-type">
+                Fluid / Variable
+              </label>
+              <span class="help-block">Your game gets as much (or as little) space as the player or venue offers.</span>
+          
+            </div>
+            
+            <div class="span6"> 
+
+              <div ng-hide="game.configuration['fluid-size']">
+                <legend>Configure: Fixed Size(s)</legend>
+                <p>If you supply multiple sets we will use the one that makes best use of any given venue and player set up. Your game will need to support all of these.</p>
+                <div class="row" ng-repeat="size in game.configuration.sizes">
+                  <div class="span2">
+                    <label>Fixed Width</label>
+                    <div class="input-append">
+                      <input type="number" pattern="[0-9]*" class="span1" placeholder="eg 600" ng-model="size.width">
+                      <span class="add-on">Pixels</span>
+                    </div>
+                    <p ng-hide="$first && $last"><a ng-click="removeSize($index)">Remove</a></p>
+                  </div>
+                  <div class="span2">
+                    <label>Fixed Height</label>
+                    <div class="input-append">
+                      <input type="number" pattern="[0-9]*" class="span1" placeholder="eg 400" ng-model="size.height">
+                      <span class="add-on">Pixels</span>
+                    </div>
+                  </div>
+                </div>
+                <p><a ng-click="addSize()">Add another size</a></p>
+                
+              </div>
+
+ 
+
+              <div ng-show="game.configuration['fluid-size']">
+                <legend>Configure: Fluid / Variable</legend>
+                <p>This requires your game to dynamically adapt to different sizes depending on the venue and the player's screen size. However we will never go below the minimum values below.</p>
+                <div class="row">
+                  <div class="span2">
+                  <label>Minimum Width</label>
+                    <div class="input-append">
+                      <input type="number" pattern="[0-9]*" class="span1" placeholder="eg 600" ng-model="game.configuration.sizes[0].width">
+                      <span class="add-on">Pixels</span>
+                    </div>
+                  </div>
+                  <div class="span2">
+                    <label>Minimum Height</label>
+                    <div class="input-append">
+                      <input type="number" pattern="[0-9]*" class="span1" placeholder="eg 400" ng-model="game.configuration.sizes[0].height">
+                      <span class="add-on">Pixels</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <form>
+
+          <div class="span12">
+            <hr />
+            <div ng-show="game.configuration.type != 'initial'">
+              <button ng-click="updateGame(game)" class="btn btn-success">Save</button>
+            </div>
+          </div>
 
         </div>
 
