@@ -19,6 +19,34 @@
               </a>
             </li>
 
+            <li ng-class="{active: isActive('builds')}">
+              <a href="#/games/{{game.uuid}}/builds">
+                <i class="icon-upload-alt"></i>
+                <span>Build</span>
+              </a>
+            </li>
+
+            <li ng-class="{active: isActive('venues')}">
+              <a href="#/games/{{game.uuid}}/venues">
+                <i class="icon-sitemap"></i>
+                <span>Venues</span>
+              </a>
+            </li>
+
+            <li ng-class="{active: isActive('preview')}">
+              <a href="#/games/{{game.uuid}}/preview">
+                <i class="icon-eye-open"></i>
+                <span>Preview</span>
+              </a>
+            </li>
+
+            <li ng-class="{active: isActive('friendbar')}">
+              <a href="#/games/{{game.uuid}}/friendbar">
+                <i class="icon-heart"></i>
+                <span>Friend Bar</span>
+              </a>
+            </li>
+
             <!--
             <li ng-class="{active: insightsActive()}">
               <a href="#/games/{{game.uuid}}/insights">
@@ -43,32 +71,7 @@
                 <span>Details</span>
               </a>
             </li>
-            <li ng-class="{active: isActive('friendbar')}">
-              <a href="#/games/{{game.uuid}}/friendbar">
-                <i class="icon-heart"></i>
-                <span>Friend Bar</span>
-              </a>
-            </li>
-            <li ng-class="{active: isActive('venues')}">
-              <a href="#/games/{{game.uuid}}/venues">
-                <i class="icon-sitemap"></i>
-                <span>Venues</span>
-              </a>
-            </li>
-
-            <li ng-class="{active: isActive('builds')}">
-              <a href="#/games/{{game.uuid}}/builds">
-                <i class="icon-upload-alt"></i>
-                <span>Builds</span>
-              </a>
-            </li>
-
-            <li ng-class="{active: isActive('preview')}">
-              <a href="#/games/{{game.uuid}}/preview">
-                <i class="icon-eye-open"></i>
-                <span>Preview</span>
-              </a>
-            </li>
+            
             <!--
             <li ng-class="{active: isActive('developers')}">
               <a href="#/games/{{game.uuid}}/developers">

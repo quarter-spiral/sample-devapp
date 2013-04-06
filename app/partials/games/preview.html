@@ -7,7 +7,7 @@
 
       <div class="masthead-pad">
         <div class="masthead-text">
-          <h2>Preview</h2>
+          <h2>Preview your Application</h2>
           <p>This is how your application will look like when embedded.</p>
         </div> <!-- /.masthead-text -->
 
@@ -27,11 +27,16 @@
       <div class="row">
 
         <div class="span12" id="preview">
-
-          <div ng-bind-html-unsafe="game.venues.embedded.computed.code" ng-show="game.venues.embedded.computed.code">
+          <div ng-show="game.venues.embedded.computed.code">
+            <div ng-bind-html-unsafe="game.venues.embedded.computed.code">
+            </div>
+            <p class="tip">
+              <br />
+              You can adjust the dimensions of the default embed <a href="#/games/{{game.uuid}}/builds">here</a>.
+            </p>
           </div>
           <div ng-hide="game.venues.embedded.computed.code" class="warning">
-            <p>The preview requires embeds to work.</p>
+            <p>Please <a href="#/games/{{game.uuid}}/venues">turn embedding on</a> to use the preview feature.</p>
           </div>
 
         </div>
