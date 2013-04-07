@@ -9,7 +9,7 @@
       <div class="masthead-pad">
 
         <div class="masthead-text">
-          <h2>Name &amp; Description</h2>
+          <h2>Name, Description, etc...</h2>
           <p>This information appears in the about section of your application.</p>
         </div> <!-- /.masthead-text -->
 
@@ -29,10 +29,10 @@
       <div class="row">
 
 
-        <div class="span12">
+        <div class="span8">
           <form class="form-horizontal">
             <div class="control-group">
-              <label class="control-label" for="inputName">Name</label>
+              <label class="control-label" for="inputName">Application Name</label>
               <div class="controls">
                 <input ng-model="game.name" type="text" id="inputName" placeholder="Name" class="span5">
               </div>
@@ -74,6 +74,19 @@
 
           </form>
 
+        </div>
+
+
+        <div class="span3 offset1">
+          <p>
+            Using the following link you can permanently remove {{game.name}} from friendbar.us. This can not be undone and you'll lose all current and historic data. Be careful:
+          </p>
+          <p>
+            <a ng-click="deleteGame(game.uuid)" class="warning">
+            <i class="icon-warning-sign"></i>
+            <span>Delete {{game.name}} forever.</span>
+            </a>
+          </p>
         </div>
       </div>
     </div>
