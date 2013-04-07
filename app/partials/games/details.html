@@ -81,12 +81,27 @@
           <p>
             Using the following link you can permanently remove {{game.name}} from friendbar.us. This can not be undone and you'll lose all current and historic data. Be careful:
           </p>
-          <p>
-            <a ng-click="deleteGame(game.uuid)" class="warning">
-            <i class="icon-warning-sign"></i>
-            <span>Delete {{game.name}} forever.</span>
-            </a>
-          </p>
+          <div ng-init="confirmation = false">
+            <div ng-hide="confirmation">
+              <p>
+                <a ng-click="confirmation = true"  class="warning">
+                <i class="icon-warning-sign"></i>
+                <span>Delete {{game.name}} forever.</span>
+                </a>
+              </p>
+            </div>
+            <div ng-show="confirmation">
+              <p>
+                <strong>Are you sure?</strong><br />
+                <a ng-click="deleteGame(game.uuid)"  style="color:red;">
+                <span>Delete it now</span>
+                </a> /  
+                <a ng-click="confirmation = false">
+                <span>Don't delete it</span>
+                </a>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
