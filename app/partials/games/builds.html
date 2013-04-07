@@ -10,7 +10,7 @@
 
         <div class="masthead-text">
           <h2>Builds</h2>
-          <p>Upload your latest build.</p>
+          <p>Add the latest version of your application and manage its dimensions.</p>
         </div> <!-- /.masthead-text -->
 
       </div>
@@ -30,7 +30,7 @@
 
         <div class="span12">
 
-          <legend>Select Game type</legend>
+          <legend>Select application type</legend>
           <div class="btn-group" data-toggle="buttons-radio">
             <button type="button" class="btn" data-toggle="button" ng-class="{true:'active btn-primary', false:''}[game.configuration.type == 'flash']" ng-click="game.configuration.type = 'flash'">Flash</button>
             <button type="button" class="btn" data-toggle="button" ng-class="{true:'active btn-primary', false:''}[game.configuration.type == 'html5']" ng-click="game.configuration.type = 'html5'">HTML5</button>
@@ -70,12 +70,12 @@
                 <input ng-model="game.configuration['fluid-size']" ng-value="false" type="radio" name="size-type">
                 Fixed Size
               </label>
-              <span class="help-block">Your game appears at a specific size (or sizes).</span>
+              <span class="help-block">Your application appears at a specific size (or sizes).</span>
               <label class="radio">
                 <input ng-model="game.configuration['fluid-size']" ng-value="true" type="radio" name="size-type">
                 Fluid / Variable
               </label>
-              <span class="help-block">Your game gets as much (or as little) space as the player or venue offers.</span>
+              <span class="help-block">Your application gets as much (or as little) space as the user or venue offers.</span>
           
             </div>
             
@@ -83,7 +83,7 @@
 
               <div ng-hide="game.configuration['fluid-size']">
                 <legend>Configure: Fixed Size(s)</legend>
-                <p>If you supply multiple sets we will use the one that makes best use of any given venue and player set up. Your game will need to support all of these.</p>
+                <p>If you supply multiple sets we will use the one that makes best use of any given venue and user set up. Your application will need to support all of these.</p>
                 <div class="row" ng-repeat="size in game.configuration.sizes">
                   <div class="span2">
                     <label>Fixed Width</label>
@@ -109,7 +109,7 @@
 
               <div ng-show="game.configuration['fluid-size']">
                 <legend>Configure: Fluid / Variable</legend>
-                <p>This requires your game to dynamically adapt to different sizes depending on the venue and the player's screen size. However we will never go below the minimum values below.</p>
+                <p>This requires your application to dynamically adapt to different sizes depending on the venue and the user's screen size. However we will never go below the minimum values below.</p>
                 <div class="row">
                   <div class="span2">
                   <label>Minimum Width</label>
