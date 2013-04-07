@@ -3,13 +3,17 @@
 /* Controllers */
 
 
-function FrontpageCtrl($scope, $location, user) {
+function FrontpageCtrl($scope, $location, $anchorScroll, user) {
   if (user.currentUser()) {
     $location.path('/games');
   }
-  $anchorScroll();
+
+  $scope.scrollToAnchor = function(anchor) {
+    $location.hash(anchor);
+    $anchorScroll();
+  }
 }
-FrontpageCtrl.$inject = ['$scope', '$location', 'user'];
+FrontpageCtrl.$inject = ['$scope', '$location', '$anchorScroll', 'user'];
 
 function LocalModeCtrl($rootScope, $scope, $location,$route, $timeout, user, devcenterClient) {
   $rootScope.hideFooter = true;
