@@ -14,4 +14,14 @@
     for venue, config of game.venues
       ready = ready || (config.enabled and config.computed and config.computed.ready)
     ready
+]).filter("rollingImpressionsChartData", [->
+  (insights) ->
+    return null unless insights
+    data = []
+    i = 0
+    for view in insights.impressions.overall.anonymous.rolling_30_days
+      data.push(view + insights.impressions.overall.logged_in.rolling_30_days[i])
+      i++
+
+    data
 ])

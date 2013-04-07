@@ -84,4 +84,46 @@ angular.module('devcenterTest.directives', []).directive('markdown', function() 
     replace: true,
     templateUrl: '/partials/games/premium_badge.html'
   }
-});
+}).directive('rollingImpressionsChart', function($filter) {
+    return {
+        restrict: 'A',
+        scope: {
+          game: '='
+        },
+        link: function(scope, element, attrs) {
+          var chartDrawn = false;
+          scope.$watch('game.insights', function() {
+            if (chartDrawn === false && scope.game !== undefined && scope.game !== null && scope.game.insights !== undefined && scope.game.insights !== null) {
+              var chartData = $filter('rollingImpressionsChartData')(scope.game.insights)
+
+              var data = []
+              for (var i = 0; i < chartData.length; i++) {
+                data.push([i + 1, chartData[i]])
+              }
+              Flotr.draw(element[0], [data], {
+                xaxis: {
+                  tickDecimals: 0,
+                  tickFormatter: function(x, config) {
+                    if (x == 30) {
+                      return "Today";
+                    }
+                    return "T - " + (30 - x);
+                  }
+                },
+                yaxis: {
+                  min: 0,
+                  tickDecimals: 0
+                },
+                mouse: {
+                  track: true,
+                  trackFormatter: function(obj) {
+                    return "" + moment().subtract('days', 31 - obj.x).format("MMMM D") + ": " + Math.round(obj.y) + " views";
+                  }
+                }
+              });
+              chartDrawn = true;
+            }
+          });
+        }
+    };
+});;

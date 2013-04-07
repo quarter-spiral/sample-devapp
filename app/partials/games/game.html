@@ -80,11 +80,11 @@
           <table class="table stat-table">
             <tbody>
               <tr>
-                <td class="value">203220</td>
+                <td class="value">{{game.insights.players.overall}}</td>
                 <td class="full">Registered Players</td>
               </tr>
               <tr>
-                <td class="value">1243220</td>
+                <td class="value">{{game.insights.impressions.overall.anonymous.total + game.insights.impressions.overall.logged_in.total}}</td>
                 <td class="full">Total Views</td>
               </tr>
             </tbody>
@@ -94,7 +94,8 @@
         <div class="span4">
           <h3>Views in the last 30 days</h3>
           <hr />
-          <img src="http://thesocietypages.org/sociologylens/files/2012/03/Graph.png" width="600px" height="200px"  alt="graph" />
+          <!-- <img src="http://thesocietypages.org/sociologylens/files/2012/03/Graph.png" width="600px" height="200px"  alt="graph" /> -->
+          <div rolling-impressions-chart game="game" style="width:370px;height:200px;"></div>
         </div>
 
 

@@ -99,6 +99,17 @@ services.factory('devcenterClient', ['$q', '$http', 'user','qs_http', function($
   var publicGames = [];
   var categories = [];
 
+  var getGameInsights = function(game) {
+    game.insights = null;
+    http.makeRequest({
+      method: 'GET',
+      url: devcenterBackendUrl + '/games/' + game.uuid + '/insights',
+      returns: function(data) {
+        game.insights = data[game.uuid];
+      }
+    });
+  }
+
   var getGames = function() {
     if (gamesRequestPromise) {
       return gamesRequestPromise;
@@ -218,7 +229,10 @@ services.factory('devcenterClient', ['$q', '$http', 'user','qs_http', function($
       var deferred = $q.defer();
 
       getGames().then(function() {
-        deferred.resolve(games[gameUuid]);
+        var game = games[gameUuid];
+        getGameInsights(game);
+
+        deferred.resolve(game);
       });
 
       return deferred.promise;
