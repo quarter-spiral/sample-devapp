@@ -105,7 +105,7 @@ angular.module('devcenterTest.directives', []).directive('markdown', function() 
                   tickDecimals: 0,
                   tickFormatter: function(x, config) {
                     if (x == 30) {
-                      return "Today";
+                      return "Yesterday";
                     }
                     return "T - " + (30 - x);
                   }
