@@ -6,8 +6,8 @@
     <div class="masthead-pad">
 
       <div class="masthead-text">
-        <h2>Set up a new game</h2>
-        <p>A strong first impression is key to attracting players to your game.</p>
+        <h2>Set up a new application</h2>
+        <p>This information appears in the about section of your application.</p>
       </div> <!-- /.masthead-text -->
 
     </div>
@@ -41,19 +41,12 @@
             </div>
 
             <div class="control-group">
-              <label class="control-label" for="inputCategory">Top Categories</label>
+              <label class="control-label" for="inputCategory">Category</label>
               <div class="controls">
-                <span ng-repeat="category in categories|orderBy:'count':true|limitTo:15|orderBy:'name'"><a href="#" ng-click="game.category = category.name;$event.preventDefault()" class="badge" ng-class="{'badge-inverse': game.category != category.name, 'badge-info': game.category == category.name}">{{category.name}}</a> </span>
+                <p><input ng-model="game.category" type="text" id="inputCategory" placeholder="Enter category here" class="span5"></p><p class="tip">Popular: <span ng-repeat="category in categories|orderBy:'count':true|limitTo:15|orderBy:'name'"><a href="#" ng-click="game.category = category.name;$event.preventDefault()" ng-class="{'badge': game.category != category.name, 'badge badge-info': game.category == category.name}">{{category.name}}</a> </span></p>
               </div>
             </div>
-
-            <div class="control-group">
-              <label class="control-label" for="inputCategory">Game Category</label>
-              <div class="controls">
-                <input ng-model="game.category" type="text" id="inputCategory" placeholder="Enter category here" class="span5">
-              </div>
-            </div>
-
+            
             <div class="control-group">
               <label class="control-label" for="inputCredits">Developed by</label>
               <div class="controls">
