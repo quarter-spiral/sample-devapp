@@ -277,7 +277,12 @@ function GamesCtrl($scope, $location, $route, user, devcenterClient) {
       {
         mimetypes: ['application/x-shockwave-flash']
       }, function(fpfile) {
-        game.configuration.url = '' + fpfile.url + '?dl=false'
+        var customDomainPrefix = window.qs.ENV['QS_CUSTOM_BUILD_DOMAIN_PREFIX'];
+        if (customDomainPrefix !== undefined && customDomainPrefix !== null) {
+          game.configuration.url = '' + customDomainPrefix + "/" + fpfile.key;
+        } else {
+          game.configuration.url = '' + fpfile.url + '?dl=false'
+        }
         $scope.$apply();
       }
     );
