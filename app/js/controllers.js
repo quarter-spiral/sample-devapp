@@ -115,6 +115,25 @@ function NavigationCtrl($scope, $location, user) {
   $scope.activeNavigation = function() {
     return window.location.hash;
   }
+  /*
+  if (user.currentUser()) {
+    UserVoice.push(['identify',{
+      email:      user.currentUser().email, // User’s email address
+      name:       user.currentUser().name, // User’s real name
+      //created_at: 1364406966, // Unix timestamp for the date the user signed up
+      id:         user.currentUser().uuid // Optional: Unique id of the user (if set, this should not change)
+      //type:       'Owner', // Optional: segment your users by type
+      //account: {
+      //  id:           123, // Optional: associate multiple users with a single account
+      //  name:         'Acme, Co.', // Account name
+      //  created_at:   1364406966, // Unix timestamp for the date the account was created
+      //  monthly_rate: 9.99, // Decimal; monthly rate of the account
+      //  ltv:          1495.00, // Decimal; lifetime value of the account
+      //  plan:         'Enhanced' // Plan name for the account
+      //}
+    }]);
+  }
+  */
 
   $scope.navigations = [
     {href: '#/games', label: 'Overview'},

@@ -42,7 +42,6 @@
         </a>
 
         <div id="top-nav">
-
           <ul ng-Controller="NavigationCtrl">
             <li ng-repeat="navigation in navigations">
                 <a href="{{navigation.href}}"><i class="icon-th-list"></i> Friendbar.us</a>
@@ -96,10 +95,18 @@
 
           <ul>
             <li>Friendbar.us is a <a href="http://quarterspiral.com">Quarter Spiral</a> service.</li>
-            <li>&copy; 2012 Quarter Spiral. All rights reserved.</li>
-            <li><a href="https://docs.google.com/document/d/1HwI4dWdm6Od1-zl29xDINKfwhJnPzko1omSc_-DrPzY/pub" target="new">Privacy Notice</a> &amp; <a href="https://docs.google.com/document/d/1oWjZK6Z6p8gn5WRiHDup6uD9HuKDKNz-yuCtjfTI924/pub" target="new">Terms of Service</a></li>
+            <li>&copy; 2013 Quarter Spiral. All rights reserved.</li>
           </ul>
 
+        </div>
+
+        <div class="span3">
+          <ul>
+            <li><a href="javascript:void();" data-uv-show="contact">Support</a></li>
+            <li><a href="http://feedback.quarterspiral.com/forums/208092-friendbar-us" target="new">Feedback</a></li>
+            <li><a href="https://docs.google.com/document/d/1HwI4dWdm6Od1-zl29xDINKfwhJnPzko1omSc_-DrPzY/pub" target="new">Privacy Notice</a></li>
+            <li><a href="https://docs.google.com/document/d/1oWjZK6Z6p8gn5WRiHDup6uD9HuKDKNz-yuCtjfTI924/pub" target="new">Terms of Service</a></li>
+          </ul>
         </div>
 
         <div class="span1">
@@ -158,6 +165,47 @@
 
   <script src="js/libs/flotr2.min.js"></script>
   <script src="js/libs/showdown.js"></script>
+
+
+  <script>
+    (function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/24oEv58YxGW9DZwh3xuCg.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})()
+
+    UserVoice = window.UserVoice || [];
+    
+    // Identify the user and pass traits
+    // To enable, replace sample data with actual user traits and uncomment the line
+    UserVoice.push(['identify',{
+      //email:      'john.doe@example.com', // User’s email address
+      //name:       'John Doe', // User’s real name
+      //created_at: 1364406966, // Unix timestamp for the date the user signed up
+      //id:         123, // Optional: Unique id of the user (if set, this should not change)
+      //type:       'Owner', // Optional: segment your users by type
+      //account: {
+      //  id:           123, // Optional: associate multiple users with a single account
+      //  name:         'Acme, Co.', // Account name
+      //  created_at:   1364406966, // Unix timestamp for the date the account was created
+      //  monthly_rate: 9.99, // Decimal; monthly rate of the account
+      //  ltv:          1495.00, // Decimal; lifetime value of the account
+      //  plan:         'Enhanced' // Plan name for the account
+      //}
+    }]);
+
+
+    UserVoice.push(['set', '__org_name', 'Friendbar.us']);
+
+    // Pin the (?) icon for the contact form w/Instant Answers on your page
+    UserVoice.push(['pin', 'contact']);
+    UserVoice.push(['pin', 'satisfaction']);
+
+    // Autoprompt users for Satisfaction and SmartVote
+    // (only displayed when certain conditions are met)
+    UserVoice.push(['autoprompt']);
+
+
+    
+
+  </script>
+
 
 
 
