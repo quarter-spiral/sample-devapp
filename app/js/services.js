@@ -1,5 +1,12 @@
 'use strict';
 
+var deleteCookiesForIE = function(name) {
+  var date = new Date();
+  date.setTime(date.getTime() - 2*24*60*60*1000); //Now - 2 days
+  var cookie = name + "=; expires=" + date.toUTCString();
+  document.cookie = cookie;
+}
+
 /* Services */
 
 var services = angular.module('devcenterTest.services', []);
@@ -77,6 +84,7 @@ services.factory('user', ['$rootScope', '$cookies', 'qs_http', function(rootScop
     logout: function() {
       cookies['qs_authentication'] = angular.toJson({not: 'loggedin'})
       delete cookies['qs_authentication'];
+      deleteCookiesForIE('qs_authentication');
       storeLogin(null);
       var redirectUrl = window.location.protocol + '//' + window.location.host;
       window.location.href = window.qs.ENV['QS_AUTH_BACKEND_URL'] + '/signout?redirect_uri=' + encodeURI(redirectUrl);
