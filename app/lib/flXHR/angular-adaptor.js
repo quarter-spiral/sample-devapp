@@ -1,6 +1,5 @@
 if (window.XDomainRequest !== undefined) {
   var originalXMLHttpRequest = window.originalXMLHttpRequest
-  document.write('<script src="lib/flXHR/flXHR.js"></script>');
 
   document.write('<script src="lib/flXHR/swfobject.js"></script>');
   document.write('<script src="lib/flXHR/checkplayer.js"></script>');
