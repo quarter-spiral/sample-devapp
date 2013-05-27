@@ -2,6 +2,22 @@ if (window.XDomainRequest !== undefined) {
   var originalXMLHttpRequest = window.originalXMLHttpRequest
   document.write('<script src="lib/flXHR/flXHR.js"></script>');
 
+  document.write('<script src="lib/flXHR/swfobject.js"></script>');
+  document.write('<script src="lib/flXHR/checkplayer.js"></script>');
+  var checkFlashVersion = function() {
+    if ((typeof flensed) === 'undefined' || (typeof flensed.checkplayer) === 'undefined' || (typeof swfobject) === 'undefined') {
+      setTimeout(checkFlashVersion, 500);
+      return;
+    }
+
+    new flensed.checkplayer(flensed.flXHR.MIN_PLAYER_VERSION, function(checkplayer) {
+      if (!checkplayer.checkPassed) {
+        document.documentElement.className += " qs-flash-version-unsupported";
+      }
+    }, false);
+  };
+  checkFlashVersion();
+
   window.XMLHttpRequest = function() {
     flXHR = new flensed.flXHR();
 
@@ -84,4 +100,8 @@ if (window.XDomainRequest !== undefined) {
 
     return flXHR;
   }
+}
+
+if (((typeof XMLHttpRequest) === 'undefined' || (typeof new XMLHttpRequest().withCredentials) === 'undefined') && (typeof window.XDomainRequest) === 'undefined') {
+    document.documentElement.className += " qs-browser-unsupported";
 }
