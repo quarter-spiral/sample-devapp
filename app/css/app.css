@@ -15,6 +15,9 @@
 #features .feature{margin:2em 2em 2em 0;}
 #features img{float:right;margin:2.2em -10px 0 0;}
 .signUp{text-align:center;}.signUp .btn,.signUp a,.signUp a:hover{text-decoration:none;}
+#systemWarning{display:none;}
+.qs-flash-version-unsupported #systemWarning,.qs-browser-unsupported #systemWarning{display:block;width:100%;text-align:center;}.qs-flash-version-unsupported #systemWarning .warningBox,.qs-browser-unsupported #systemWarning .warningBox{font-size:1.2em;width:300px;padding:50px 0px;margin:0 auto 100px auto;text-align:left;}
+.qs-flash-version-unsupported #wrapper,.qs-browser-unsupported #wrapper,.qs-flash-version-unsupported #footer,.qs-browser-unsupported #footer{display:none !important;}
 #upgrade{border:1px solid #DDD;margin-top:10px;padding:10px 25px 10px 25px;}#upgrade p{font-size:1.2em;margin:1em 0;}
 #upgrade button{font-weight:bold;}
 #preview{text-align:center;}#preview iframe{margin:0 auto;-moz-box-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);-webkit-box-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);box-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);}
