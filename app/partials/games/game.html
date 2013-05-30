@@ -55,22 +55,8 @@
 
       <div class="row" ng-show="game|gameReady">
 
-        <div class="span4" ng-hide="game.subscription && !game.subscription_phasing_out">
-          <h3>Free Plan</h3>
-          <hr />
-          <p ng-hide="game.subscription_phasing_out">{{game.name}} uses our free ad supported plan.</p>
-          <p ng-show="game.subscription_phasing_out">The subscription for {{game.name}} was canceled. You can always renew that!</p>
-          <div id="upgrade">
-          <p>Remove the pre-roll ads from {{game.name}} for only $15 per month. Cancel any time.<p>
-          <p>
-            <button class="btn btn-success" subscription-trigger game="game">
-              <span ng-hide="game.subscription_phasing_out">Remove Ads</span>
-              <span ng-show="game.subscription_phasing_out">Renew Subscription and Remove Ads</span>
-            </button>
-          <p>
-          </div>
-        </div>
-
+       
+  
 
 
 
@@ -91,12 +77,7 @@
           </table>
         </div>
 
-        <div class="span6">
-          <h3>Views in the last 30 days</h3>
-          <hr />
-          <!-- <img src="http://thesocietypages.org/sociologylens/files/2012/03/Graph.png" width="600px" height="200px"  alt="graph" /> -->
-          <div rolling-impressions-chart game="game" style="width:370px;height:200px;"></div>
-        </div>
+        
 
 
         <div class="span3">
@@ -112,17 +93,41 @@
           <a href="#/games/{{game.uuid}}/venues"><i class="icon-sitemap"></i> Manage Venues</a>
         </div>
 
+        <div class="span6">
+          <h3>Views in the last 30 days</h3>
+          <hr />
+          <!-- <img src="http://thesocietypages.org/sociologylens/files/2012/03/Graph.png" width="600px" height="200px"  alt="graph" /> -->
+          <div rolling-impressions-chart game="game" style="width:370px;height:200px;"></div>
+        </div>
 
 
-        <div class="span8">
+        <div class="span3" ng-hide="game.subscription && !game.subscription_phasing_out">
+          <h3>Free Plan</h3>
+          <hr />
+          <p ng-hide="game.subscription_phasing_out">{{game.name}} uses our free ad supported plan.</p>
+          <p ng-show="game.subscription_phasing_out">The subscription for {{game.name}} was canceled. You can always renew that!</p>
+          <div id="upgrade">
+          <p>Remove the pre-roll ads from {{game.name}} for only $15 per month. Cancel any time.<p>
+          <p>
+            <button class="btn btn-success" subscription-trigger game="game">
+              <span ng-hide="game.subscription_phasing_out">Remove Ads</span>
+              <span ng-show="game.subscription_phasing_out">Renew Subscription and Remove Ads</span>
+            </button>
+          <p>
+          </div>
+        </div>
+
+
+
+        <div class="span9">
           <div class="row">
-            <div class="span8">
+            <div class="span9">
               <h3>Embed Code</h3>
               <hr />
               <p>Just copy the code below into any website and {{game.name}} will appear there.</p>
 
             </div>
-            <div class="span5">
+            <div class="span7">
               <pre class="code">{{game.venues.embedded.computed.code}}</pre>
             </div>
             <div class="span2">
@@ -133,7 +138,7 @@
           </div>
         </div>
 
-        <div class="span4" ng-show="game.subscription && !game.subscription_phasing_out">
+        <div class="span3" ng-show="game.subscription && !game.subscription_phasing_out">
           <h3>Premium Plan</h3>
           <hr />
           <p>{{game.name}} uses our premium plan and does not come with any ads. Thank you for your support!</p>
