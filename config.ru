@@ -22,12 +22,6 @@ require 'newrelic_rpm'
 require 'new_relic/agent/instrumentation/rack'
 require 'ping-middleware'
 
-if ENV['RACK_ENV'] == 'production'
-  use Rack::Auth::Basic, "Restricted Area" do |username, password|
-    password == 'redwoodpo'
-  end
-end
-
 class NewRelicMiddleware
   def initialize(app)
     @app = app
